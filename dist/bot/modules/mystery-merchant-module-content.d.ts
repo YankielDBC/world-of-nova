@@ -1,0 +1,11 @@
+import { InlineKeyboard } from 'grammy';
+declare function getPlayerLanguage(player: any): any;
+declare function t3(lang: any, es: any, en: any, ru: any): any;
+declare function buildConfirmKeyboard(kind: any, payload: any, qty: any, lang: any): InlineKeyboard;
+declare function buildBuyQuantityKeyboard(offerId: any, maxQty: any, lang: any): InlineKeyboard;
+declare function getRefreshRemainingMs(playerTgId: any): number;
+declare function lockRefresh(playerTgId: any): void;
+declare function renderMerchantMain(ctx: any, mode: any, infoLine: any): Promise<void>;
+declare function renderBuyMenu(ctx: any): Promise<void>;
+declare function renderSellMenu(ctx: any): Promise<void>;
+export { getPlayerLanguage, t3, getRefreshRemainingMs, lockRefresh, buildConfirmKeyboard, buildBuyQuantityKeyboard, renderMerchantMain, renderBuyMenu, renderSellMenu, };

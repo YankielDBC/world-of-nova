@@ -1,4 +1,3 @@
-import { InlineKeyboard } from 'grammy';
 export declare function getActiveCaveContextByTgId(tgId: any): Promise<{
     player: {
         id: number;
@@ -102,6 +101,6 @@ export declare function renderActiveCaveMap(tgId: any): Promise<{
     biomeName: string;
     grid: string;
     footer: string;
-    keyboard: InlineKeyboard;
+    keyboard: import("grammy").InlineKeyboard;
 }>;
 export declare function isPlayerInsideCave(tgId: any): Promise<boolean>;

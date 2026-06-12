@@ -1,14 +1,6 @@
 import { InlineKeyboard } from 'grammy';
 export { ensureDeathSystemSchema, getActiveCorpseById, getActiveCorpseForPlayer, getActiveDeathStateByPlayerId, getActiveDeathStateByTgId, isPlayerGhostByTgId, setSoulAnchorForPlayer, } from './death-system-state.js';
-export declare function getNearestCemeteryCoords(x: any, y: any): {
-    x: number;
-    y: number;
-    label: string;
-    distance: number;
-};
-export declare function isNearCemetery(x: any, y: any, radius?: number): boolean;
-export declare function killPlayerAndCreateCorpse(params: any): Promise<any>;
-export declare function recoverOwnCorpse(tgId: any): Promise<any>;
+export { getNearestCemeteryCoords, isNearCemetery, killPlayerAndCreateCorpse, recoverOwnCorpse } from './death-system-actions.js';
 export declare function moveGhostPlayer(tgId: any, direction: any): Promise<{
     success: boolean;
     message: string;

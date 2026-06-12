@@ -1,3 +1,5 @@
+import { unequipEquipmentByAliasImpl } from './bags-tools-actions.js';
+export { unequipEquipmentByAliasImpl };
 export declare function getActiveBagItemInfoByUidImpl(playerId: any, slotUid: any): Promise<{
     slotUid: number;
     slotIndex: number;
@@ -120,10 +122,6 @@ export declare function equipToolByAliasImpl(playerId: any, alias: any): Promise
     message: string;
 }>;
 export declare function unequipToolByAliasImpl(playerId: any, alias: any): Promise<{
-    success: boolean;
-    message: string;
-}>;
-export declare function unequipEquipmentByAliasImpl(playerId: any, alias: any): Promise<{
     success: boolean;
     message: string;
 }>;

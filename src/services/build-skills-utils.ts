@@ -56,3 +56,16 @@ export function rankMap(rows) {
     }
     return map;
 }
+export function conditionMatches(condition, check) {
+    if (!check)
+        return true;
+    if (typeof check.hpBelowPct === 'number' && !(condition.hpPct < check.hpBelowPct))
+        return false;
+    if (typeof check.hpAbovePct === 'number' && !(condition.hpPct > check.hpAbovePct))
+        return false;
+    if (typeof check.staBelowPct === 'number' && !(condition.staPct < check.staBelowPct))
+        return false;
+    if (typeof check.staAbovePct === 'number' && !(condition.staPct > check.staAbovePct))
+        return false;
+    return true;
+}

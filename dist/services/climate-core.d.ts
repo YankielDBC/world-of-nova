@@ -76,13 +76,10 @@ export declare const EVENT_TITLE: {
     en: string;
     ru: string;
 };
+export { pickClimateKind, pickIntensity, pickSpecialEvent, getClimateEffectsForBiome } from './climate-core-actions.js';
 export declare function cacheKey(worldMapId: any, zoneX: any, zoneY: any): string;
 export declare function toRoman(level: any): "III" | "II" | "I";
 export declare function randomInt(min: any, max: any): number;
-export declare function pickWeighted(items: any): any;
-export declare function pickClimateKind(previous: any, biomeHint: any): any;
-export declare function pickIntensity(kind: any): any;
-export declare function pickSpecialEvent(biomeHint: any, kind: any, intensity: any): "flood" | "wildfire" | "quakes" | "duststorm" | "toxic_fog";
 export declare function getDurationMs(): number;
 export declare function getZoneCoords(valueX: any, valueY: any): {
     zoneX: number;
@@ -106,11 +103,5 @@ export declare function toSnapshot(row: any): {
     biomeLabel: any;
     nextChangeAt: any;
 };
-export declare function clamp(value: any, min: any, max: any): number;
 export declare function buildAlertText(snapshot: any): string;
-export declare function getClimateEffectsForBiome(biomeName: any, snapshot: any): {
-    spawnMultiplier: number;
-    yieldMultiplier: number;
-    energyCostMultiplier: number;
-};
 export declare function formatClimateLine(langRaw: any, snapshot: any): string;

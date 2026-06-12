@@ -14,3 +14,4 @@ export declare function clamp(value: any, min: any, max: any): number;
 export declare function roundTo(value: any, decimals: any): number;
 export declare function getSpentPointsForFamily(ranksByKey: any, family: any): number;
 export declare function rankMap(rows: any): {};
+export declare function conditionMatches(condition: any, check: any): boolean;

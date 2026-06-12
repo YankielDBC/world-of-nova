@@ -1,0 +1,223 @@
+// @ts-nocheck
+export const COMMUNITY_PATCH_PART2 = [
+    {
+        slug: 'patch-v0-1-8-rpg-core',
+        version: 'v0.1.8',
+        title: '⚔️ Nucleo RPG',
+        summary: 'El personaje ahora se calcula con formulas RPG reales y trazables.',
+        bullets: [
+            'Atributos base: STR, DEX, INT, VIT, AGI y ENG.',
+            'Razas y clases con identidad mecanica propia.',
+            'Stats derivados y resistencias integradas en profile.',
+        ],
+        uiPreview: [
+            '📊 Attributes visibles en profile',
+            '🛡️ Resistencias por tipo de daño',
+            '⚔️ Stats derivados en tiempo real',
+        ],
+        flowSteps: [
+            'Subes nivel y crecen atributos.',
+            'El sistema recalcula stats finales.',
+            'Profile muestra build actualizada.',
+        ],
+        gameplayImpact: [
+            'Cada raza/clase ya se siente unica.',
+            'Mejor base para PvE y PvP.',
+            'Balance con formulas auditables.',
+        ],
+        closing: 'Tu personaje ya se diferencia por build y no solo por nivel.',
+    },
+    {
+        slug: 'patch-v0-1-9-builds',
+        version: 'v0.1.9',
+        title: '🧩 Talentos y Builds',
+        summary: 'La personalizacion de build ya existe y abre rutas de juego distintas.',
+        bullets: [
+            'Talentos raciales y build skills ya operativos.',
+            'Slots equipables con efectos de gameplay activos.',
+            'Base lista para el motor de combate profundo.',
+        ],
+        uiPreview: [
+            '🧬 Racial activa o pasiva',
+            '🧩 Slots de build equipables',
+            '📌 Bonus visibles en resumen',
+        ],
+        flowSteps: [
+            'Aprendes talento en interfaz.',
+            'Lo equipas en slot disponible.',
+            'El bonus impacta tu rendimiento.',
+        ],
+        gameplayImpact: [
+            'Mas libertad para personalizar.',
+            'Builds distintas por estilo.',
+            'Camino directo al meta PvP.',
+        ],
+        closing: 'Cada decision de build ya empieza a importar.',
+    },
+    {
+        slug: 'patch-v0-1-10-poi-caves',
+        version: 'v0.1.10',
+        title: '🕳️ Cuevas y POIs',
+        summary: 'Explorar ya no es solo caminar: ahora hay puntos de interes reales.',
+        bullets: [
+            'Cuevas y ruinas distribuidas como POIs del mundo.',
+            'Descubrimiento persistente por jugador.',
+            'Fundacion lista para PvE, loot y contenido de riesgo.',
+        ],
+        uiPreview: [
+            '🕳️ Cuevas como POI especial',
+            '🏛️ Ruinas en rutas remotas',
+            '🧭 Mapa con descubrimiento real',
+        ],
+        flowSteps: [
+            'Exploras anillos fuera de Nova.',
+            'Encuentras POI raro del terreno.',
+            'Se guarda para tu historial.',
+        ],
+        gameplayImpact: [
+            'Explorar vuelve a dar sorpresa.',
+            'Mas puntos de interes por sesion.',
+            'Preparacion para dungeons futuras.',
+        ],
+        closing: 'Siempre hay algo nuevo que descubrir fuera del camino.',
+    },
+    {
+        slug: 'patch-v0-1-11-creatures-foundation',
+        version: 'v0.1.11',
+        title: '👾 Criaturas Dinamicas',
+        summary: 'El mundo dio el salto PvE con criaturas vivas por bioma y zona.',
+        bullets: [
+            'Criaturas con nombre, categoria, nivel y atributos propios.',
+            'Spawn segun bioma y anillo de dificultad del mundo.',
+            'Drops, monedas y respawn modelados para progresion real.',
+        ],
+        uiPreview: [
+            '👾 Spawn dinamico por bioma',
+            '🎯 Nivel segun anillo de zona',
+            '🎁 Loot y plata por derrota',
+        ],
+        flowSteps: [
+            'Entras a tile con criatura activa.',
+            'El sistema carga stats y categoria.',
+            'Queda lista para interactuar o cazar.',
+        ],
+        gameplayImpact: [
+            'PvE deja de ser decorativo.',
+            'Mejor progresion por exploracion.',
+            'Base viva para caceria y bosses.',
+        ],
+        closing: 'El reino ya tiene depredadores que reaccionan a tu presencia.',
+    },
+    {
+        slug: 'patch-v0-1-12-creatures-defeat-loop',
+        version: 'v0.1.12',
+        title: '⚔️ Derrota de Criaturas',
+        summary: 'El loop de derrota ya esta activo con recompensa completa de gameplay.',
+        bullets: [
+            'Boton de derrota en interacciones de criatura (flujo de prueba).',
+            'Resolucion completa: XP, plata, drops, level up y card de resultado.',
+            'Proteccion anti doble recompensa con bloqueo atomico por criatura.',
+        ],
+        uiPreview: [
+            '☠️ Interact -> Defeat',
+            '🏆 XP + plata + drops',
+            '🎒 Si no cabe, te avisa',
+        ],
+        flowSteps: [
+            'Abres /interact en tu tile.',
+            'Eliges criatura y tocas Defeat.',
+            'Se resuelve drop, XP y respawn.',
+        ],
+        gameplayImpact: [
+            'Ahora farmear ya da progreso.',
+            'Cada kill afecta tu economia.',
+            'El riesgo PvE ya se siente vivo.',
+        ],
+        closing: 'Ahora cazar criaturas ya paga y se siente como progreso real.',
+    },
+    {
+        slug: 'patch-v0-1-13-pve-showcase',
+        version: 'v0.1.13',
+        title: '🔥 Showcase PvE en vivo',
+        summary: 'La caceria ya tiene ritmo, premio y tension real en cada tile.',
+        bullets: [
+            'Combate de criatura desde Interact.',
+            'Resolucion completa en una card.',
+            'Respawn activo para rotacion PvE.',
+        ],
+        uiPreview: [
+            '☠️ #01 Bestia Lv 6 Elite',
+            '🏆 XP +18  🪙 +9',
+            '🎁 Loot + aviso si no cabe',
+        ],
+        flowSteps: [
+            '1) /interact en tu coordenada.',
+            '2) Elige objetivo y toca Defeat.',
+            '3) Recibes resumen de resultado.',
+            '4) Decides seguir o rotar mapa.',
+        ],
+        gameplayImpact: [
+            'Mas progreso por minuto real.',
+            'Farmeo con decision tactica.',
+            'Ruta PvE con riesgo/recompensa.',
+        ],
+        closing: 'Ya no solo exploras. Ahora cazas, cobras y decides tu proxima jugada.',
+    },
+    {
+        slug: 'patch-v0-1-14-skill-builds-deepened',
+        version: 'v0.1.14',
+        title: '🧠 Builds con identidad real',
+        summary: 'El sistema de talentos ahora explica mejor lo que hace cada skill y como encaja con tu build actual.',
+        bullets: [
+            'Arboles de build y racial con previews numericos claros.',
+            'Cada skill muestra impacto real, trigger, cooldown y rango.',
+            'Sinergias dinamicas segun tu clase, raza y talentos aprendidos.',
+        ],
+        uiPreview: [
+            '🧩 /bs con estilo de build',
+            '🧬 /racial con sinergias reales',
+            '📊 Cada talento ya dice que da',
+        ],
+        flowSteps: [
+            'Abres /bs o /racial.',
+            'Lees bonus reales antes de gastar.',
+            'Comparas sinergias y armas tu build.',
+            'Equipas activas en slots listos para combate.',
+        ],
+        gameplayImpact: [
+            'Menos puntos gastados a ciegas.',
+            'Builds mucho mas legibles y planeables.',
+            'Mas libertad para crear estilos propios.',
+        ],
+        closing: 'Tu build ya no se elige por intuicion. Ahora se diseña con informacion real.',
+    },
+    {
+        slug: 'patch-v0-1-15-pve-turn-combat',
+        version: 'v0.1.15',
+        title: '⚔️ PvE tactico por turnos',
+        summary: 'Las criaturas ya se combaten en una sola card viva, con intencion enemiga, skills activas y reacciones reales.',
+        bullets: [
+            'Combate PvE 1v1 por turnos sin spam de mensajes.',
+            'La criatura muestra su intencion antes del golpe.',
+            'Build skills, raciales, pasivas y reacciones entran en la resolucion del turno.',
+        ],
+        uiPreview: [
+            '👁️ Scout de criatura antes de entrar',
+            '⚔️ Una sola combat card editable',
+            '✨ Menus aparte para skills y raciales',
+        ],
+        flowSteps: [
+            'Usas /interact y eliges criatura.',
+            'Abres su scout card y decides entrar.',
+            'Atacas, defiendes, usas build o racial.',
+            'El enemigo responde segun su intencion.',
+            'La card resume log, buffs y resultado.',
+        ],
+        gameplayImpact: [
+            'Leer al enemigo ahora importa.',
+            'Tus pasivas y triggers ya se sienten en vivo.',
+            'PvE queda listo como base seria para bosses y PvP.',
+        ],
+        closing: 'Cada turno ahora premia leer, aguantar y soltar la skill correcta en el momento exacto.',
+    },
+];

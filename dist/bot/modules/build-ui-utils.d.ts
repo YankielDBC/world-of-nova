@@ -1,0 +1,20 @@
+export declare function t3(lang: any, es: any, en: any, ru: any): any;
+export declare function formatNumber(value: any, digits?: number): string;
+export declare function formatPercentFromFraction(value: any, digits?: number): string;
+export declare function formatPercentPoints(value: any, digits?: number): string;
+export declare function formatSignedFlat(value: any, digits?: number): string;
+export declare function formatActionLabel(action: any, lang: any): any;
+export declare function formatEventLabel(event: any, lang: any): any;
+export declare function formatCondition(condition: any, lang: any): any;
+export declare function collectEffectTokens(effectSet: any, scale: any, lang: any): any[];
+export declare function formatTokenRows(tokens: any): any[];
+export declare function buildRankSummaryLines(def: any, rank: any, lang: any): any[];
+export declare function getPreviewTokens(def: any, lang: any): any[];
+export declare function collectThemesFromEffectSet(effectSet: any, out: any): void;
+export declare function collectThemes(def: any): Set<unknown>;
+export declare function evaluatePairSynergy(base: any, candidate: any, lang: any): {
+    score: number;
+    reason: any;
+};
+export declare function isEquipped(state: any, skillKey: any): boolean;
+export declare function buildSuggestionLine(insight: any, state: any, lang: any): string;
