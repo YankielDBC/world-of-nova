@@ -1,0 +1,41 @@
+import type { Language } from '../lib/i18n.js';
+import type { CombatContextModifiers } from '../lib/db.js';
+import { type BuildSkillDefinition } from '../data/skill-trees.js';
+import type { EncounterEnemyEffect, EncounterEnemyIntent, EncounterPlayerEffect, EnemyCombatSnapshot } from './pve-combat-types.js';
+import type { CreatureSnapshot } from './creatures.js';
+import type { CreatureDefeatSuccess } from './creature-defeat.js';
+export declare function mapEnemyStats(base: CreatureSnapshot, modifiers: CombatContextModifiers): EnemyCombatSnapshot;
+export declare function categoryBadge(category: string, lang: Language): string;
+export declare function describeCreatureStyle(snapshot: CreatureSnapshot, lang: Language): string;
+export declare function createInitialIntent(snapshot: CreatureSnapshot, turnNumber: number, lang: Language): EncounterEnemyIntent;
+export declare function getRacialSkillSpec(race: string | null | undefined, key: string): {
+    durationTurns: number;
+    cooldownTurns: number;
+    staminaCost: number;
+    playerEffect?: EncounterPlayerEffect;
+    enemyEffect?: EncounterEnemyEffect;
+    immediateArcaneMultiplier?: number;
+    immediateAttackMultiplier?: number;
+} | null;
+export declare function getIntentModifiers(intent: EncounterEnemyIntent): {
+    attackMultiplier?: number;
+    arcaneMultiplier?: number;
+    critBonusPct?: number;
+    accuracyBonusPct?: number;
+    enemyDefensePct?: number;
+};
+export declare function buildFleeText(lang: Language, creatureName: string, success: boolean): string;
+export declare function buildDefeatText(lang: Language, creatureName: string, log: string[]): string;
+export declare function buildVictoryText(lang: Language, reward: CreatureDefeatSuccess, log: string[]): string;
+export declare function getBuildSkillSpec(def: BuildSkillDefinition, rank: number, lang: Language): {
+    durationTurns: number;
+    cooldownTurns: number;
+    staminaCost: number;
+    playerEffect: EncounterPlayerEffect;
+    immediatePhysicalMultiplier: number;
+    immediateArcaneMultiplier: number;
+    critBonusPct: number;
+    accuracyBonusPct: number;
+    narrative: string;
+};
+export declare function getCreatureScoutText(snapshot: CreatureSnapshot, lang: Language): string;

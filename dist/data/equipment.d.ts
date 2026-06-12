@@ -1,0 +1,14 @@
+export declare const EQUIPMENT_SLOT_ORDER: readonly ["head", "chest", "legs", "boots", "gloves", "belt", "cloak", "ring_1", "ring_2", "amulet", "main_hand", "off_hand", "two_hand", "fishing_tool"];
+export type EquipmentSlotKey = (typeof EQUIPMENT_SLOT_ORDER)[number];
+export declare const EQUIPMENT_SLOT_LABELS: Record<EquipmentSlotKey, string>;
+export declare const EQUIPMENT_RARITIES: readonly ["common", "uncommon", "rare", "epic", "legendary", "mythic"];
+export type EquipmentRarity = (typeof EQUIPMENT_RARITIES)[number];
+export declare const EQUIPMENT_BIND_TYPES: readonly ["none", "bind_on_equip", "bind_on_pickup", "soulbound", "quest_bound"];
+export type EquipmentBindType = (typeof EQUIPMENT_BIND_TYPES)[number];
+export declare const EQUIPMENT_CONTAINER_TYPES: readonly ["inventory", "equipped", "bank", "market", "ground", "npc"];
+export type EquipmentContainerType = (typeof EQUIPMENT_CONTAINER_TYPES)[number];
+export declare const EQUIPMENT_COMBAT_STAT_KEYS: readonly ["maxHpFlat", "maxHpPct", "maxEnergyFlat", "maxEnergyPct", "maxSoulFlat", "attackFlat", "attackPct", "arcaneFlat", "arcanePct", "baseDamageFlat", "defenseFlat", "defensePct", "critChanceFlat", "evasionFlat", "atkSpeedFlat", "atkSpeedPct", "moveSpeedFlat", "moveSpeedPct", "resistPhysicalFlat", "resistElementalFlat", "resistArcaneFlat", "resistHolyFlat", "resistChemicalFlat"];
+export declare const EQUIPMENT_UTILITY_STAT_KEYS: readonly ["chopYieldPct", "mineYieldPct", "gatherYieldPct", "fishYieldPct", "travelStaCostPct", "passiveStaRegenFlat", "merchantPriceFavorPct", "bankFeeReductionPct", "dropRateMinorPct"];
+export type EquipmentCombatStatKey = (typeof EQUIPMENT_COMBAT_STAT_KEYS)[number];
+export type EquipmentUtilityStatKey = (typeof EQUIPMENT_UTILITY_STAT_KEYS)[number];
+export type EquipmentStatKey = EquipmentCombatStatKey | EquipmentUtilityStatKey;

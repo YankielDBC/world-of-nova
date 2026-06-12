@@ -1,0 +1,14 @@
+import type { ZoneBandId } from './world-zones.js';
+import type { CategoryConfig, CreatureAttributes, CreatureCategory, CreatureStatus } from './creatures-types.js';
+export declare const STATUS_ALIVE: CreatureStatus;
+export declare const STATUS_DEAD: CreatureStatus;
+export declare const CREATURE_CACHE_TTL_MS = 8000;
+export declare const RESOURCE_POOL_TTL_MS = 60000;
+export declare const CATEGORY_ORDER: CreatureCategory[];
+export declare const CATEGORY_CONFIG: Record<CreatureCategory, CategoryConfig>;
+export declare const CATEGORY_WEIGHTS_BY_ZONE: Record<ZoneBandId, Record<CreatureCategory, number>>;
+export declare const BIOME_PRESENCE_CHANCE: Record<string, number>;
+export declare const BIOME_MAX_PACK_SIZE: Record<string, number>;
+export declare const BIOME_SPECIES: Record<string, string[]>;
+export declare const CATEGORY_PREFIX: Record<CreatureCategory, string[]>;
+export declare const BIOME_ATTRIBUTE_BONUS: Record<string, Partial<CreatureAttributes>>;

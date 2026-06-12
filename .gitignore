@@ -1,6 +1,5 @@
 node_modules/
 node_modules.removed/
-dist/
 .env
 prisma/dev.db
 *.log
@@ -12,3 +11,6 @@ tmp-run.out.log
 .codex-temp/
 .claude/
 backups/
+
+# TODO: Remove this after src/ is restored - dist/ IS the code for now
+# dist/

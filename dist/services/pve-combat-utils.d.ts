@@ -1,0 +1,20 @@
+import type { Language } from '../lib/i18n.js';
+import type { CombatContextModifiers } from '../lib/db.js';
+import type { EncounterEnemyEffect, EncounterPlayerEffect } from './pve-combat-types.js';
+import type { BuildSkillEffectSet } from '../data/skill-trees.js';
+export declare function t3(lang: Language, es: string, en: string, ru: string): string;
+export declare function toNumber(value: unknown, fallback?: number): number;
+export declare function clamp(value: number, min: number, max: number): number;
+export declare function round1(value: number): number;
+export declare function safeJsonParse<T>(raw: string | null | undefined, fallback: T): T;
+export declare function turnsFromSeconds(seconds: number): number;
+export declare function shortLabel(text: string, max?: number): string;
+export declare function normalizeText(value: string | null | undefined): string;
+export declare function mergeCombatModifiers(base?: CombatContextModifiers, extra?: CombatContextModifiers): CombatContextModifiers;
+export declare function effectSetToCombatModifiers(effectSet: BuildSkillEffectSet | undefined, scale: number): CombatContextModifiers | undefined;
+export declare function aggregatePlayerEffects(effects: EncounterPlayerEffect[]): {
+    modifiers: CombatContextModifiers;
+    counterAttackRatio: number;
+    damageReductionPct: number;
+};
+export declare function aggregateEnemyEffects(effects: EncounterEnemyEffect[]): CombatContextModifiers;

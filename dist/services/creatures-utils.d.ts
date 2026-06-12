@@ -1,0 +1,18 @@
+import type { Language } from '../lib/i18n.js';
+import type { CreatureCategory, CreatureDrop } from './creatures-types.js';
+import type { ZoneBandId } from './world-zones.js';
+export declare function toNumber(value: unknown, fallback?: number): number;
+export declare function clamp(value: number, min: number, max: number): number;
+export declare function floorInt(value: number, min?: number): number;
+export declare function round1(value: number): number;
+export declare function round3(value: number): number;
+export declare function safeJsonParse<T>(raw: string, fallback: T): T;
+export declare function tileKey(worldMapId: number, x: number, y: number): string;
+export declare function pickSeededIndex(length: number, seed: string): number;
+export declare function randomIntSeeded(min: number, max: number, seed: string): number;
+export declare function weightedPickCategory(zoneId: ZoneBandId, seed: string): CreatureCategory;
+export declare function getCategoryLabel(category: CreatureCategory, lang: Language): string;
+export declare function getCreatureCategoryBadge(category: CreatureCategory, lang: Language): string;
+export declare function normalizeCategory(raw: string): CreatureCategory;
+export declare function parseDrops(raw: string): CreatureDrop[];
+export declare function serializeDrops(drops: CreatureDrop[]): string;

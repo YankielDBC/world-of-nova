@@ -1,0 +1,10 @@
+import { InlineKeyboard } from 'grammy';
+import type { Language } from '../../lib/i18n.js';
+import { type PveEncounterView } from '../../services/pve-combat.js';
+export declare function renderPveCombatText(view: PveEncounterView, lang: Language, infoLine?: string): string;
+export declare function renderPveAbilityMenu(view: PveEncounterView, lang: Language, kind: 'build' | 'racial', infoLine?: string): string;
+export declare function buildPveCombatKeyboard(lang: Language): InlineKeyboard;
+export declare function buildPveAbilityKeyboard(view: PveEncounterView, lang: Language, kind: 'build' | 'racial'): InlineKeyboard;
+export declare function buildPveScoutKeyboard(lang: Language, creatureId: number): InlineKeyboard;
+export declare function buildPveOutcomeKeyboard(lang: Language): InlineKeyboard;
+export declare function buildPveBlockedKeyboard(lang: Language): InlineKeyboard;
