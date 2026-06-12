@@ -1,0 +1,14 @@
+node_modules/
+node_modules.removed/
+dist/
+.env
+prisma/dev.db
+*.log
+*.tsbuildinfo
+.DS_Store
+Thumbs.db
+tmp-run.err.log
+tmp-run.out.log
+.codex-temp/
+.claude/
+backups/

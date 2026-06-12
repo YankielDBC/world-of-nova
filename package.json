@@ -1,0 +1,47 @@
+{
+  "name": "world-of-nova",
+  "version": "1.0.0",
+  "description": "World of Nova - RPG Telegram Bot. Nightfall Patch v1.0",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "dev:bot": "tsx watch src/index.ts",
+    "dev:worker": "tsx watch src/worker.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "start:bot": "node dist/index.js",
+    "start:worker": "node dist/worker.js",
+    "lint": "tsc --noEmit",
+    "test": "npm run lint",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev",
+    "db:studio": "prisma studio",
+    "db:seed:places": "tsx prisma/seed-places.ts",
+    "db:seed:world": "tsx prisma/seed-world.ts",
+    "db:seed:resources": "tsx prisma/seed-resources.ts",
+    "db:seed:bags": "tsx prisma/seed-bags.ts",
+    "db:seed:equipment": "tsx prisma/seed-equipment.ts"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "rpg",
+    "game"
+  ],
+  "author": "YankielDBC",
+  "license": "MIT",
+  "dependencies": {
+    "@prisma/client": "^6.19.2",
+    "dotenv": "^16.4.5",
+    "grammy": "^1.21.1",
+    "prisma": "^6.19.2",
+    "redis": "^4.7.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}
