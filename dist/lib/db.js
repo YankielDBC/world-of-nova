@@ -2,7 +2,11 @@
 // World of Nova - Database Service
 import { PrismaClient } from '@prisma/client';
 import { getClassAttributesAtLevel, getClassGrowthDebug } from './rpg-attributes.js';
-export const prisma = new PrismaClient();
+const poolConfig = {
+    log: ['error', 'warn'],
+    connectionTimeout: 10000,
+};
+export const prisma = new PrismaClient(poolConfig);
 export async function connectDB() {
     try {
         await prisma.$connect();
