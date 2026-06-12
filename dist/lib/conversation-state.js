@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { kvDel, kvGetJson, kvSetJson } from './distributed-kv.js';
 const DEFAULT_TTL_SECONDS = 30 * 60;
 function toKey(playerTgId, scope) {
@@ -12,3 +13,4 @@ export async function setConversationState(scope, playerTgId, value, ttlSeconds 
 export async function clearConversationState(scope, playerTgId) {
     await kvDel('conversation', toKey(playerTgId, scope));
 }
+//# sourceMappingURL=conversation-state.js.map

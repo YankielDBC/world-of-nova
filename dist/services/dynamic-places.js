@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { getZoneBandAtCoords, getRadialDistance } from './world-zones.js';
 const DYNAMIC_TYPE = 'DYNAMIC';
@@ -436,3 +437,4 @@ export async function ensureDynamicPlaceAtCoords(params) {
     }
     return createDynamicRuin(x, y);
 }
+//# sourceMappingURL=dynamic-places.js.map

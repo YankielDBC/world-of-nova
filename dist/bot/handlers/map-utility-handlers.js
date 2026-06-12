@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 export function isExpiredCallbackQueryError(error) {
     if (!error || typeof error !== 'object') {
@@ -174,3 +175,4 @@ export function createMapMoveHandler(deps) {
         }
     };
 }
+//# sourceMappingURL=map-utility-handlers.js.map

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { getZoneBandAtCoords } from './world-zones.js';
 export function getZoneResourcePolicyAtCoords(x, y) {
     const zone = getZoneBandAtCoords(x, y);
@@ -30,3 +31,4 @@ export function getZoneSpawnMultiplierForNode(requiredLevel, policy) {
     }
     return 1;
 }
+//# sourceMappingURL=world-resource-rules.js.map

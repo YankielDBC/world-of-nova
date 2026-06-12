@@ -1,88 +1,107 @@
 import { InlineKeyboard } from 'grammy';
-type Direction = 'up' | 'down' | 'left' | 'right';
-type CaveLayout = {
-    width: number;
-    height: number;
-    startX: number;
-    startY: number;
-    walkableCount: number;
-    rows: string[];
-};
-type ActiveCaveContext = {
+export declare function getActiveCaveContextByTgId(tgId: any): Promise<{
     player: {
         id: number;
         tgId: string;
-        language: string | null;
+        language: string;
         energy: number;
         maxEnergy: number;
     };
-    place: {
-        id: number;
-        slug: string;
-        displayName: string;
-        emoji: string;
-        coordX: number | null;
-        coordY: number | null;
-    };
-    caveInstanceId: number;
-    posX: number;
-    posY: number;
-    exploredJson: string;
-    layout: CaveLayout;
-};
-export declare function getActiveCaveContextByTgId(tgId: string): Promise<ActiveCaveContext | null>;
-export declare function enterCaveForPlayer(params: {
-    playerId: number;
-    tgId: string;
-    placeId: number;
-}): Promise<{
-    success: true;
     place: {
         id: number;
         isActive: boolean;
         createdAt: Date;
         updatedAt: Date;
         name: string;
-        emoji: string;
-        expiresAt: Date | null;
         type: string;
+        emoji: string;
         displayName: string;
-        description: string | null;
+        description: string;
+        slug: string;
+        coordX: number;
+        coordY: number;
         pvpAllowed: boolean;
         combatAllowed: boolean;
-        slug: string;
-        coordX: number | null;
-        coordY: number | null;
-        triggerType: string | null;
+        triggerType: string;
+        expiresAt: Date;
     };
-    layout: CaveLayout;
+    caveInstanceId: number;
+    posX: number;
+    posY: number;
+    exploredJson: string;
+    layout: {
+        width: number;
+        height: number;
+        startX: number;
+        startY: number;
+        walkableCount: number;
+        rows: any;
+    };
 }>;
-export declare function exitActiveCaveForTgId(tgId: string): Promise<{
-    success: false;
+export declare function enterCaveForPlayer(params: any): Promise<{
+    success: boolean;
+    place: {
+        id: number;
+        isActive: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+        name: string;
+        type: string;
+        emoji: string;
+        displayName: string;
+        description: string;
+        slug: string;
+        coordX: number;
+        coordY: number;
+        pvpAllowed: boolean;
+        combatAllowed: boolean;
+        triggerType: string;
+        expiresAt: Date;
+    };
+    layout: {
+        width: number;
+        height: number;
+        startX: number;
+        startY: number;
+        walkableCount: number;
+        rows: any;
+    };
+}>;
+export declare function exitActiveCaveForTgId(tgId: any): Promise<{
+    success: boolean;
     message: string;
     place?: undefined;
 } | {
-    success: true;
+    success: boolean;
     place: {
         id: number;
-        slug: string;
-        displayName: string;
+        isActive: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+        name: string;
+        type: string;
         emoji: string;
-        coordX: number | null;
-        coordY: number | null;
+        displayName: string;
+        description: string;
+        slug: string;
+        coordX: number;
+        coordY: number;
+        pvpAllowed: boolean;
+        combatAllowed: boolean;
+        triggerType: string;
+        expiresAt: Date;
     };
     message?: undefined;
 }>;
-export declare function movePlayerInCave(tgId: string, direction: Direction): Promise<{
+export declare function movePlayerInCave(tgId: any, direction: any): Promise<{
     success: boolean;
-    message: string;
+    message: any;
 }>;
-export declare function renderActiveCaveMap(tgId: string): Promise<{
+export declare function renderActiveCaveMap(tgId: any): Promise<{
     header: string;
     biomeName: string;
     grid: string;
     footer: string;
     keyboard: InlineKeyboard;
-} | null>;
-export declare function isPlayerInsideCave(tgId: string): Promise<boolean>;
-export {};
+}>;
+export declare function isPlayerInsideCave(tgId: any): Promise<boolean>;

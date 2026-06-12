@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { RUNTIME_CONFIG } from '../lib/runtime-config.js';
 import { observePerf } from '../lib/perf-metrics.js';
@@ -9,8 +10,8 @@ import { applyNodeCooldownRecovery, readTileResourceState } from '../lib/tile-st
 import { deterministicRandom } from './map-utils.js';
 const gatherableCache = new Map();
 const GATHERABLE_CACHE_TTL_MS = RUNTIME_CONFIG.gatherableCacheTtlMs;
-const GATHERABLE_CACHE_MAX_ENTRIES = 5_000;
-const RESOURCE_NODE_CACHE_TTL_MS = 60_000;
+const GATHERABLE_CACHE_MAX_ENTRIES = 5000;
+const RESOURCE_NODE_CACHE_TTL_MS = 60000;
 const resourceNodeCacheByBiome = new Map();
 function getCachedGatherable(cacheKey) {
     const cached = gatherableCache.get(cacheKey);
@@ -268,3 +269,4 @@ export async function getGatherableResources(biomeId, biomeName = 'plains', dayC
         observePerf('map.gatherable', Date.now() - startedAt);
     }
 }
+//# sourceMappingURL=map-gatherable.js.map

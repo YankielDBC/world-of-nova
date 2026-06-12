@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { RUNTIME_CONFIG } from '../lib/runtime-config.js';
 import { findNearestDiscoveredTile } from './mystery-merchant-pathing.js';
 import { formatEtaFromDistance as formatEtaFromDistanceBase, pickRandomText as pickRandomTextBase, randomInt, } from './mystery-merchant-utils.js';
@@ -125,3 +126,4 @@ export function getMerchantIntroText(lang, buybackMultiplier) {
     const options = lang === 'en' ? enOptions : lang === 'ru' ? ruOptions : esOptions;
     return options[randomInt(0, options.length - 1)];
 }
+//# sourceMappingURL=mystery-merchant-alerts.js.map

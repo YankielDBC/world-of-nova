@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 import { getPlayerByTelegramId } from '../../lib/db.js';
 import { RACIAL_TALENT_CATEGORIES, getLocalizedText3, getRacialTalentByKey, } from '../../data/racial-talents.js';
@@ -387,3 +388,4 @@ export function createRacialModule() {
         handleCallback,
     };
 }
+//# sourceMappingURL=racial-module.js.map

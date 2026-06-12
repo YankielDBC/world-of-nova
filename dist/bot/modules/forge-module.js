@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 import { getPlayerByTelegramId, prisma } from '../../lib/db.js';
 import { t } from '../../lib/i18n.js';
@@ -435,3 +436,4 @@ export function createForgeModule() {
         handleMessage,
     };
 }
+//# sourceMappingURL=forge-module.js.map

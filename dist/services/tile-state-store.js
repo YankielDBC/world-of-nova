@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { readTileResourceState, serializeTileResourceState } from '../lib/tile-state.js';
 export async function mutateTileResourceState(tileId, mutator, maxRetries = 5) {
@@ -31,3 +32,4 @@ export async function mutateTileResourceState(tileId, mutator, maxRetries = 5) {
     }
     return { ok: false, result: null, attempts };
 }
+//# sourceMappingURL=tile-state-store.js.map

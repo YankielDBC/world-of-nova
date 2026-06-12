@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { PRICE_INDEX } from '../data/price-index.js';
 export async function getMarketHubSummaryRead() {
@@ -135,3 +136,4 @@ export async function getMarketHubSummaryRead() {
         trendLabel,
     };
 }
+//# sourceMappingURL=market-exchange-hub.js.map

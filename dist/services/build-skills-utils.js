@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { getBuildSkillByKey } from '../data/skill-trees.js';
 export function cloneEffects(input) {
     return {
@@ -55,3 +56,4 @@ export function rankMap(rows) {
     }
     return map;
 }
+//# sourceMappingURL=build-skills-utils.js.map

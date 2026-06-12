@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { RACIAL_TALENT_CATEGORIES, getLocalizedText3, getRacialTalentByKey, } from '../../data/racial-talents.js';
 import { canLearnTalent } from '../../services/racial-talents.js';
 function t3(lang, es, en, ru) {
@@ -574,3 +575,4 @@ export function renderRacialTalentDetailText(state, talent, lang, infoLine) {
     lines.push(`↩ ${categoryIcon(talent.category)} ${getLocalizedText3(RACIAL_TALENT_CATEGORIES.find((entry) => entry.key === talent.category)?.label || { es: talent.category, en: talent.category, ru: talent.category }, lang)}`);
     return lines.join('\n');
 }
+//# sourceMappingURL=racial-ui.js.map

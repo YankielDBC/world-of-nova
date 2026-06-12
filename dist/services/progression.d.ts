@@ -1,25 +1,22 @@
-import { Prisma, type PlayerSkill } from '@prisma/client';
-import { prisma } from '../lib/db.js';
-import { type Language } from '../lib/i18n.js';
-import type { GatherActionType } from './bags.js';
-export type SkillKey = 'chop' | 'mine' | 'gather' | 'fish';
-export type SkillColorBand = 'red' | 'orange' | 'yellow' | 'green' | 'gray';
-type DbClient = typeof prisma | Prisma.TransactionClient;
-export declare function getSkillKeyForAction(action: GatherActionType): SkillKey;
-export declare function getRequiredSkillXp(skillKey: SkillKey, level: number): number;
-export declare function getSkillColorBand(skillLevel: number, requiredLevel: number): SkillColorBand;
-export declare function getSkillXpGain(params: {
-    skillLevel: number;
-    requiredLevel: number;
-    rarity: string;
-    actions: number;
-}): {
+export declare function getSkillKeyForAction(action: any): "gather" | "chop" | "mine";
+export declare function getRequiredSkillXp(skillKey: any, level: any): number;
+export declare function getSkillColorBand(skillLevel: any, requiredLevel: any): "red" | "orange" | "yellow" | "green" | "gray";
+export declare function getSkillXpGain(params: any): {
     gainedXp: number;
-    band: SkillColorBand;
+    band: string;
 };
-export declare function ensurePlayerProgression(playerId: number, grantStarterSkills?: boolean, tx?: DbClient): Promise<void>;
-export declare function getPlayerSkill(playerId: number, skillKey: SkillKey): Promise<PlayerSkill | null>;
-export declare function awardSkillXp(playerId: number, skillKey: SkillKey, xpAmount: number): Promise<{
+export declare function ensurePlayerProgression(playerId: any, grantStarterSkills?: boolean, tx?: import("@prisma/client").PrismaClient<import("@prisma/client").Prisma.PrismaClientOptions, import("@prisma/client").Prisma.LogLevel, import("@prisma/client/runtime/library").DefaultArgs>): Promise<void>;
+export declare function getPlayerSkill(playerId: any, skillKey: any): Promise<{
+    level: number;
+    id: number;
+    createdAt: Date;
+    updatedAt: Date;
+    playerId: number;
+    skillKey: string;
+    xp: number;
+    learned: boolean;
+}>;
+export declare function awardSkillXp(playerId: any, skillKey: any, xpAmount: any): Promise<{
     beforeLevel: number;
     afterLevel: number;
     gainedLevels: number;
@@ -27,5 +24,4 @@ export declare function awardSkillXp(playerId: number, skillKey: SkillKey, xpAmo
     currentXp: number;
     requiredXp: number;
 }>;
-export declare function getSkillsCard(playerId: number, lang?: Language): Promise<string>;
-export {};
+export declare function getSkillsCard(playerId: any, lang?: string): Promise<string>;

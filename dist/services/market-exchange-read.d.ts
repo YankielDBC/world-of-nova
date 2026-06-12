@@ -1,49 +1,42 @@
-export interface ListedMarketItemEntry {
-    resourceId: number;
-    resourceName: string;
-    resourceEmoji: string;
-    totalQty: number;
-    bestPriceSilver: number;
-}
-export interface MarketBookLevel {
-    priceSilver: number;
-    quantity: number;
-}
-export interface ItemOrderBookView {
-    resourceId: number;
-    resourceName: string;
-    resourceEmoji: string;
-    rangeMinSilver: number | null;
-    rangeMaxSilver: number | null;
-    lastTradeSilver: number | null;
-    topAsks: MarketBookLevel[];
-    playerOrders: Array<{
-        orderId: number;
-        priceSilver: number;
-        quantityRemaining: number;
-        quantityTotal: number;
-    }>;
-}
-export interface ItemMarketInsight {
-    avgPrice24h: number | null;
-    changePct24h: number;
-    soldQty24h: number;
-    capitalSilver24h: number;
-    supplyTotal: number;
-}
-export declare function listTradableResources(limit?: number): Promise<Array<{
+export declare function listTradableResources(limit?: number): Promise<{
     resourceId: number;
     name: string;
     emoji: string;
-}>>;
-export declare function listListedMarketItems(params?: {
-    page?: number;
-    pageSize?: number;
-}): Promise<{
-    items: ListedMarketItemEntry[];
+}[]>;
+export declare function listListedMarketItems(params: any): Promise<{
+    items: {
+        resourceId: number;
+        resourceName: string;
+        resourceEmoji: string;
+        totalQty: number;
+        bestPriceSilver: number;
+    }[];
     page: number;
     pageSize: number;
     hasMore: boolean;
 }>;
-export declare function getItemOrderBook(resourceId: number, playerId?: number): Promise<ItemOrderBookView | null>;
-export declare function getItemMarketInsight(resourceId: number): Promise<ItemMarketInsight>;
+export declare function getItemOrderBook(resourceId: any, playerId: any): Promise<{
+    resourceId: number;
+    resourceName: string;
+    resourceEmoji: string;
+    rangeMinSilver: number;
+    rangeMaxSilver: number;
+    lastTradeSilver: number;
+    topAsks: {
+        priceSilver: any;
+        quantity: any;
+    }[];
+    playerOrders: {
+        orderId: any;
+        priceSilver: any;
+        quantityRemaining: any;
+        quantityTotal: any;
+    }[];
+}>;
+export declare function getItemMarketInsight(resourceId: any): Promise<{
+    avgPrice24h: number;
+    changePct24h: number;
+    soldQty24h: number;
+    capitalSilver24h: number;
+    supplyTotal: number;
+}>;

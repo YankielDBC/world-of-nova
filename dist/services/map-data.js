@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { observePerf } from '../lib/perf-metrics.js';
 import { ensureDynamicPlaceAtCoords } from './dynamic-places.js';
@@ -214,3 +215,4 @@ export async function ensureTilesGeneratedForCoords(worldMapId, coords) {
     }
 }
 export { loadBiomes };
+//# sourceMappingURL=map-data.js.map

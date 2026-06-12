@@ -1,3 +1,4 @@
+// @ts-nocheck
 export function t3(lang, es, en, ru) {
     if (lang === 'en')
         return en;
@@ -38,3 +39,4 @@ export function getCellCoords(x, y, cellSize = 24) {
         cellY: Math.floor(y / cellSize),
     };
 }
+//# sourceMappingURL=death-system-utils.js.map

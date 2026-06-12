@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { createClient } from 'redis';
 class MemoryKvStore {
     store = new Map();
@@ -100,3 +101,4 @@ export async function kvGetJson(namespace, key) {
 export async function kvSetJson(namespace, key, value, ttlSeconds) {
     await kvSet(namespace, key, JSON.stringify(value), ttlSeconds);
 }
+//# sourceMappingURL=distributed-kv.js.map

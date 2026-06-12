@@ -1,32 +1,17 @@
 import { InlineKeyboard } from 'grammy';
-import type { AnyCtx, BagSlotUid, LanguageLike, PlayerTgId } from '../../types/runtime-contracts.js';
-import type { BagItemInfo, BagRenderData, BagSwitchOption } from '../../services/bags-types.js';
-interface BagFlowHandlersDeps {
-    getPlayerByTelegramId: (tgId: string) => Promise<any>;
-    ensurePlayerBagSetup: (playerId: number) => Promise<void>;
-    getPlayerLanguage: (player?: {
-        language?: string | null;
-    }) => LanguageLike;
-    getActiveBagView: (playerId: number, lang?: LanguageLike) => Promise<BagRenderData>;
-    getActiveBagItemInfoByUid: (playerId: number, slotUid: BagSlotUid) => Promise<BagItemInfo | null>;
-    setBagState: (playerTgId: PlayerTgId, state: unknown) => Promise<void>;
-    listBagSwitchOptions: (playerId: number) => Promise<BagSwitchOption[]>;
-    clearCallbackKeyboard: (ctx: AnyCtx) => Promise<void>;
-    t: (lang: string, key: string, params?: Record<string, unknown>) => string;
-}
-declare function parsePositiveInt(text: string): number | null;
-declare function parseNodeIndex(text: string): number | null;
-declare function buildBagItemActionConfirmText(item: BagItemInfo, action: 'use' | 'drop'): string;
-declare function buildBagItemActionConfirmKeyboard(action: 'use' | 'drop', slotUid: BagSlotUid): InlineKeyboard;
-export declare function createBagFlowHandlers(deps: BagFlowHandlersDeps): {
+declare function parsePositiveInt(text: any): number;
+declare function parseNodeIndex(text: any): number;
+declare function buildBagItemActionConfirmText(item: any, action: any): string;
+declare function buildBagItemActionConfirmKeyboard(action: any, slotUid: any): InlineKeyboard;
+export declare function createBagFlowHandlers(deps: any): {
     parsePositiveInt: typeof parsePositiveInt;
     parseNodeIndex: typeof parseNodeIndex;
-    renderBagResponse: (ctx: AnyCtx, mode?: "reply" | "edit") => Promise<void>;
+    renderBagResponse: (ctx: any, mode?: string) => Promise<void>;
     buildBagItemActionConfirmText: typeof buildBagItemActionConfirmText;
     buildBagItemActionConfirmKeyboard: typeof buildBagItemActionConfirmKeyboard;
-    openBagItemInfoByUid: (ctx: AnyCtx, playerId: number, slotUid: BagSlotUid, mode?: "reply" | "edit") => Promise<boolean>;
-    startGrabFlow: (ctx: AnyCtx) => Promise<void>;
-    startDropFlow: (ctx: AnyCtx) => Promise<void>;
-    startSwitchFlow: (ctx: AnyCtx) => Promise<void>;
+    openBagItemInfoByUid: (ctx: any, playerId: any, slotUid: any, mode?: string) => Promise<boolean>;
+    startGrabFlow: (ctx: any) => Promise<void>;
+    startDropFlow: (ctx: any) => Promise<void>;
+    startSwitchFlow: (ctx: any) => Promise<void>;
 };
 export {};

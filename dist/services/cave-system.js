@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 import { prisma, getPlayerByTelegramId } from '../lib/db.js';
 import { observePerf } from '../lib/perf-metrics.js';
@@ -605,3 +606,4 @@ export async function isPlayerInsideCave(tgId) {
     const active = await getActiveCaveContextByTgId(tgId);
     return Boolean(active);
 }
+//# sourceMappingURL=cave-system.js.map

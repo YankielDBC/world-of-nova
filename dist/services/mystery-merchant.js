@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { randomUUID } from 'node:crypto';
 import { prisma } from '../lib/db.js';
 import { RUNTIME_CONFIG } from '../lib/runtime-config.js';
@@ -578,3 +579,4 @@ export async function buyFromMerchant(params) {
         message: `✅ Compraste ${reservedOffer.emoji} ${reservedOffer.name} x${quantity} por ${reserve.totalCost} 🪙.`,
     };
 }
+//# sourceMappingURL=mystery-merchant.js.map

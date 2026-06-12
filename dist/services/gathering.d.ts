@@ -1,33 +1,17 @@
-export type Rarity = 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary';
-export interface GatherResultItem {
-    item: string;
-    emoji: string;
-    quantity: number;
-    rarity: Rarity;
-}
-export declare function gather(biomeName: string, options?: {
-    x?: number;
-    y?: number;
-}): Promise<{
+export declare function gather(biomeName: any, options: any): Promise<{
     encounter: {
-        emoji: string;
-        name: string;
+        emoji: any;
+        name: any;
     };
-    items: GatherResultItem[];
+    items: any[];
 }>;
-export declare function formatGatherResult(result: {
-    encounter: {
-        emoji: string;
-        name: string;
-    };
-    items: GatherResultItem[];
-}): string;
+export declare function formatGatherResult(result: any): string;
 export declare function listBiomes(): Promise<{
     id: string;
     name: string;
     emoji: string;
 }[]>;
-export declare function getBiomeInfo(biomeName: string): Promise<{
+export declare function getBiomeInfo(biomeName: any): Promise<{
     id: number;
     name: string;
     emoji: string;
@@ -46,4 +30,4 @@ export declare function getBiomeInfo(biomeName: string): Promise<{
         spawnChance: number;
         yields: any;
     }[];
-} | null>;
+}>;

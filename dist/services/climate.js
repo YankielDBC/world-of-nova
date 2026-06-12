@@ -1,10 +1,11 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { RUNTIME_CONFIG } from '../lib/runtime-config.js';
 import { observePerf } from '../lib/perf-metrics.js';
 import { withPrismaRetry } from '../lib/prisma-retry.js';
 import { buildAlertText, cacheKey, getDurationMs, getZoneBounds, getZoneCoords, pickClimateKind, pickIntensity, pickSpecialEvent, toSnapshot, } from './climate-core.js';
 export { formatClimateLine, getClimateEffectsForBiome, } from './climate-core.js';
-const ZONE_CACHE_TTL_MS = 15_000;
+const ZONE_CACHE_TTL_MS = 15000;
 const zoneCache = new Map();
 async function inferZoneBiome(worldMapId, zoneX, zoneY) {
     const bounds = getZoneBounds(zoneX, zoneY);
@@ -233,3 +234,4 @@ export function startClimateWorker(bot) {
     }, RUNTIME_CONFIG.climateSweepIntervalMs);
     void processDueClimatesOnce(bot);
 }
+//# sourceMappingURL=climate.js.map

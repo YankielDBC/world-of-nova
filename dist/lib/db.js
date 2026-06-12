@@ -1,3 +1,4 @@
+// @ts-nocheck
 // World of Nova - Database Service
 import { PrismaClient } from '@prisma/client';
 import { getClassAttributesAtLevel, getClassGrowthDebug } from './rpg-attributes.js';
@@ -226,3 +227,4 @@ export async function updatePlayer(tgId, data) {
         data: { ...data, lastActiveAt: new Date() },
     });
 }
+//# sourceMappingURL=db.js.map

@@ -1,3 +1,4 @@
+// @ts-nocheck
 // ============================================
 // WORLD OF NOVA - BIOME SYSTEM TYPES
 // ============================================
@@ -164,3 +165,4 @@ export const BIOME_ENCOUNTERS = {
         { emoji: EMOJIS.river.blueFish, name: 'Blue Fish', biomeId: 'river', chance: 25 },
     ],
 };
+//# sourceMappingURL=biome.js.map

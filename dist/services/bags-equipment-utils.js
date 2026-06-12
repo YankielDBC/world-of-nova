@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { abbreviateName } from '../lib/ui-compact.js';
 import { toStrikeText, getToolMeta } from './bags-utils.js';
 export function parseEquipAlias(alias) {
@@ -41,3 +42,4 @@ export function getToolRequirement(toolType) {
         return { skill: 'CHOP', level: 1 };
     return { skill: 'GATHER', level: 1 };
 }
+//# sourceMappingURL=bags-equipment-utils.js.map

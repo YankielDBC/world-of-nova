@@ -1,10 +1,5 @@
 export declare function createMarketModule(): {
-    openHub: (ctx: any, params: {
-        mode: "reply" | "edit";
-        placeId: number;
-        buildingKey: string;
-        infoLine?: string;
-    }) => Promise<void>;
-    handleCallback: (ctx: any, callbackData: string) => Promise<boolean>;
-    handleMessage: (ctx: any, text: string) => Promise<boolean>;
+    openHub: (ctx: any, params: any) => Promise<void>;
+    handleCallback: (ctx: any, callbackData: any) => Promise<boolean>;
+    handleMessage: (ctx: any, text: any) => Promise<boolean>;
 };

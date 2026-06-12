@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const registerWorldCommands = (bot, deps) => {
     bot.command('biomes', async (ctx) => {
         const tgId = String(ctx.from?.id);
@@ -45,3 +46,4 @@ export const registerWorldCommands = (bot, deps) => {
         await deps.mysteryMerchantModule.openByCommand(ctx);
     });
 };
+//# sourceMappingURL=world-command-registrar.js.map

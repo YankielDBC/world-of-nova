@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { withPrismaRetry } from '../lib/prisma-retry.js';
 import { toMillis, toNumber } from './death-system-utils.js';
@@ -161,3 +162,4 @@ export async function getActiveCorpseForPlayer(playerId) {
     const rows = await withPrismaRetry('death.corpse.by-player', () => prisma.$queryRawUnsafe('SELECT * FROM "PlayerCorpse" WHERE playerId = ? AND status = ? ORDER BY createdAt DESC LIMIT 1', playerId, 'ACTIVE'));
     return rows[0] ? mapCorpseRow(rows[0]) : null;
 }
+//# sourceMappingURL=death-system-state.js.map

@@ -1,8 +1,9 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { t } from '../lib/i18n.js';
 const DEFAULT_AFK_THRESHOLD_MS = 5 * 60 * 1000;
-const POPULATION_CACHE_TTL_MS = 3_000;
-const POPULATION_CACHE_MAX = 2_000;
+const POPULATION_CACHE_TTL_MS = 3000;
+const POPULATION_CACHE_MAX = 2000;
 const populationCache = new Map();
 function populationKey(x, y, afkThresholdMs) {
     return `${x}:${y}:${afkThresholdMs}`;
@@ -73,3 +74,4 @@ export function formatPopulationLine(lang, population) {
     }
     return `🔍 ${t(lang, 'populationLabel')}: 🧍‍♂️${population.active}   💤 ${population.afk}`;
 }
+//# sourceMappingURL=population.js.map

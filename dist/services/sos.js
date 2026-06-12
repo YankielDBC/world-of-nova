@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { storeGatheredItems } from './bags.js';
 import { t } from '../lib/i18n.js';
@@ -161,3 +162,4 @@ export async function requestSosDelivery(playerId, lang) {
         message: lines.join('\n'),
     };
 }
+//# sourceMappingURL=sos.js.map

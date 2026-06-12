@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { debugTextPreview, logMapDebug } from '../lib/map-debug.js';
 function hasCoordinateSituations(footer) {
     const normalized = String(footer || '');
@@ -34,3 +35,4 @@ export function renderMapCardText(mapResult, lang) {
     });
     return text;
 }
+//# sourceMappingURL=map-message.js.map

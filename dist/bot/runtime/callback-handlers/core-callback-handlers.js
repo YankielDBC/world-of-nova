@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const handleRegistrationAndProfileCallbacks = async (ctx, callbackData, deps) => {
     if (await deps.registrationModule.handleCallback(ctx, callbackData)) {
         return true;
@@ -53,3 +54,4 @@ export const handleVentureCallbacks = async (ctx, callbackData, deps) => {
     await deps.executeVenture(ctx, state.plan);
     return true;
 };
+//# sourceMappingURL=core-callback-handlers.js.map

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { observePerf } from './perf-metrics.js';
 import { RUNTIME_CONFIG } from './runtime-config.js';
 export class PlayerActionQueue {
@@ -103,3 +104,4 @@ export class PlayerActionQueue {
     }
 }
 export const playerActionQueue = new PlayerActionQueue(RUNTIME_CONFIG.playerQueueMaxConcurrency, RUNTIME_CONFIG.playerQueueMaxPending, RUNTIME_CONFIG.playerQueueMaxPendingPerPlayer);
+//# sourceMappingURL=player-action-queue.js.map

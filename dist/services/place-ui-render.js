@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 import { getLocalizedText, getPlaceUiConfig } from '../data/place-ui.js';
 import { getForgeServiceCost } from '../data/price-index.js';
@@ -270,3 +271,4 @@ export function formatPlaceBuilding(place, building, lang, populationLine, optio
     keyboard.row().text(`↩ ${t(lang, 'placeBack')}`, 'place_back').text(`🚪 ${t(lang, 'placeExit')}`, 'place_exit');
     return { message: lines.join('\n'), keyboard };
 }
+//# sourceMappingURL=place-ui-render.js.map

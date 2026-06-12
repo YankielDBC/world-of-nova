@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { t } from '../lib/i18n.js';
 function getPlayerLanguage(language) {
@@ -64,3 +65,4 @@ export async function consumeLowVitalsAlertByTgId(tgId) {
     const text = [t(lang, 'vitalsLowTitle'), ...detailLines, t(lang, 'vitalsLowHint')].join('\n');
     return { text };
 }
+//# sourceMappingURL=vitals-alerts.js.map

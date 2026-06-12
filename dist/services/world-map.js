@@ -1,7 +1,8 @@
+// @ts-nocheck
 import { Prisma } from '@prisma/client';
 import { prisma } from '../lib/db.js';
 const DEFAULT_WORLD_MAP_NAME = (process.env.WORLD_MAP_NAME || 'Novaria').trim() || 'Novaria';
-const CANONICAL_CACHE_TTL_MS = 30_000;
+const CANONICAL_CACHE_TTL_MS = 30000;
 let canonicalCache = null;
 function normalizeName(value) {
     return value.trim().toLowerCase();
@@ -291,3 +292,4 @@ export async function ensureSingleCanonicalWorldMap() {
     setCanonicalCache(result.canonicalMapId);
     return result;
 }
+//# sourceMappingURL=world-map.js.map

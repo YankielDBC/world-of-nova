@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { registerBasicCommands } from './core-command-registrars/basic-command-registrar.js';
 import { registerInventoryCommands } from './core-command-registrars/inventory-command-registrar.js';
 import { registerWorldCommands } from './core-command-registrars/world-command-registrar.js';
@@ -11,3 +12,4 @@ export function registerCoreCommands(bot, deps) {
         registerCommands(bot, deps);
     }
 }
+//# sourceMappingURL=register-core-commands.js.map

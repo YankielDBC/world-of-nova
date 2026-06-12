@@ -1,3 +1,4 @@
+// @ts-nocheck
 export function installBotErrorHandler(bot, deps) {
     bot.catch((err) => {
         const ctx = err.ctx;
@@ -36,3 +37,4 @@ export function installBotErrorHandler(bot, deps) {
         });
     }
 }
+//# sourceMappingURL=install-bot-error-handler.js.map

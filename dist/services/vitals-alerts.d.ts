@@ -1,4 +1,3 @@
-export interface LowVitalsAlertResult {
+export declare function consumeLowVitalsAlertByTgId(tgId: any): Promise<{
     text: string;
-}
-export declare function consumeLowVitalsAlertByTgId(tgId: string): Promise<LowVitalsAlertResult | null>;
+}>;

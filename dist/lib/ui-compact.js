@@ -1,3 +1,4 @@
+// @ts-nocheck
 const DEFAULT_TRUNCATE_SUFFIX = '...';
 const NAME_ABBREVIATIONS = [
     [/\bHojas de Viento\b/gi, 'H. de viento'],
@@ -49,3 +50,4 @@ export function clampLine(line, _maxChars = TELEGRAM_PHONE_LINE_LIMIT) {
 export function fitCardLines(lines, _maxChars = TELEGRAM_PHONE_LINE_LIMIT) {
     return lines.join('\n').trim();
 }
+//# sourceMappingURL=ui-compact.js.map

@@ -1,3 +1,4 @@
+// @ts-nocheck
 // ============================================
 // WORLD OF NOVA - PLAYER SYSTEM TYPES
 // ============================================
@@ -86,3 +87,4 @@ export function getTitleForLevel(level) {
 export function getXpForNextLevel(currentLevel) {
     return getXpForLevel(currentLevel + 1);
 }
+//# sourceMappingURL=player.js.map

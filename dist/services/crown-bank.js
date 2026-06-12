@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { getBankDepositFeeSilverByValue, toSilverValue } from '../data/price-index.js';
 import { EMOJIS } from '../data/emojis.js';
@@ -381,3 +382,4 @@ export async function withdrawFromVault(playerId, currency, amount) {
         };
     });
 }
+//# sourceMappingURL=crown-bank.js.map

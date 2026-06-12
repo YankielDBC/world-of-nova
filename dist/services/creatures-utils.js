@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { deterministicRandom } from './map-utils.js';
 import { CATEGORY_ORDER, CATEGORY_WEIGHTS_BY_ZONE } from './creatures-config.js';
 export function toNumber(value, fallback = 0) {
@@ -108,3 +109,4 @@ export function parseDrops(raw) {
 export function serializeDrops(drops) {
     return JSON.stringify(drops);
 }
+//# sourceMappingURL=creatures-utils.js.map

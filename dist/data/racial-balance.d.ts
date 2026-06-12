@@ -1,130 +1,130 @@
 export declare const RACIAL_EFFECT_LIMITS: {
-    readonly combatPctMin: -0.2;
-    readonly combatPctMax: 0.2;
-    readonly travelStaminaMultiplierMin: 0.7;
-    readonly travelStaminaMultiplierMax: 1.35;
-    readonly travelTimeMultiplierMin: 0.75;
-    readonly travelTimeMultiplierMax: 1.35;
-    readonly actionEnergyMultiplierMin: 0.75;
-    readonly actionEnergyMultiplierMax: 1.35;
-    readonly actionYieldMultiplierMin: 0.85;
-    readonly actionYieldMultiplierMax: 1.8;
-    readonly passiveStaRegenBonusMax: 3;
+    combatPctMin: number;
+    combatPctMax: number;
+    travelStaminaMultiplierMin: number;
+    travelStaminaMultiplierMax: number;
+    travelTimeMultiplierMin: number;
+    travelTimeMultiplierMax: number;
+    actionEnergyMultiplierMin: number;
+    actionEnergyMultiplierMax: number;
+    actionYieldMultiplierMin: number;
+    actionYieldMultiplierMax: number;
+    passiveStaRegenBonusMax: number;
 };
 export declare const RACIAL_TALENT_BALANCE: {
-    readonly zolk: {
-        readonly toxicBlood: {
-            readonly critChanceFlatPerRank: 0.5;
-            readonly resistChemicalFlatPerRank: 1;
+    zolk: {
+        toxicBlood: {
+            critChanceFlatPerRank: number;
+            resistChemicalFlatPerRank: number;
         };
-        readonly labReflexes: {
-            readonly evasionFlatPerRank: 0.8;
-            readonly moveSpeedPctPerRank: 0.01;
-            readonly atkSpeedPctPerRank: 0.01;
+        labReflexes: {
+            evasionFlatPerRank: number;
+            moveSpeedPctPerRank: number;
+            atkSpeedPctPerRank: number;
         };
-        readonly unstableMetabolism: {
-            readonly maxEnergyFlatPerRank: 5;
-            readonly passiveStaRegenPerRank: 1;
+        unstableMetabolism: {
+            maxEnergyFlatPerRank: number;
+            passiveStaRegenPerRank: number;
         };
-        readonly alchemicalSkin: {
-            readonly defensePctPerRank: 0.01;
-            readonly resistChemicalFlatPerRank: 1;
+        alchemicalSkin: {
+            defensePctPerRank: number;
+            resistChemicalFlatPerRank: number;
         };
-        readonly delicateHand: {
-            readonly gatherYieldPctPerRank: 0.04;
+        delicateHand: {
+            gatherYieldPctPerRank: number;
         };
-        readonly quickEscape: {
-            readonly travelStaminaCostPctPerRank: 0.07;
+        quickEscape: {
+            travelStaminaCostPctPerRank: number;
         };
-        readonly venomGlands: {
-            readonly critChanceFlat: 1.1;
-            readonly attackPct: 0.01;
+        venomGlands: {
+            critChanceFlat: number;
+            attackPct: number;
         };
-        readonly toxicCloudActive: {
-            readonly attackPct: 0.02;
-            readonly arcanePct: 0.01;
+        toxicCloudActive: {
+            attackPct: number;
+            arcanePct: number;
         };
-        readonly mutationDashActive: {
-            readonly travelTimePct: 0.09;
-            readonly moveSpeedPct: 0.02;
+        mutationDashActive: {
+            travelTimePct: number;
+            moveSpeedPct: number;
         };
-        readonly chemicalLegsUpgrade: {
-            readonly travelTimePct: 0.05;
-            readonly travelStaminaCostPct: 0.04;
+        chemicalLegsUpgrade: {
+            travelTimePct: number;
+            travelStaminaCostPct: number;
         };
-        readonly keystoneToxicShadow: {
-            readonly evasionFlat: 2.2;
-            readonly critChanceFlat: 1.4;
+        keystoneToxicShadow: {
+            evasionFlat: number;
+            critChanceFlat: number;
         };
-        readonly keystoneReactorBlood: {
-            readonly arcanePct: 0.04;
-            readonly attackPct: 0.02;
+        keystoneReactorBlood: {
+            arcanePct: number;
+            attackPct: number;
         };
-        readonly keystoneChemicalSurvivor: {
-            readonly defensePct: 0.03;
-            readonly resistChemicalFlat: 2;
-            readonly maxHpFlat: 10;
-            readonly passiveStaRegenBonus: 1;
+        keystoneChemicalSurvivor: {
+            defensePct: number;
+            resistChemicalFlat: number;
+            maxHpFlat: number;
+            passiveStaRegenBonus: number;
         };
     };
-    readonly uren: {
-        readonly deepRoot: {
-            readonly defensePctPerRank: 0.011;
-            readonly resistPhysicalFlatPerRank: 1;
+    uren: {
+        deepRoot: {
+            defensePctPerRank: number;
+            resistPhysicalFlatPerRank: number;
         };
-        readonly calmSap: {
-            readonly maxHpFlatPerRank: 7;
-            readonly maxEnergyFlatPerRank: 4;
+        calmSap: {
+            maxHpFlatPerRank: number;
+            maxEnergyFlatPerRank: number;
         };
-        readonly livingBark: {
-            readonly defensePctPerRank: 0.01;
-            readonly resistPhysicalFlatPerRank: 1;
+        livingBark: {
+            defensePctPerRank: number;
+            resistPhysicalFlatPerRank: number;
         };
-        readonly naturalPulse: {
-            readonly arcanePctPerRank: 0.011;
-            readonly resistArcaneFlatPerRank: 1;
+        naturalPulse: {
+            arcanePctPerRank: number;
+            resistArcaneFlatPerRank: number;
         };
-        readonly wildStride: {
-            readonly moveSpeedPctPerRank: 0.014;
-            readonly travelTimePctPerRank: 0.045;
+        wildStride: {
+            moveSpeedPctPerRank: number;
+            travelTimePctPerRank: number;
         };
-        readonly forageEye: {
-            readonly gatherYieldPctPerRank: 0.035;
-            readonly chopYieldPctPerRank: 0.035;
+        forageEye: {
+            gatherYieldPctPerRank: number;
+            chopYieldPctPerRank: number;
         };
-        readonly forestBreath: {
-            readonly passiveStaRegenPerRank: 1;
-            readonly gatherEnergyPctPerRank: 0.018;
-            readonly chopEnergyPctPerRank: 0.014;
+        forestBreath: {
+            passiveStaRegenPerRank: number;
+            gatherEnergyPctPerRank: number;
+            chopEnergyPctPerRank: number;
         };
-        readonly reflectThorns: {
-            readonly defenseFlat: 1.4;
-            readonly resistPhysicalFlat: 1;
+        reflectThorns: {
+            defenseFlat: number;
+            resistPhysicalFlat: number;
         };
-        readonly greenChannel: {
-            readonly arcanePct: 0.02;
+        greenChannel: {
+            arcanePct: number;
         };
-        readonly vineSnareActive: {
-            readonly defensePct: 0.01;
-            readonly chopEnergyPct: 0.03;
+        vineSnareActive: {
+            defensePct: number;
+            chopEnergyPct: number;
         };
-        readonly arcaneBudActive: {
-            readonly attackPct: 0.01;
-            readonly arcanePct: 0.02;
+        arcaneBudActive: {
+            attackPct: number;
+            arcanePct: number;
         };
-        readonly keystoneForestHeart: {
-            readonly maxHpFlat: 15;
-            readonly defensePct: 0.04;
-            readonly passiveStaRegenBonus: 1;
+        keystoneForestHeart: {
+            maxHpFlat: number;
+            defensePct: number;
+            passiveStaRegenBonus: number;
         };
-        readonly keystoneArcanePact: {
-            readonly arcanePct: 0.05;
-            readonly critChanceFlat: 1.1;
+        keystoneArcanePact: {
+            arcanePct: number;
+            critChanceFlat: number;
         };
-        readonly keystoneWildSpine: {
-            readonly attackPct: 0.03;
-            readonly defensePct: 0.02;
-            readonly resistPhysicalFlat: 1;
+        keystoneWildSpine: {
+            attackPct: number;
+            defensePct: number;
+            resistPhysicalFlat: number;
         };
     };
 };

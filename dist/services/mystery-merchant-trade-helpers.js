@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { TOOLS } from '../types/tools.js';
 const ACTIVE_STATUS = 'ACTIVE';
@@ -103,3 +104,4 @@ export async function markMerchantPurchasedResourceLock(params) {
         remainingToLock -= lockAmount;
     }
 }
+//# sourceMappingURL=mystery-merchant-trade-helpers.js.map

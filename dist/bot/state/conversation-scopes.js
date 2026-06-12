@@ -1,3 +1,4 @@
+// @ts-nocheck
 export function createConversationScopes(deps) {
     const ttlSeconds = deps.ttlSeconds ?? 30 * 60;
     const ventureScope = 'venture';
@@ -15,3 +16,4 @@ export function createConversationScopes(deps) {
         clearInspectState: (playerTgId) => deps.clearConversationState(inspectScope, playerTgId),
     };
 }
+//# sourceMappingURL=conversation-scopes.js.map

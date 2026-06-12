@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { collectEquipmentModifiers } from './equipment-runtime.js';
 const equippedItemInclude = {
@@ -69,3 +70,4 @@ export async function getPlayerEquipmentUtilityModifiers(playerId) {
 export async function getPlayerEquipmentGearScore(playerId) {
     return (await getPlayerEquipmentAggregate(playerId)).gearScore;
 }
+//# sourceMappingURL=equipment.js.map

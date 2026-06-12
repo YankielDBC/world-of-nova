@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const DEFAULT_EFFECTS = {
     combatModifiers: {
         attackPct: 0,
@@ -35,3 +36,4 @@ export const DEFAULT_EFFECTS = {
     passiveStaRegenBonus: 0,
     counterAttackRatio: 0,
 };
+//# sourceMappingURL=build-skills-types.js.map

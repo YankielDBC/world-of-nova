@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { getLocalizedText, getPlaceUiConfig } from '../data/place-ui.js';
 export function getPlaceBuildingEntries(place, lang) {
     const config = getPlaceUiConfig(place.slug ?? null);
@@ -26,3 +27,4 @@ export function getPlaceBuildingEntries(place, lang) {
     });
 }
 export const getPlaceBuildingEntriesClean = getPlaceBuildingEntries;
+//# sourceMappingURL=map-place-ui.js.map

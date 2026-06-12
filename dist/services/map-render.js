@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 import { summarizeCustomEmojiTokenCoverage } from '../data/custom-emojis.js';
 import { EMOJIS } from '../data/emojis.js';
@@ -291,3 +292,4 @@ export async function renderMap(tgId) {
         observePerf('map.render', Date.now() - startedAt);
     }
 }
+//# sourceMappingURL=map-render.js.map

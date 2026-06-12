@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { formatAgoMinutes } from './market-exchange-utils.js';
 const ACTIVE_STATUS = 'ACTIVE';
@@ -68,3 +69,4 @@ export async function getResourceStockByContainer(playerId, resourceId) {
 export function formatMarketTimeAgo(date) {
     return formatAgoMinutes(date);
 }
+//# sourceMappingURL=market-exchange-holdings.js.map

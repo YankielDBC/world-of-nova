@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 import { EMOJIS } from '../../../data/emojis.js';
 export const handleBagCallbacks = async (ctx, callbackData, deps) => {
@@ -201,3 +202,4 @@ export const handleBagCallbacks = async (ctx, callbackData, deps) => {
     }
     return false;
 };
+//# sourceMappingURL=bag-callback-handlers.js.map

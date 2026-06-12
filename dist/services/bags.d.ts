@@ -1,37 +1,283 @@
-import type { Language } from '../lib/i18n.js';
-import { type AddToBagResult, type BagItemInfo, type BagRenderData, type BagSwitchOption, type BagSwitchPreview, type BagUsage, type DroppedToolPickupInput, type DropSlotResult, type GatherActionType, type GatherStoreResult, type UseSlotResult } from './bags-types.js';
-export type { BagSlotView, ToolAliasMap, GatherActionType, BagUsage, BagItemInfo, BagRenderData, AddToBagResult, GatherStoreResult, UseSlotResult, DropSlotResult, BagSwitchOption, BagSwitchPreview, } from './bags-types.js';
-export declare function ensurePlayerBagSetup(playerId: number): Promise<void>;
-export declare function getActiveBagView(playerId: number, lang?: Language): Promise<BagRenderData>;
-export declare function getActiveBagUsage(playerId: number): Promise<BagUsage | null>;
-export declare function addResourceToActiveBag(playerId: number, resourceName: string, quantity: number): Promise<AddToBagResult>;
-export declare function storeGatheredItems(playerId: number, items: Array<{
-    item: string;
+export declare function ensurePlayerBagSetup(playerId: any): Promise<void>;
+export declare function getActiveBagView(playerId: any, lang?: string): Promise<{
+    text: string;
+    keyboard: import("grammy").InlineKeyboard;
+    usage: {
+        usedSlots: any;
+        totalSlots: any;
+        usedWeightKg: number;
+        totalWeightKg: any;
+    };
+    slots: any;
+    toolAliasMap: {};
+}>;
+export declare function getActiveBagUsage(playerId: any): Promise<{
+    usedSlots: any;
+    totalSlots: any;
+    usedWeightKg: number;
+    totalWeightKg: any;
+}>;
+export declare function addResourceToActiveBag(playerId: any, resourceName: any, quantity: any): Promise<{
+    success: boolean;
+    reason: string;
+    addedQuantity?: undefined;
+    usage?: undefined;
+} | {
+    success: boolean;
+    addedQuantity: any;
+    usage: {
+        usedSlots: any;
+        totalSlots: any;
+        usedWeightKg: number;
+        totalWeightKg: any;
+    };
+    reason?: undefined;
+}>;
+export declare function storeGatheredItems(playerId: any, items: any): Promise<{
+    stored: any[];
+    rejected: any[];
+}>;
+export declare function useBagSlot(playerId: any, slotIndex: any, quantity: any): Promise<{
+    success: boolean;
+    message: string;
+    groundPayload?: undefined;
+} | {
+    success: boolean;
+    message: string;
+    groundPayload: {
+        kind: string;
+        emoji: any;
+        name: any;
+        quantity: number;
+        equipmentInstanceId: any;
+        templateKey: any;
+    };
+}>;
+export declare function dropBagSlot(playerId: any, slotIndex: any, quantity: any): Promise<{
+    success: boolean;
+    message: string;
+    groundPayload?: undefined;
+} | {
+    success: boolean;
+    message: string;
+    groundPayload: {
+        kind: string;
+        emoji: any;
+        name: any;
+        quantity: number;
+        playerToolId: any;
+        toolKey: any;
+        resourceName?: undefined;
+        resourceId?: undefined;
+    };
+} | {
+    success: boolean;
+    message: string;
+    groundPayload: {
+        kind: string;
+        emoji: any;
+        name: any;
+        quantity: any;
+        resourceName: any;
+        resourceId: any;
+        playerToolId?: undefined;
+        toolKey?: undefined;
+    };
+}>;
+export declare function listBagSwitchOptions(playerId: any): Promise<any[]>;
+export declare function previewBagSwitch(playerId: any, targetId: any): Promise<{
+    success: boolean;
+    reason: string;
+    option?: undefined;
+    targetUsage?: undefined;
+} | {
+    success: boolean;
+    option: {
+        bagId: any;
+        emoji: any;
+        label: any;
+        usageLabel: string;
+    };
+    targetUsage: {
+        slotUsage: string;
+        weightUsage: string;
+    };
+    reason?: undefined;
+}>;
+export declare function executeBagSwitch(playerId: any, targetId: any): Promise<{
+    success: boolean;
+    message: string;
+}>;
+export declare function grantBagToPlayer(playerId: any, bagSlug: any): Promise<{
+    success: boolean;
+    message: string;
+}>;
+export declare function getActiveBagItemInfoByUid(playerId: any, slotUid: any): Promise<{
+    slotUid: number;
+    slotIndex: number;
+    bagId: number;
+    kind: string;
     emoji: string;
+    label: string;
+    rarityCode: string;
     quantity: number;
-}>): Promise<GatherStoreResult>;
-export declare function useBagSlot(playerId: number, slotIndex: number, quantity: number): Promise<UseSlotResult>;
-export declare function dropBagSlot(playerId: number, slotIndex: number, quantity: number): Promise<DropSlotResult>;
-export declare function listBagSwitchOptions(playerId: number): Promise<BagSwitchOption[]>;
-export declare function previewBagSwitch(playerId: number, targetId: number | 'pockets'): Promise<BagSwitchPreview>;
-export declare function executeBagSwitch(playerId: number, targetId: number | 'pockets'): Promise<UseSlotResult>;
-export declare function grantBagToPlayer(playerId: number, bagSlug: string): Promise<UseSlotResult>;
-export declare function getActiveBagItemInfoByUid(playerId: number, slotUid: number): Promise<BagItemInfo | null>;
-export declare function equipToolFromBagItem(playerId: number, slotUid: number): Promise<UseSlotResult>;
-export declare function equipToolByAlias(playerId: number, alias: string): Promise<UseSlotResult>;
-export declare function unequipToolByAlias(playerId: number, alias: string): Promise<UseSlotResult>;
-export declare function unequipEquipmentByAlias(playerId: number, alias: string): Promise<UseSlotResult>;
-export declare function grantToolToPlayer(playerId: number, toolKey: string, options?: {
-    merchantLocked?: boolean;
-}): Promise<UseSlotResult>;
-export declare function pickupDroppedTool(playerId: number, input: DroppedToolPickupInput): Promise<UseSlotResult>;
-export declare function pickupDroppedBag(playerId: number, bagSlug?: string): Promise<UseSlotResult>;
-export declare function pickupDroppedEquipment(playerId: number, input: {
-    equipmentInstanceId?: number;
-    templateKey?: string;
+    usable: boolean;
+    effectType: string;
+    effectValue: number;
+    description: string;
+    uniqueObjectId: string;
+    equipmentInstanceId?: undefined;
+    durability?: undefined;
+    maxDurability?: undefined;
+    isBroken?: undefined;
+    equipmentSlot?: undefined;
+    bindType?: undefined;
+    itemLevel?: undefined;
+    requiredLevel?: undefined;
+    requiredClass?: undefined;
+    requiredRace?: undefined;
+    specialEffectKey?: undefined;
+    toolKey?: undefined;
+    playerToolId?: undefined;
+    requiredSkill?: undefined;
+} | {
+    slotUid: number;
+    slotIndex: number;
+    bagId: number;
+    kind: string;
     emoji: string;
-    name: string;
-}): Promise<UseSlotResult>;
-export declare function getEquippedToolForAction(playerId: number, action: GatherActionType): Promise<import("./bags-types.js").EquippedToolResult>;
-export declare function applyDurabilityDamageOnEquippedTool(playerId: number, action: GatherActionType, damage: number): Promise<import("./bags-types.js").DurabilityDamageResult>;
-export declare function getEquipmentCard(playerId: number): Promise<string>;
+    label: string;
+    rarityCode: string;
+    quantity: number;
+    usable: boolean;
+    description: string;
+    uniqueObjectId: string;
+    effectType?: undefined;
+    effectValue?: undefined;
+    equipmentInstanceId?: undefined;
+    durability?: undefined;
+    maxDurability?: undefined;
+    isBroken?: undefined;
+    equipmentSlot?: undefined;
+    bindType?: undefined;
+    itemLevel?: undefined;
+    requiredLevel?: undefined;
+    requiredClass?: undefined;
+    requiredRace?: undefined;
+    specialEffectKey?: undefined;
+    toolKey?: undefined;
+    playerToolId?: undefined;
+    requiredSkill?: undefined;
+} | {
+    slotUid: number;
+    slotIndex: number;
+    bagId: number;
+    kind: string;
+    emoji: string;
+    label: string;
+    rarityCode: string;
+    quantity: number;
+    usable: boolean;
+    equipmentInstanceId: number;
+    durability: number;
+    maxDurability: number;
+    isBroken: boolean;
+    description: string;
+    equipmentSlot: any;
+    bindType: string;
+    itemLevel: number;
+    requiredLevel: number;
+    requiredClass: string;
+    requiredRace: string;
+    specialEffectKey: string;
+    uniqueObjectId: string;
+    effectType?: undefined;
+    effectValue?: undefined;
+    toolKey?: undefined;
+    playerToolId?: undefined;
+    requiredSkill?: undefined;
+} | {
+    slotUid: number;
+    slotIndex: number;
+    bagId: number;
+    kind: string;
+    emoji: any;
+    label: any;
+    rarityCode: string;
+    quantity: number;
+    usable: boolean;
+    toolKey: any;
+    playerToolId: number;
+    durability: number;
+    maxDurability: number;
+    isBroken: boolean;
+    description: any;
+    requiredSkill: string;
+    requiredLevel: number;
+    uniqueObjectId: string;
+    effectType?: undefined;
+    effectValue?: undefined;
+    equipmentInstanceId?: undefined;
+    equipmentSlot?: undefined;
+    bindType?: undefined;
+    itemLevel?: undefined;
+    requiredClass?: undefined;
+    requiredRace?: undefined;
+    specialEffectKey?: undefined;
+}>;
+export declare function equipToolFromBagItem(playerId: any, slotUid: any): Promise<{
+    success: boolean;
+    message: string;
+}>;
+export declare function equipToolByAlias(playerId: any, alias: any): Promise<{
+    success: boolean;
+    message: string;
+}>;
+export declare function unequipToolByAlias(playerId: any, alias: any): Promise<{
+    success: boolean;
+    message: string;
+}>;
+export declare function unequipEquipmentByAlias(playerId: any, alias: any): Promise<{
+    success: boolean;
+    message: string;
+}>;
+export declare function grantToolToPlayer(playerId: any, toolKey: any, options: any): Promise<{
+    success: boolean;
+    message: string;
+}>;
+export declare function pickupDroppedTool(playerId: any, input: any): Promise<{
+    success: boolean;
+    message: string;
+}>;
+export declare function pickupDroppedBag(playerId: any, bagSlug: any): Promise<{
+    success: boolean;
+    message: string;
+}>;
+export declare function pickupDroppedEquipment(playerId: any, input: any): Promise<{
+    success: boolean;
+    message: string;
+}>;
+export declare function getEquippedToolForAction(playerId: any, action: any): Promise<{
+    instance: {
+        id: number;
+        createdAt: Date;
+        updatedAt: Date;
+        rarity: string;
+        playerId: number;
+        toolKey: string;
+        merchantLocked: boolean;
+        durability: number;
+        maxDurability: number;
+        isBroken: boolean;
+    };
+    toolKey: string;
+}>;
+export declare function applyDurabilityDamageOnEquippedTool(playerId: any, action: any, damage: any): Promise<{
+    brokeNow: boolean;
+    nowBroken: boolean;
+    durability: number;
+    maxDurability: number;
+    toolName: any;
+    emoji: any;
+}>;
+export declare function getEquipmentCard(playerId: any): Promise<string>;

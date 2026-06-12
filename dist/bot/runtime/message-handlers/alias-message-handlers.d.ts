@@ -1,3 +1,2 @@
-import type { MessageHandler } from '../message-router-types.js';
-export declare const handleInteractionAliasMessage: MessageHandler;
-export declare const handleBagAliasMessage: MessageHandler;
+export declare const handleInteractionAliasMessage: (ctx: any, text: any, deps: any) => Promise<boolean>;
+export declare const handleBagAliasMessage: (ctx: any, text: any, deps: any) => Promise<boolean>;

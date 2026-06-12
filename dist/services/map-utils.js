@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { EMOJIS } from '../data/emojis.js';
 import { t } from '../lib/i18n.js';
 import { getLocalizedText, getPlaceUiConfig } from '../data/place-ui.js';
@@ -165,3 +166,4 @@ export function getTileMapEmoji(tile, x, y) {
     }
     return tile.biome?.emoji || '?';
 }
+//# sourceMappingURL=map-utils.js.map

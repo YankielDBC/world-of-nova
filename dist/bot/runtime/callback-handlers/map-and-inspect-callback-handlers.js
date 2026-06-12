@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const handleMapCallbacks = async (ctx, callbackData, deps) => {
     if (callbackData === 'map_up' ||
         callbackData === 'map_down' ||
@@ -140,3 +141,4 @@ export const handleInspectCallbacks = async (ctx, callbackData, deps) => {
     }
     return false;
 };
+//# sourceMappingURL=map-and-inspect-callback-handlers.js.map

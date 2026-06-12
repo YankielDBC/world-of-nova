@@ -1,3 +1,4 @@
+// @ts-nocheck
 // ============================================
 // WORLD OF NOVA - GATHERING SERVICE (DB-BASED)
 // ============================================
@@ -146,3 +147,4 @@ export async function getBiomeInfo(biomeName) {
         })),
     };
 }
+//# sourceMappingURL=gathering.js.map

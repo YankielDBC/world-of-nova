@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { TOOLS } from '../types/tools.js';
 export function getToolMeta(toolKey) {
     if (!toolKey) {
@@ -69,3 +70,4 @@ export function buildCapacityReason(weightExceeded, slotExceeded, details) {
     }
     return `No cabe: superarías los slots (${details.slotsNeeded}/${details.slotCapacity}).`;
 }
+//# sourceMappingURL=bags-utils.js.map

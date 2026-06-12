@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Centralized custom emoji index for Telegram entities.
 // Keys are placeholder Unicode emoji present in outgoing text.
 // Values are Telegram custom_emoji_id.
@@ -98,3 +99,4 @@ export function summarizeCustomEmojiTokenCoverage(tokens) {
         pending: pending.sort(),
     };
 }
+//# sourceMappingURL=custom-emojis.js.map

@@ -1,6 +1,2 @@
-export declare function isRetryablePrismaError(error: unknown): boolean;
-export declare function withPrismaRetry<T>(label: string, fn: () => Promise<T>, options?: {
-    attempts?: number;
-    baseDelayMs?: number;
-    maxDelayMs?: number;
-}): Promise<T>;
+export declare function isRetryablePrismaError(error: any): boolean;
+export declare function withPrismaRetry(label: any, fn: any, options: any): Promise<any>;

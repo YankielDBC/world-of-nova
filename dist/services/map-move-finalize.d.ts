@@ -1,12 +1,4 @@
-type MarkTileExploredFn = (playerId: number, playerTgId: string, x: number, y: number) => Promise<void>;
-export declare function finalizePlayerMove(tgId: string, playerId: number, toX: number, toY: number, isNewDiscovery: boolean, energyCost: number, expectedFrom: {
-    x: number;
-    y: number;
-} | undefined, markTileExplored: MarkTileExploredFn): Promise<{
-    applied: true;
-    alreadyAtDestination: false;
-} | {
-    applied: false;
+export declare function finalizePlayerMove(tgId: any, playerId: any, toX: any, toY: any, isNewDiscovery: any, energyCost: any, expectedFrom: any, markTileExplored: any): Promise<{
+    applied: boolean;
     alreadyAtDestination: boolean;
 }>;
-export {};

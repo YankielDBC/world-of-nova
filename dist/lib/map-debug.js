@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { RUNTIME_CONFIG } from './runtime-config.js';
 function safeStringify(value) {
     try {
@@ -72,3 +73,4 @@ export function logEmojiDebug(stage, payload) {
     }
     console.log(`[EMOJI_DEBUG] ${stage} ${safeStringify(payload)}`);
 }
+//# sourceMappingURL=map-debug.js.map

@@ -1,11 +1,7 @@
-import type { Language } from '../../lib/i18n.js';
-import { type RacialTalentCategory, type RacialTalentDefinition } from '../../data/racial-talents.js';
-import { type PlayerRacialTalentState } from '../../services/racial-talents.js';
-import type { RacialGameplayEffects } from '../../services/racial-effects.js';
-export declare function getRacialTalentPreview(def: RacialTalentDefinition, lang: Language): string;
-export declare function getRacialTalentPowerLines(state: PlayerRacialTalentState, def: RacialTalentDefinition, lang: Language): string[];
-export declare function getRacialTalentCompatibilityLines(state: PlayerRacialTalentState, def: RacialTalentDefinition, lang: Language): string[];
-export declare function getRacialArchetypeLine(state: PlayerRacialTalentState, lang: Language): string;
-export declare function renderRacialHubText(state: PlayerRacialTalentState, effects: RacialGameplayEffects, lang: Language, infoLine?: string): string;
-export declare function renderRacialCategoryText(state: PlayerRacialTalentState, category: RacialTalentCategory, lang: Language, infoLine?: string): string;
-export declare function renderRacialTalentDetailText(state: PlayerRacialTalentState, talent: RacialTalentDefinition, lang: Language, infoLine?: string): string;
+export declare function getRacialTalentPreview(def: any, lang: any): any;
+export declare function getRacialTalentPowerLines(state: any, def: any, lang: any): any[];
+export declare function getRacialTalentCompatibilityLines(state: any, def: any, lang: any): any[];
+export declare function getRacialArchetypeLine(state: any, lang: any): any;
+export declare function renderRacialHubText(state: any, effects: any, lang: any, infoLine: any): string;
+export declare function renderRacialCategoryText(state: any, category: any, lang: any, infoLine: any): string;
+export declare function renderRacialTalentDetailText(state: any, talent: any, lang: any, infoLine: any): string;

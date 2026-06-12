@@ -1,3 +1,4 @@
+// @ts-nocheck
 // ============================================
 // WORLD OF NOVA - INTERNATIONALIZATION (i18n)
 // Supported: Spanish (es), English (en), Russian (ru)
@@ -569,3 +570,4 @@ export function detectLanguage(tgLanguageCode) {
 export function isValidLanguage(lang) {
     return lang in SUPPORTED_LANGUAGES;
 }
+//# sourceMappingURL=i18n.js.map

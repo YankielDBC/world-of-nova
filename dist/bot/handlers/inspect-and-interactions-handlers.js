@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 import { EMOJIS } from '../../data/emojis.js';
 import { compactCoordLabel, compactText } from '../../lib/ui-compact.js';
@@ -384,3 +385,4 @@ export function createInspectAndInteractionsHandlers(deps) {
         handleInspectQtyPick,
     };
 }
+//# sourceMappingURL=inspect-and-interactions-handlers.js.map

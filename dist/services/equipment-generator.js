@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { EQUIPMENT_TEMPLATE_CATALOG } from '../data/equipment-catalog.js';
 import { ACTIVE_STATUS, bagInclude } from './bags-types.js';
@@ -246,3 +247,4 @@ export async function grantGeneratedEquipmentToActiveBag(input) {
         };
     });
 }
+//# sourceMappingURL=equipment-generator.js.map

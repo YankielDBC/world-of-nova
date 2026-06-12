@@ -1,14 +1,8 @@
-import { type BagDefinition, type Resource } from '@prisma/client';
-export declare function getToolMeta(toolKey?: string | null): import("../types/tools.js").Tool | null;
-export declare function getToolWeight(toolKey?: string | null): number;
-export declare function toStrikeText(text: string): string;
-export declare function getToolEquipSlot(toolKey?: string | null): 'chopToolId' | 'mineToolId' | 'gatherToolId' | null;
-export declare function getRarityCode(rarity?: string | null): string;
-export declare function getEffectiveStackLimit(definition: BagDefinition, resource: Resource): number;
-export declare function getFirstFreeSlotIndexes(capacity: number, usedIndexes: number[], count: number): number[];
-export declare function buildCapacityReason(weightExceeded: boolean, slotExceeded: boolean, details: {
-    weightNeeded: number;
-    weightCapacity: number;
-    slotsNeeded: number;
-    slotCapacity: number;
-}): string;
+export declare function getToolMeta(toolKey: any): any;
+export declare function getToolWeight(toolKey: any): any;
+export declare function toStrikeText(text: any): any;
+export declare function getToolEquipSlot(toolKey: any): "mineToolId" | "gatherToolId" | "chopToolId";
+export declare function getRarityCode(rarity: any): "U" | "R" | "E" | "L" | "C";
+export declare function getEffectiveStackLimit(definition: any, resource: any): number;
+export declare function getFirstFreeSlotIndexes(capacity: any, usedIndexes: any, count: any): any[];
+export declare function buildCapacityReason(weightExceeded: any, slotExceeded: any, details: any): string;

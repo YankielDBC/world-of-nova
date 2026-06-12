@@ -1,3 +1,4 @@
+// @ts-nocheck
 // World of Nova - Main Entry Point (DEBUG VERSION)
 // Nightfall Patch v1.0
 import { Bot } from 'grammy';
@@ -493,3 +494,4 @@ async function start() {
     await runBotTransport(bot);
 }
 start().catch(console.error);
+//# sourceMappingURL=app-main.js.map

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { EMOJIS } from '../data/emojis.js';
 import { getEffectiveStackLimit, getFirstFreeSlotIndexes, getToolMeta, } from './bags-utils.js';
@@ -702,3 +703,4 @@ export async function getEquipmentCard(playerId) {
     await ensurePlayerBagSetup(playerId);
     return getEquipmentCardImpl(playerId);
 }
+//# sourceMappingURL=bags.js.map

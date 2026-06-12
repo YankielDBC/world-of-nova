@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { getZoneBandAtCoords, getRadialDistance } from './world-zones.js';
 const VOLCANO_CELL_SIZE = 44;
 const VOLCANO_CELL_SCAN_RADIUS = 2;
@@ -370,3 +371,4 @@ export function pickBiomeNameForCoords(x, y) {
         nearWater,
     });
 }
+//# sourceMappingURL=world-biomes.js.map

@@ -1,3 +1,2 @@
-import type { MessageHandler } from '../message-router-types.js';
-export declare const handleFeatureModuleMessages: MessageHandler;
-export declare const handleRegistrationFallbackMessage: MessageHandler;
+export declare const handleFeatureModuleMessages: (ctx: any, text: any, deps: any) => Promise<boolean>;
+export declare const handleRegistrationFallbackMessage: (ctx: any, text: any, deps: any) => Promise<boolean>;

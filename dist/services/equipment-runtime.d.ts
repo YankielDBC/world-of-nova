@@ -1,4 +1,16 @@
-import type { EquipmentInstanceRuntimeLike, EquipmentModifierAggregate, EquipmentModifierBreakdown, EquipmentStatMap } from './equipment-types.js';
-export declare function parseEquipmentStatsJson(raw: string | null | undefined): EquipmentStatMap;
-export declare function buildEquipmentModifierBreakdown(item: EquipmentInstanceRuntimeLike): EquipmentModifierBreakdown;
-export declare function collectEquipmentModifiers(items: EquipmentInstanceRuntimeLike[]): EquipmentModifierAggregate;
+export declare function parseEquipmentStatsJson(raw: any): {};
+export declare function buildEquipmentModifierBreakdown(item: any): {
+    itemId: any;
+    templateKey: string;
+    slot: string;
+    rarity: string;
+    implicit: {};
+    explicit: {};
+    combined: {};
+};
+export declare function collectEquipmentModifiers(items: any): {
+    combat: {};
+    utility: {};
+    breakdown: any;
+    gearScore: any;
+};

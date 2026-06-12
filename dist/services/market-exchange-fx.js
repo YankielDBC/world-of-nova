@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { PRICE_INDEX } from '../data/price-index.js';
 import { aggregateFxByPrice, clampInt } from './market-exchange-utils.js';
@@ -323,3 +324,4 @@ export async function getRecentFxTrades(limit = 10, offset = 0) {
         createdAt: row.createdAt,
     }));
 }
+//# sourceMappingURL=market-exchange-fx.js.map

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { compactText } from '../lib/ui-compact.js';
 import { getZoneBandAtCoords } from './world-zones.js';
@@ -463,3 +464,4 @@ export function buildCreatureInfoCard(snapshot, lang) {
     }
     return lines.join('\n');
 }
+//# sourceMappingURL=creatures.js.map

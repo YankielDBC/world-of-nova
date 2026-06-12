@@ -1,2 +1,1 @@
-import type { CoreCommandRegistrar } from '../core-command-types.js';
-export declare const registerInventoryCommands: CoreCommandRegistrar;
+export declare const registerInventoryCommands: (bot: any, deps: any) => void;

@@ -1,3 +1,4 @@
+// @ts-nocheck
 const EMPTY_STATE = {
     version: 1,
     nodes: [],
@@ -246,3 +247,4 @@ export function takeGroundLootQuantity(state, lootId, quantity) {
         taken,
     };
 }
+//# sourceMappingURL=tile-state.js.map

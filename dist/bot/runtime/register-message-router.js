@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { handleBagConversationMessage, handleInspectConversationMessage, handleVentureConversationMessage, } from './message-handlers/conversation-message-handlers.js';
 import { handleBagAliasMessage, handleInteractionAliasMessage, } from './message-handlers/alias-message-handlers.js';
 import { handleFeatureModuleMessages, handleRegistrationFallbackMessage, } from './message-handlers/module-message-handlers.js';
@@ -22,3 +23,4 @@ export function registerMessageRouter(bot, deps) {
         }
     });
 }
+//# sourceMappingURL=register-message-router.js.map

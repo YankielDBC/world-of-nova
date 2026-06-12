@@ -1,33 +1,282 @@
-import { type Language } from '../lib/i18n.js';
-type LocalizedText = Record<Language, string>;
-export type PlaceBuildingService = {
-    slug: string;
-    emoji: string;
-    name: LocalizedText;
-    duration: LocalizedText;
-    resultLore?: LocalizedText;
-};
-export type PlaceBuilding = {
-    key: string;
-    emoji: string;
-    name: LocalizedText;
-    typeLabel?: LocalizedText;
-    description: LocalizedText;
-    hint: LocalizedText;
-    services: PlaceBuildingService[];
-};
-export type PlaceUiConfig = {
-    name?: LocalizedText;
-    hint?: LocalizedText;
-    rulesLabel?: LocalizedText;
-    buildingsLabel?: LocalizedText;
-    rules: {
-        pvpOff: LocalizedText;
-        creaturesOff: LocalizedText;
+export declare const PLACE_UI_CONFIG: {
+    'nova-castle': {
+        name: {
+            es: string;
+            en: string;
+            ru: string;
+        };
+        hint: {
+            es: string;
+            en: string;
+            ru: string;
+        };
+        rulesLabel: {
+            es: string;
+            en: string;
+            ru: string;
+        };
+        buildingsLabel: {
+            es: string;
+            en: string;
+            ru: string;
+        };
+        rules: {
+            pvpOff: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+            creaturesOff: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+        };
+        buildings: {
+            key: string;
+            emoji: string;
+            name: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+            typeLabel: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+            description: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+            hint: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+            services: {
+                slug: string;
+                emoji: string;
+                name: {
+                    es: string;
+                    en: string;
+                    ru: string;
+                };
+                duration: {
+                    es: string;
+                    en: string;
+                    ru: string;
+                };
+                resultLore: {
+                    es: string;
+                    en: string;
+                    ru: string;
+                };
+            }[];
+        }[];
     };
-    buildings: PlaceBuilding[];
+    'frontier-village': {
+        hint: {
+            es: string;
+            en: string;
+            ru: string;
+        };
+        rulesLabel: {
+            es: string;
+            en: string;
+            ru: string;
+        };
+        buildingsLabel: {
+            es: string;
+            en: string;
+            ru: string;
+        };
+        rules: {
+            pvpOff: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+            creaturesOff: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+        };
+        buildings: {
+            key: string;
+            emoji: string;
+            name: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+            typeLabel: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+            description: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+            hint: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+            services: {
+                slug: string;
+                emoji: string;
+                name: {
+                    es: string;
+                    en: string;
+                    ru: string;
+                };
+                duration: {
+                    es: string;
+                    en: string;
+                    ru: string;
+                };
+            }[];
+        }[];
+    };
+    'ancient-cave': {
+        hint: {
+            es: string;
+            en: string;
+            ru: string;
+        };
+        rulesLabel: {
+            es: string;
+            en: string;
+            ru: string;
+        };
+        buildingsLabel: {
+            es: string;
+            en: string;
+            ru: string;
+        };
+        rules: {
+            pvpOff: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+            creaturesOff: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+        };
+        buildings: {
+            key: string;
+            emoji: string;
+            name: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+            typeLabel: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+            description: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+            hint: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+            services: {
+                slug: string;
+                emoji: string;
+                name: {
+                    es: string;
+                    en: string;
+                    ru: string;
+                };
+                duration: {
+                    es: string;
+                    en: string;
+                    ru: string;
+                };
+            }[];
+        }[];
+    };
+    'ancient-ruins': {
+        hint: {
+            es: string;
+            en: string;
+            ru: string;
+        };
+        rulesLabel: {
+            es: string;
+            en: string;
+            ru: string;
+        };
+        buildingsLabel: {
+            es: string;
+            en: string;
+            ru: string;
+        };
+        rules: {
+            pvpOff: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+            creaturesOff: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+        };
+        buildings: {
+            key: string;
+            emoji: string;
+            name: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+            typeLabel: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+            description: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+            hint: {
+                es: string;
+                en: string;
+                ru: string;
+            };
+            services: {
+                slug: string;
+                emoji: string;
+                name: {
+                    es: string;
+                    en: string;
+                    ru: string;
+                };
+                duration: {
+                    es: string;
+                    en: string;
+                    ru: string;
+                };
+            }[];
+        }[];
+    };
 };
-export declare const PLACE_UI_CONFIG: Record<string, PlaceUiConfig>;
-export declare function getLocalizedText(value: LocalizedText | undefined, lang: Language, fallback?: string): string;
-export declare function getPlaceUiConfig(placeSlug?: string | null): PlaceUiConfig | null;
-export {};
+export declare function getLocalizedText(value: any, lang: any, fallback?: string): any;
+export declare function getPlaceUiConfig(placeSlug: any): any;

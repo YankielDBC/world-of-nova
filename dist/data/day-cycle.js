@@ -1,3 +1,4 @@
+// @ts-nocheck
 const ACTIONS = ['gather', 'chop', 'mine', 'fish'];
 const PERIOD_EMOJI = {
     dawn: '🌅',
@@ -329,3 +330,4 @@ export function isResourceAvailableByPeriod(biomeName, resourceName, period) {
     const selectedWindow = biomeRules[resourceKey] || RESOURCE_WINDOWS_GLOBAL[resourceKey] || 'all';
     return isWindowActive(selectedWindow, period);
 }
+//# sourceMappingURL=day-cycle.js.map

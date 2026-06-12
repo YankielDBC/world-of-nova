@@ -1,3 +1,2 @@
-import type { CallbackHandler } from '../callback-router-types.js';
-export declare const handleMapCallbacks: CallbackHandler;
-export declare const handleInspectCallbacks: CallbackHandler;
+export declare const handleMapCallbacks: (ctx: any, callbackData: any, deps: any) => Promise<boolean>;
+export declare const handleInspectCallbacks: (ctx: any, callbackData: any, deps: any) => Promise<boolean>;

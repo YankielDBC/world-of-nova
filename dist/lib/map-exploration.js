@@ -1,3 +1,4 @@
+// @ts-nocheck
 // ============================================
 // WORLD OF NOVA - MAP EXPLORATION SYSTEM
 // ============================================
@@ -205,3 +206,4 @@ function isWaterBiome(biomeId) {
     // TODO: Verificar si es bioma de agua
     return false;
 }
+//# sourceMappingURL=map-exploration.js.map

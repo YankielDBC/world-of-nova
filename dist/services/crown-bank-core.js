@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { PRICE_INDEX, getStoredBagSellPrice } from '../data/price-index.js';
 import { TOOLS } from '../types/tools.js';
@@ -261,3 +262,4 @@ export function mapSlotsToEntries(slots) {
         listIndex: index + 1,
     }));
 }
+//# sourceMappingURL=crown-bank-core.js.map

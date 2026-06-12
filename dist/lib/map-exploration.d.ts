@@ -8,29 +8,23 @@
  * @param y - Coordenada Y del tile
  * @returns Objeto con el bioma encontrado y metadata de descubrimiento
  */
-export declare function exploreTile(playerId: number, tgId: string, x: number, y: number): Promise<{
-    x: number;
-    y: number;
+export declare function exploreTile(playerId: any, tgId: any, x: any, y: any): Promise<{
+    x: any;
+    y: any;
     biome: {
-        id: number | undefined;
-        name: string | undefined;
-        emoji: string | undefined;
-        displayName: string | undefined;
+        id: number;
+        name: string;
+        emoji: string;
+        displayName: string;
     };
     displayEmoji: string;
     isFirstDiscovery: boolean;
-    firstDiscoveredBy: string | null;
-    discoveredAt: Date | null;
+    firstDiscoveredBy: any;
+    discoveredAt: any;
     fogRemoved: boolean;
 }>;
 /**
  * Obtiene los tiles visibles alrededor del jugador
  * para el mini-mapalocal (radio de visión)
  */
-export declare function getVisibleArea(playerId: number, centerX: number, centerY: number, radius?: number): Promise<{
-    x: number;
-    y: number;
-    emoji: string;
-    isFog: boolean;
-    isPlayer: boolean;
-}[]>;
+export declare function getVisibleArea(playerId: any, centerX: any, centerY: any, radius?: number): Promise<any[]>;

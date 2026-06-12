@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const RACE_DICTIONARY = {
     uren: {
         name: 'Uren',
@@ -127,3 +128,4 @@ export function getTimePeriodEntry(periodKey) {
     }
     return TIME_PERIOD_DICTIONARY[normalizeKey(periodKey)] ?? null;
 }
+//# sourceMappingURL=game-dictionary.js.map

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { compactLabel } from '../lib/ui-compact.js';
 import { t } from '../lib/i18n.js';
 import { EMOJIS } from '../data/emojis.js';
@@ -36,3 +37,4 @@ export function getSkillDisplayName(lang, skillKey) {
         return t(lang, 'skillNameFish');
     return t(lang, 'skillNameGather');
 }
+//# sourceMappingURL=inspect-format-utils.js.map

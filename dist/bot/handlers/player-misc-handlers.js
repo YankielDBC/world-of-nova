@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { getTitleForLevel } from '../../types/player.js';
 export function resolvePlayerDisplayTitle(rawTitleInput, level, className) {
     const fallbackTitle = getTitleForLevel(level).title;
@@ -62,3 +63,4 @@ export function createPlayerMiscHandlers(deps) {
         },
     };
 }
+//# sourceMappingURL=player-misc-handlers.js.map

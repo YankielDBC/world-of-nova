@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { getCanonicalWorldMapId } from './world-map.js';
 import { getClimateForTile } from './climate.js';
@@ -429,3 +430,4 @@ export function renderDevExplorerReport(lang = 'es') {
         `ℹ️ Extra: pasos simulados=${shortNum(report.movement.steps)} · tipos de recurso=${report.harvesting.totalResourceKinds}`,
     ].join('\n');
 }
+//# sourceMappingURL=dev-explorer.js.map

@@ -1,17 +1,17 @@
 export declare class PlayerActionQueue {
-    private readonly maxConcurrency;
-    private readonly maxPending;
-    private readonly maxPendingPerKey;
-    private readonly queues;
-    private readonly activeKeys;
-    private running;
-    private scheduled;
-    constructor(maxConcurrency: number, maxPending: number, maxPendingPerKey: number);
-    enqueueForKey<T>(key: string, name: string, run: () => Promise<T>): Promise<T>;
-    private getTotalPending;
-    private scheduleDrain;
-    private drain;
-    private takeNextTask;
-    private startTask;
+    maxConcurrency: any;
+    maxPending: any;
+    maxPendingPerKey: any;
+    queues: Map<any, any>;
+    activeKeys: Set<unknown>;
+    running: number;
+    scheduled: boolean;
+    constructor(maxConcurrency: any, maxPending: any, maxPendingPerKey: any);
+    enqueueForKey(key: any, name: any, run: any): Promise<unknown>;
+    getTotalPending(): number;
+    scheduleDrain(): void;
+    drain(): void;
+    takeNextTask(): any;
+    startTask(task: any): void;
 }
 export declare const playerActionQueue: PlayerActionQueue;

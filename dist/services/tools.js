@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { compactLabel } from '../lib/ui-compact.js';
 import { TOOLS } from '../types/tools.js';
@@ -27,3 +28,4 @@ export async function getToolsCard(playerId) {
     }
     return lines.join('\n');
 }
+//# sourceMappingURL=tools.js.map

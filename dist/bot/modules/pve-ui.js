@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 import { getPvePressurePct, } from '../../services/pve-combat.js';
 function t3(lang, es, en, ru) {
@@ -164,3 +165,4 @@ export function buildPveOutcomeKeyboard(lang) {
 export function buildPveBlockedKeyboard(lang) {
     return new InlineKeyboard().text(`⚔️ ${t3(lang, 'Reanudar', 'Resume', 'Vernutsya')}`, 'pve_resume');
 }
+//# sourceMappingURL=pve-ui.js.map

@@ -1,19 +1,9 @@
-interface CachedBiome {
-    id: number;
-    name: string;
-    emoji: string;
-    displayName: string;
-    movementFactor: number;
-}
-declare function loadBiomes(): Promise<CachedBiome[]>;
+declare function loadBiomes(): Promise<any>;
 export declare function invalidateBiomeCache(): void;
-export declare function isTileExplored(playerId: number, x: number, y: number): Promise<boolean>;
-export declare function markTileExplored(playerId: number, playerTgId: string, x: number, y: number): Promise<void>;
-export declare function markTilesExploredBatch(playerId: number, playerTgId: string, coords: Array<{
-    x: number;
-    y: number;
-}>): Promise<void>;
-export declare function getOrCreateTile(worldMapId: number, x: number, y: number, forceBiome?: string): Promise<{
+export declare function isTileExplored(playerId: any, x: any, y: any): Promise<boolean>;
+export declare function markTileExplored(playerId: any, playerTgId: any, x: any, y: any): Promise<void>;
+export declare function markTilesExploredBatch(playerId: any, playerTgId: any, coords: any): Promise<void>;
+export declare function getOrCreateTile(worldMapId: any, x: any, y: any, forceBiome: any): Promise<{
     biome: {
         id: number;
         createdAt: Date;
@@ -21,45 +11,45 @@ export declare function getOrCreateTile(worldMapId: number, x: number, y: number
         name: string;
         emoji: string;
         displayName: string;
-        description: string | null;
+        description: string;
         movementFactor: number;
-        color: string | null;
-    } | null;
+        color: string;
+    };
 } & {
     id: number;
     createdAt: Date;
     updatedAt: Date;
-    biomeId: number | null;
+    biomeId: number;
     worldMapId: number;
     x: number;
     y: number;
-    loreName: string | null;
+    loreName: string;
     elevation: number;
     isWater: boolean;
     isGenerated: boolean;
-    firstDiscoveredById: string | null;
-    firstDiscoveredAt: Date | null;
+    firstDiscoveredById: string;
+    firstDiscoveredAt: Date;
     hasNpc: boolean;
-    npcId: number | null;
+    npcId: number;
     hasEvent: boolean;
-    eventId: number | null;
-    resourcesJson: string | null;
+    eventId: number;
+    resourcesJson: string;
 }>;
-export declare function getPlaceAtCoords(x: number, y: number, worldMapId?: number): Promise<({
+export declare function getPlaceAtCoords(x: any, y: any, worldMapId: any): Promise<{
     interactions: {
         id: number;
         createdAt: Date;
         updatedAt: Date;
         name: string;
-        emoji: string;
         type: string;
+        emoji: string;
         displayName: string;
-        description: string | null;
-        effectType: string | null;
-        effectValue: number | null;
+        description: string;
+        effectType: string;
+        effectValue: number;
         slug: string;
-        costType: string | null;
-        costAmount: number | null;
+        costType: string;
+        costAmount: number;
         instantFull: boolean;
         sortOrder: number;
         placeId: number;
@@ -70,22 +60,17 @@ export declare function getPlaceAtCoords(x: number, y: number, worldMapId?: numb
     createdAt: Date;
     updatedAt: Date;
     name: string;
-    emoji: string;
-    expiresAt: Date | null;
     type: string;
+    emoji: string;
     displayName: string;
-    description: string | null;
+    description: string;
+    slug: string;
+    coordX: number;
+    coordY: number;
     pvpAllowed: boolean;
     combatAllowed: boolean;
-    slug: string;
-    coordX: number | null;
-    coordY: number | null;
-    triggerType: string | null;
-}) | null>;
-export declare function ensureTilesGeneratedForCoords(worldMapId: number, coords: Array<{
-    x: number;
-    y: number;
-}>): Promise<void>;
-export type TileRecord = Awaited<ReturnType<typeof getOrCreateTile>>;
-export type PlaceRecord = NonNullable<Awaited<ReturnType<typeof getPlaceAtCoords>>>;
+    triggerType: string;
+    expiresAt: Date;
+}>;
+export declare function ensureTilesGeneratedForCoords(worldMapId: any, coords: any): Promise<void>;
 export { loadBiomes };

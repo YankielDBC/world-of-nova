@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { RUNTIME_CONFIG } from '../lib/runtime-config.js';
 import { coordKey, randomInt } from './mystery-merchant-utils.js';
@@ -172,3 +173,4 @@ export function getForcedCoordsForMerchant(merchantId, forced, merchantBaseId) {
     const off = offsets[(idx - 1) % offsets.length];
     return { x: forced.x + off.x, y: forced.y + off.y };
 }
+//# sourceMappingURL=mystery-merchant-pathing.js.map

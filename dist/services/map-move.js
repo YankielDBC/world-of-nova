@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { EMOJIS } from '../data/emojis.js';
 import { getLocalizedText, getPlaceUiConfig } from '../data/place-ui.js';
 import { getPlayerByTelegramId } from '../lib/db.js';
@@ -147,3 +148,4 @@ export async function movePlayer(tgId, direction) {
         observePerf('map.move', Date.now() - startedAt);
     }
 }
+//# sourceMappingURL=map-move.js.map

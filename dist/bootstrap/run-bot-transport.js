@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { createServer } from 'node:http';
 import { webhookCallback } from 'grammy';
 import { RUNTIME_CONFIG } from '../lib/runtime-config.js';
@@ -34,3 +35,4 @@ export async function runBotTransport(bot) {
         },
     });
 }
+//# sourceMappingURL=run-bot-transport.js.map

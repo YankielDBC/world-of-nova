@@ -1,3 +1,4 @@
+// @ts-nocheck
 export function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -39,3 +40,4 @@ export function createLowVitalsNotifier(deps) {
         }
     };
 }
+//# sourceMappingURL=runtime-utility-handlers.js.map

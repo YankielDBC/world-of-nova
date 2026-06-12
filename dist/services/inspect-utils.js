@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { TOOLS } from '../types/tools.js';
 import { isResourceAvailableByPeriod } from '../data/day-cycle.js';
 const RARITY_PRIORITY = {
@@ -176,3 +177,4 @@ export function getDurabilityDamage(requiredLevel, rarity) {
     const levelPenalty = Math.floor(Math.max(0, requiredLevel - 1) / 20);
     return Math.max(1, 1 + levelPenalty + (RARITY_DURABILITY_BONUS[rarity] ?? 0));
 }
+//# sourceMappingURL=inspect-utils.js.map

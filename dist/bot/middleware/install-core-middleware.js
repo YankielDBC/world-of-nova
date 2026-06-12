@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 function getUpdateMetricKey(ctx) {
     const callbackData = String(ctx.callbackQuery?.data || '').trim();
@@ -159,3 +160,4 @@ export function installCoreMiddleware(bot, deps) {
         await next();
     });
 }
+//# sourceMappingURL=install-core-middleware.js.map

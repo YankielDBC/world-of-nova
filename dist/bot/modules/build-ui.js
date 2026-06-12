@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { getLocalizedText3, } from '../../data/skill-trees.js';
 import { canLearnBuildSkill } from '../../services/build-skills.js';
 function t3(lang, es, en, ru) {
@@ -513,3 +514,4 @@ export function getBuildArchetypeLine(state, lang) {
     }
     return top.join(' / ');
 }
+//# sourceMappingURL=build-ui.js.map

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { randomUUID } from 'node:crypto';
 import { prisma } from '../lib/db.js';
 import { RUNTIME_CONFIG } from '../lib/runtime-config.js';
@@ -7,7 +8,7 @@ import { coordKey, normalizeMerchantDisplayName, parseForcedMerchantCoords, rand
 import { getDefaultInitialCoords, getForcedCoordsForMerchant, getOccupiedMerchantCoords, } from './mystery-merchant-pathing.js';
 import { parseOffers, serializeOffers, toSnapshot } from './mystery-merchant-serialization.js';
 const MERCHANT_BASE_ID = 1;
-const MERCHANT_SNAPSHOT_CACHE_TTL_MS = 3_000;
+const MERCHANT_SNAPSHOT_CACHE_TTL_MS = 3000;
 let merchantSnapshotCache = null;
 function writeMerchantSnapshotCache(snapshots) {
     merchantSnapshotCache = {
@@ -210,3 +211,4 @@ export async function ensureMerchantStates(tx = prisma) {
     return snapshots;
 }
 export { parseOffers, serializeOffers, toSnapshot };
+//# sourceMappingURL=mystery-merchant-state.js.map

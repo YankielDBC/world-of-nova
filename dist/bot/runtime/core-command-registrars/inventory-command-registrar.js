@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { EMOJIS } from '../../../data/emojis.js';
 import { sendMapCardSafeViaContext } from '../../../services/map-delivery.js';
 export const registerInventoryCommands = (bot, deps) => {
@@ -116,3 +117,4 @@ export const registerInventoryCommands = (bot, deps) => {
             `⚙️ /settings - ${deps.t(lang, 'cmdSettings')}`, { parse_mode: 'Markdown' });
     });
 };
+//# sourceMappingURL=inventory-command-registrar.js.map

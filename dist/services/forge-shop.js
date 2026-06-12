@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { TOOLS } from '../types/tools.js';
 import { getResourceSellPrice, getStoredBagSellPrice, getToolSellPrice } from '../data/price-index.js';
@@ -220,3 +221,4 @@ export async function sellAllForgeEntries(playerId) {
         };
     });
 }
+//# sourceMappingURL=forge-shop.js.map

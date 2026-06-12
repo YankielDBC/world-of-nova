@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { compactLabel } from '../lib/ui-compact.js';
 import { addGroundLootEntry, applyHarvestCooldown, takeGroundLootQuantity, } from '../lib/tile-state.js';
 import { mutateTileResourceState } from './tile-state-store.js';
@@ -174,3 +175,4 @@ export async function executeGroundLootPickup(params) {
     await restoreTakenGroundLoot(params.tileId, taken);
     return { success: false, message: 'No pude recoger ese loot.' };
 }
+//# sourceMappingURL=inspect-loot.js.map

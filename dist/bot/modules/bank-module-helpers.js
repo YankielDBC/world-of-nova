@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 import { prisma } from '../../lib/db.js';
 import { t } from '../../lib/i18n.js';
@@ -79,3 +80,4 @@ export function buildBankMoneyAmountKeyboard(placeId, buildingKey) {
 export function buildBankMoneyConfirmKeyboard() {
     return new InlineKeyboard().text('✅ Confirmar', 'bank_money_confirm').text('❌ Cancelar', 'bank_money_cancel');
 }
+//# sourceMappingURL=bank-module-helpers.js.map

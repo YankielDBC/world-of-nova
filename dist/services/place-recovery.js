@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 const RECOVERY_STATUS_ACTIVE = 'ACTIVE';
 const RECOVERY_STATUS_FINALIZING = 'FINALIZING';
@@ -224,3 +225,4 @@ export function getRecoveryProjectedValue(state) {
     const projected = state.startValue + elapsedSeconds * state.ratePerSecond;
     return Math.min(state.maxValue, Math.floor(projected));
 }
+//# sourceMappingURL=place-recovery.js.map

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { calculateCombatStats } from '../lib/db.js';
 import { triggerBuildReactions } from './build-skills.js';
@@ -57,3 +58,4 @@ export async function finalizePlayerMove(tgId, playerId, toX, toY, isNewDiscover
         alreadyAtDestination,
     };
 }
+//# sourceMappingURL=map-move-finalize.js.map

@@ -1,3 +1,4 @@
+// @ts-nocheck
 function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -43,3 +44,4 @@ export async function withPrismaRetry(label, fn, options) {
     }
     throw lastError instanceof Error ? lastError : new Error(`[PRISMA_RETRY] ${label} failed`);
 }
+//# sourceMappingURL=prisma-retry.js.map

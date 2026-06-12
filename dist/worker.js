@@ -1,3 +1,4 @@
+// @ts-nocheck
 import dotenv from 'dotenv';
 import { Bot, InlineKeyboard } from 'grammy';
 import { connectDB } from './lib/db.js';
@@ -70,3 +71,4 @@ startWorker().catch((error) => {
     console.error('Worker failed to start:', error);
     process.exit(1);
 });
+//# sourceMappingURL=worker.js.map

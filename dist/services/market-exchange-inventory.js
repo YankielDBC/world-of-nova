@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { getFreeSlotIndexes, getSlotWeightKg } from './market-exchange-utils.js';
 const ACTIVE_STATUS = 'ACTIVE';
 export async function getActiveBagWithSlotsForUpdate(playerId, tx) {
@@ -116,3 +117,4 @@ export async function creditResourceToActiveBag(tx, playerId, resourceId, quanti
     }
     return { success: true, message: 'OK' };
 }
+//# sourceMappingURL=market-exchange-inventory.js.map

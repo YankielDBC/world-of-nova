@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { safeJsonParse, toNumber } from './pve-combat-utils.js';
 let schemaReadyPromise = null;
@@ -145,3 +146,4 @@ export async function getEncounterHolderByCreatureId(creatureId) {
     const rows = await prisma.$queryRawUnsafe('SELECT playerId FROM "PlayerPveEncounter" WHERE creatureId = ? LIMIT 1', creatureId);
     return rows[0] ? toNumber(rows[0].playerId) : null;
 }
+//# sourceMappingURL=pve-combat-state.js.map

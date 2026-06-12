@@ -1,22 +1,18 @@
-export declare function ensureDynamicPlaceAtCoords(params: {
-    worldMapId: number;
-    x: number;
-    y: number;
-}): Promise<({
+export declare function ensureDynamicPlaceAtCoords(params: any): Promise<{
     interactions: {
         id: number;
         createdAt: Date;
         updatedAt: Date;
         name: string;
-        emoji: string;
         type: string;
+        emoji: string;
         displayName: string;
-        description: string | null;
-        effectType: string | null;
-        effectValue: number | null;
+        description: string;
+        effectType: string;
+        effectValue: number;
         slug: string;
-        costType: string | null;
-        costAmount: number | null;
+        costType: string;
+        costAmount: number;
         instantFull: boolean;
         sortOrder: number;
         placeId: number;
@@ -27,15 +23,15 @@ export declare function ensureDynamicPlaceAtCoords(params: {
     createdAt: Date;
     updatedAt: Date;
     name: string;
-    emoji: string;
-    expiresAt: Date | null;
     type: string;
+    emoji: string;
     displayName: string;
-    description: string | null;
+    description: string;
+    slug: string;
+    coordX: number;
+    coordY: number;
     pvpAllowed: boolean;
     combatAllowed: boolean;
-    slug: string;
-    coordX: number | null;
-    coordY: number | null;
-    triggerType: string | null;
-}) | null>;
+    triggerType: string;
+    expiresAt: Date;
+}>;

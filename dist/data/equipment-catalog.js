@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const EQUIPMENT_TEMPLATE_CATALOG = [
     {
         key: 'nova_guard_helm',
@@ -210,3 +211,4 @@ export const EQUIPMENT_TEMPLATE_CATALOG = [
         dropFamily: 'volcano',
     },
 ];
+//# sourceMappingURL=equipment-catalog.js.map

@@ -1,1 +1,1 @@
-export declare function getToolsCard(playerId: number): Promise<string>;
+export declare function getToolsCard(playerId: any): Promise<string>;

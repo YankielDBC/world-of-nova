@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { getBuildGameplayEffectsForPlayer, invalidateBuildGameplayEffectsCache, } from './build-skills.js';
 import { getRacialGameplayEffectsForPlayer, invalidateRacialGameplayEffectsCache, } from './racial-effects.js';
 function clamp(value, min, max) {
@@ -56,3 +57,4 @@ export function invalidateGameplayEffectsCache(playerId) {
     invalidateRacialGameplayEffectsCache(playerId);
     invalidateBuildGameplayEffectsCache(playerId);
 }
+//# sourceMappingURL=gameplay-effects.js.map

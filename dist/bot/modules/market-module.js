@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 import { getPlayerByTelegramId } from '../../lib/db.js';
 import { t } from '../../lib/i18n.js';
@@ -720,3 +721,4 @@ export function createMarketModule() {
         handleMessage,
     };
 }
+//# sourceMappingURL=market-module.js.map

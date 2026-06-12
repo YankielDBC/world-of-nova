@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { handleRegistrationAndProfileCallbacks, handleVentureCallbacks, } from './callback-handlers/core-callback-handlers.js';
 import { handleBagCallbacks } from './callback-handlers/bag-callback-handlers.js';
 import { handleFeatureModuleCallbacks, handlePlaceCallbacks, } from './callback-handlers/place-callback-handlers.js';
@@ -34,3 +35,4 @@ export function registerCallbackRouter(bot, deps) {
         }
     });
 }
+//# sourceMappingURL=register-callback-router.js.map

@@ -1,17 +1,30 @@
 import { parseOffers, serializeOffers, toSnapshot } from './mystery-merchant-serialization.js';
-import type { DbClient, MerchantOffer, MerchantSnapshot } from './mystery-merchant-types.js';
 export declare function clearMerchantSnapshotCache(): void;
-export declare function updateMerchantSnapshotCache(snapshot: MerchantSnapshot): void;
-export declare function getMerchantSnapshotsForRead(tx?: DbClient): Promise<MerchantSnapshot[]>;
+export declare function updateMerchantSnapshotCache(snapshot: any): void;
+export declare function getMerchantSnapshotsForRead(tx?: import("@prisma/client").PrismaClient<import("@prisma/client").Prisma.PrismaClientOptions, import("@prisma/client").Prisma.LogLevel, import("@prisma/client/runtime/library").DefaultArgs>): Promise<any>;
 export declare function getMerchantCount(): number;
 export declare function getManagedMerchantIds(): number[];
 export declare function getForcedMerchantCoords(): {
     x: number;
     y: number;
-} | null;
-export declare function getWorldMapId(tx?: DbClient): Promise<number | null>;
-export declare function generateMerchantOffers(tx?: DbClient): Promise<MerchantOffer[]>;
+};
+export declare function getWorldMapId(tx?: import("@prisma/client").PrismaClient<import("@prisma/client").Prisma.PrismaClientOptions, import("@prisma/client").Prisma.LogLevel, import("@prisma/client/runtime/library").DefaultArgs>): Promise<any>;
+export declare function generateMerchantOffers(tx?: import("@prisma/client").PrismaClient<import("@prisma/client").Prisma.PrismaClientOptions, import("@prisma/client").Prisma.LogLevel, import("@prisma/client/runtime/library").DefaultArgs>): Promise<any[]>;
 export declare function getRandomStaySeconds(): number;
-export declare function ensureMerchantState(merchantId: number, tx?: DbClient): Promise<MerchantSnapshot | null>;
-export declare function ensureMerchantStates(tx?: DbClient): Promise<MerchantSnapshot[]>;
+export declare function ensureMerchantState(merchantId: any, tx?: import("@prisma/client").PrismaClient<import("@prisma/client").Prisma.PrismaClientOptions, import("@prisma/client").Prisma.LogLevel, import("@prisma/client/runtime/library").DefaultArgs>): Promise<{
+    id: any;
+    worldMapId: any;
+    mapX: any;
+    mapY: any;
+    prevX: any;
+    prevY: any;
+    arrivedAt: any;
+    departsAt: any;
+    stayToken: any;
+    buybackMultiplier: any;
+    rumorSentAt: any;
+    confirmedAt: any;
+    offers: any[];
+}>;
+export declare function ensureMerchantStates(tx?: import("@prisma/client").PrismaClient<import("@prisma/client").Prisma.PrismaClientOptions, import("@prisma/client").Prisma.LogLevel, import("@prisma/client/runtime/library").DefaultArgs>): Promise<any[]>;
 export { parseOffers, serializeOffers, toSnapshot };

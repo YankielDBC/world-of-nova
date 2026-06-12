@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 import { prisma, calculateCombatStats, getPlayerByTelegramId } from '../lib/db.js';
 import { withPrismaRetry } from '../lib/prisma-retry.js';
@@ -565,3 +566,4 @@ export function buildPveDeathCard(lang, outcome, combatLog) {
     lines.push(t3(lang, '🗺️ Usa /map para volver a tu cuerpo.', '🗺️ Use /map to return to your body.', '🗺️ Ispolzuy /map chtoby vernutsya k telu.'));
     return lines.join('\n');
 }
+//# sourceMappingURL=death-system.js.map

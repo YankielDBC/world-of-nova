@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const registerBasicCommands = (bot, deps) => {
     bot.command('start', async (ctx) => {
         await deps.registrationModule.handleStartCommand(ctx);
@@ -19,3 +20,4 @@ export const registerBasicCommands = (bot, deps) => {
         await deps.renderInspectResponse(ctx, 'reply');
     });
 };
+//# sourceMappingURL=basic-command-registrar.js.map

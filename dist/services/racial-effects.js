@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { observePerf } from '../lib/perf-metrics.js';
 import { RACIAL_EFFECT_LIMITS, RACIAL_TALENT_BALANCE } from '../data/racial-balance.js';
 import { getPlayerRacialTalentState } from './racial-talents.js';
@@ -245,3 +246,4 @@ export async function getRacialGameplayEffectsForPlayer(playerId) {
         observePerf('racial.effects.resolve', Date.now() - startedAt);
     }
 }
+//# sourceMappingURL=racial-effects.js.map

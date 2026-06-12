@@ -1,35 +1,13 @@
-export declare function safeInt(value: unknown): number;
-export declare function clampInt(value: number, min: number, max: number): number;
-export declare function aggregateByPrice(rows: Array<{
-    priceSilver: number;
-    qty: number;
-}>, depth: number): Array<{
-    priceSilver: number;
-    quantity: number;
-}>;
-export declare function aggregateFxByPrice(rows: Array<{
-    priceSilverPerGold: number;
-    qty: number;
-}>, depth: number, sortMode: 'asc' | 'desc'): Array<{
-    priceSilver: number;
-    goldAmount: number;
-}>;
-export declare function getSlotWeightKg(slot: {
-    quantity: number;
-    resource?: {
-        weightKg: number;
-    } | null;
-    playerTool?: {
-        toolKey: string;
-    } | null;
-    storedBag?: {
-        definition: {
-            itemWeightKg: number;
-        } | null;
-    } | null;
-    toolKey?: string | null;
-}): number;
-export declare function getFreeSlotIndexes(slots: Array<{
-    slotIndex: number;
-}>, capacity: number): number[];
-export declare function formatAgoMinutes(createdAt: Date): string;
+export declare function safeInt(value: any): number;
+export declare function clampInt(value: any, min: any, max: any): number;
+export declare function aggregateByPrice(rows: any, depth: any): {
+    priceSilver: any;
+    quantity: any;
+}[];
+export declare function aggregateFxByPrice(rows: any, depth: any, sortMode: any): {
+    priceSilver: any;
+    goldAmount: any;
+}[];
+export declare function getSlotWeightKg(slot: any): any;
+export declare function getFreeSlotIndexes(slots: any, capacity: any): any[];
+export declare function formatAgoMinutes(createdAt: any): string;

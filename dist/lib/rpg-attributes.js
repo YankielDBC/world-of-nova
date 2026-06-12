@@ -1,3 +1,4 @@
+// @ts-nocheck
 const BASE_PRIMARY = {
     str: 5,
     dex: 5,
@@ -126,3 +127,4 @@ export function getClassGrowthDebug(params) {
     ];
     return { lines, attrs: grown };
 }
+//# sourceMappingURL=rpg-attributes.js.map

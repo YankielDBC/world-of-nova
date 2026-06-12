@@ -1,6 +1,7 @@
+// @ts-nocheck
 import { prisma } from './db.js';
 // Coalesce frequent bot interactions to reduce write pressure under high concurrency.
-const ACTIVITY_TOUCH_COOLDOWN_MS = 30_000;
+const ACTIVITY_TOUCH_COOLDOWN_MS = 30000;
 const ACTIVITY_CACHE_TTL_MS = 30 * 60 * 1000;
 const ACTIVITY_CACHE_CLEANUP_INTERVAL_MS = 5 * 60 * 1000;
 const lastTouchByTgId = new Map();
@@ -30,3 +31,4 @@ export async function touchPlayerActivity(tgId, force = false) {
     });
     lastTouchByTgId.set(tgId, nowMs);
 }
+//# sourceMappingURL=player-activity.js.map

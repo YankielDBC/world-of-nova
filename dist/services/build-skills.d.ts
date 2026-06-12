@@ -1,55 +1,79 @@
-import type { BuildSkillDefinition, SkillEventKey } from '../data/skill-trees.js';
-import { type BuildConditionSnapshot, type BuildGameplayEffects, type BuildLoadoutSlot, type BuildRuntimeStatus, type BuildTelemetryRow, type PlayerBuildSkillState } from './build-skills-types.js';
-export type { BuildConditionSnapshot, BuildGameplayEffects, BuildLoadoutSlot, BuildRuntimeStatus, PlayerBuildLoadout, PlayerBuildSkillState, } from './build-skills-types.js';
 export { ensureBuildSkillSchema, invalidateBuildGameplayEffectsCache, } from './build-skills-state.js';
-export declare function getPlayerBuildSkillState(playerId: number): Promise<PlayerBuildSkillState | null>;
-export declare function canLearnBuildSkill(state: PlayerBuildSkillState, skill: BuildSkillDefinition): {
+export declare function getPlayerBuildSkillState(playerId: any): Promise<any>;
+export declare function canLearnBuildSkill(state: any, skill: any): {
     ok: boolean;
-    reason?: string;
+    reason: string;
+} | {
+    ok: boolean;
+    reason?: undefined;
 };
-export declare function learnBuildSkillRank(playerId: number, skillKeyRaw: string): Promise<{
+export declare function learnBuildSkillRank(playerId: any, skillKeyRaw: any): Promise<{
     success: boolean;
     message: string;
-    state?: PlayerBuildSkillState;
-}>;
-export declare function equipBuildSkill(playerId: number, skillKeyRaw: string, slotRaw: BuildLoadoutSlot): Promise<{
+    state?: undefined;
+} | {
     success: boolean;
     message: string;
-    state?: PlayerBuildSkillState;
+    state: any;
 }>;
-export declare function unequipBuildSkill(playerId: number, slotRaw: BuildLoadoutSlot): Promise<{
+export declare function equipBuildSkill(playerId: any, skillKeyRaw: any, slotRaw: any): Promise<{
     success: boolean;
     message: string;
-    state?: PlayerBuildSkillState;
-}>;
-export declare function getBuildResetCost(spentClassPoints: number, spentGeneralPoints: number): number;
-export declare function resetBuildSkills(playerId: number): Promise<{
+    state?: undefined;
+} | {
     success: boolean;
     message: string;
-    state?: PlayerBuildSkillState;
+    state: any;
 }>;
-export declare function getBuildRuntimeStatus(playerId: number, skillKeyRaw: string): Promise<BuildRuntimeStatus>;
-export declare function getBuildGameplayEffectsForPlayer(playerId: number, conditionOverride?: BuildConditionSnapshot): Promise<BuildGameplayEffects>;
-export declare function activateBuildSkill(playerId: number, skillKeyRaw: string): Promise<{
+export declare function unequipBuildSkill(playerId: any, slotRaw: any): Promise<{
     success: boolean;
     message: string;
-    runtime?: BuildRuntimeStatus;
+    state?: undefined;
+} | {
+    success: boolean;
+    message: string;
+    state: any;
 }>;
-export declare function triggerBuildReactions(params: {
-    playerId: number;
-    event: SkillEventKey;
-    condition?: BuildConditionSnapshot;
-}): Promise<Array<{
-    skillKey: string;
-    name: string;
-    durationSeconds: number;
-}>>;
-export declare function getBuildTelemetrySummary(sinceHours: number): Promise<{
-    topEvents: BuildTelemetryRow[];
+export declare function getBuildResetCost(spentClassPoints: any, spentGeneralPoints: any): number;
+export declare function resetBuildSkills(playerId: any): Promise<{
+    success: boolean;
+    message: string;
+    state?: undefined;
+} | {
+    success: boolean;
+    message: string;
+    state: any;
 }>;
-export declare function renderBuildTelemetrySummary(lang: 'es' | 'en' | 'ru'): Promise<string>;
-export declare function listBuildActiveEffects(playerId: number): Promise<Array<{
-    skillKey: string;
-    startsInSeconds: number;
+export declare function getBuildRuntimeStatus(playerId: any, skillKeyRaw: any): Promise<{
+    cooldownSeconds: number;
+    castSeconds: number;
     activeSeconds: number;
-}>>;
+}>;
+export declare function getBuildGameplayEffectsForPlayer(playerId: any, conditionOverride: any): Promise<{
+    combatModifiers: any;
+    travelStaminaCostMultiplier: any;
+    travelTimeMultiplier: any;
+    actionEnergyCostMultiplier: any;
+    actionYieldMultiplier: any;
+    passiveStaRegenBonus: any;
+    counterAttackRatio: any;
+}>;
+export declare function activateBuildSkill(playerId: any, skillKeyRaw: any): Promise<{
+    success: boolean;
+    message: string;
+    runtime?: undefined;
+} | {
+    success: boolean;
+    message: string;
+    runtime: {
+        cooldownSeconds: number;
+        castSeconds: number;
+        activeSeconds: number;
+    };
+}>;
+export declare function triggerBuildReactions(params: any): Promise<any[]>;
+export declare function getBuildTelemetrySummary(sinceHours: any): Promise<{
+    topEvents: unknown;
+}>;
+export declare function renderBuildTelemetrySummary(lang: any): Promise<string>;
+export declare function listBuildActiveEffects(playerId: any): Promise<any>;

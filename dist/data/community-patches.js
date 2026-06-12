@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const COMMUNITY_PATCH_NOTES = [
     {
         slug: 'patch-v0-1-0-shared-world',
@@ -628,3 +629,4 @@ export const COMMUNITY_PATCH_NOTES = [
         closing: 'Tu nombre ya no aparece solo. Lo acompana una reputacion que ira creciendo con cada historia del reino.',
     },
 ];
+//# sourceMappingURL=community-patches.js.map

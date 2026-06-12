@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const RACIAL_EFFECT_LIMITS = {
     combatPctMin: -0.2,
     combatPctMax: 0.2,
@@ -44,3 +45,4 @@ export const RACIAL_TALENT_BALANCE = {
         keystoneWildSpine: { attackPct: 0.03, defensePct: 0.02, resistPhysicalFlat: 1 },
     },
 };
+//# sourceMappingURL=racial-balance.js.map

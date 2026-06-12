@@ -1,12 +1,12 @@
-export declare function getItemHoldingsForPlayer(playerId: number): Promise<Array<{
-    resourceId: number;
-    name: string;
-    emoji: string;
-    quantity: number;
-}>>;
-export declare function getResourceStockByContainer(playerId: number, resourceId: number): Promise<{
+export declare function getItemHoldingsForPlayer(playerId: any): Promise<{
+    resourceId: any;
+    name: any;
+    emoji: any;
+    quantity: any;
+}[]>;
+export declare function getResourceStockByContainer(playerId: any, resourceId: any): Promise<{
     bagQty: number;
     vaultQty: number;
     totalQty: number;
 }>;
-export declare function formatMarketTimeAgo(date: Date): string;
+export declare function formatMarketTimeAgo(date: any): string;

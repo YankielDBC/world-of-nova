@@ -1,31 +1,128 @@
-import type { Language } from '../lib/i18n.js';
-export type RacialRace = 'zolk' | 'uren';
-export type RacialTalentType = 'passive' | 'active' | 'keystone';
-export type RacialTalentCategory = 'offense' | 'defense' | 'mobility' | 'utility' | 'active' | 'keystone';
-export interface LocalizedText3 {
-    es: string;
-    en: string;
-    ru: string;
-}
-export interface RacialTalentDefinition {
+export declare const RACIAL_TALENT_CATEGORIES: {
     key: string;
-    race: RacialRace;
-    type: RacialTalentType;
-    category: RacialTalentCategory;
+    label: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+}[];
+export declare function normalizeRace(value: any): "zolk" | "uren";
+export declare function getLocalizedText3(text: any, lang: any): any;
+export declare function getAllRacialTalents(): ({
+    key: string;
+    race: string;
+    type: string;
+    category: string;
     maxRank: number;
     costPerRank: number;
     sortOrder: number;
-    name: LocalizedText3;
-    summary: LocalizedText3;
-    prerequisites?: string[];
-}
-export declare const RACIAL_TALENT_CATEGORIES: Array<{
-    key: RacialTalentCategory;
-    label: LocalizedText3;
-}>;
-export declare function normalizeRace(value: string | null | undefined): RacialRace | null;
-export declare function getLocalizedText3(text: LocalizedText3, lang: Language): string;
-export declare function getAllRacialTalents(): RacialTalentDefinition[];
-export declare function getRacialTalentsForRace(race: RacialRace): RacialTalentDefinition[];
-export declare function getRacialTalentByKey(key: string): RacialTalentDefinition | null;
-export declare function getRacialPointsForLevel(level: number): number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    prerequisites?: undefined;
+} | {
+    key: string;
+    race: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    prerequisites: string[];
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+})[];
+export declare function getRacialTalentsForRace(race: any): ({
+    key: string;
+    race: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    prerequisites?: undefined;
+} | {
+    key: string;
+    race: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    prerequisites: string[];
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+})[];
+export declare function getRacialTalentByKey(key: any): {
+    key: string;
+    race: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    prerequisites?: undefined;
+} | {
+    key: string;
+    race: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    prerequisites: string[];
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+};
+export declare function getRacialPointsForLevel(level: any): number;

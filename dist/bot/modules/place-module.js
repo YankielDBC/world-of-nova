@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma, getPlayerByTelegramId } from '../../lib/db.js';
 import { t } from '../../lib/i18n.js';
 import { getPlaceUiConfig } from '../../data/place-ui.js';
@@ -133,3 +134,4 @@ export function createPlaceModule(deps) {
         handlePlaceExit,
     };
 }
+//# sourceMappingURL=place-module.js.map

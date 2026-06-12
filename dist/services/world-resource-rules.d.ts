@@ -1,11 +1,10 @@
-export interface ZoneResourcePolicy {
+export declare function getZoneResourcePolicyAtCoords(x: any, y: any): {
     zoneId: string;
     recommendedMin: number;
     recommendedMax: number;
     preferredMin: number;
     preferredMax: number;
     hardMax: number;
-}
-export declare function getZoneResourcePolicyAtCoords(x: number, y: number): ZoneResourcePolicy;
-export declare function isNodeLevelAllowedInZone(requiredLevel: number, policy: ZoneResourcePolicy): boolean;
-export declare function getZoneSpawnMultiplierForNode(requiredLevel: number, policy: ZoneResourcePolicy): number;
+};
+export declare function isNodeLevelAllowedInZone(requiredLevel: any, policy: any): boolean;
+export declare function getZoneSpawnMultiplierForNode(requiredLevel: any, policy: any): number;

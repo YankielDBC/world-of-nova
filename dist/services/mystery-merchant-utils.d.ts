@@ -1,12 +1,12 @@
-export declare function coordKey(x: number, y: number): string;
-export declare function randomInt(min: number, max: number): number;
-export declare function randomFloat(min: number, max: number): number;
-export declare function normalizeMerchantDisplayName(name: string): string;
-export declare function parseForcedMerchantCoords(raw: string): {
+export declare function coordKey(x: any, y: any): string;
+export declare function randomInt(min: any, max: any): number;
+export declare function randomFloat(min: any, max: any): any;
+export declare function normalizeMerchantDisplayName(name: any): any;
+export declare function parseForcedMerchantCoords(raw: any): {
     x: number;
     y: number;
-} | null;
-export declare function sampleUnique<T>(items: T[], count: number): T[];
-export declare function formatEtaFromDistance(distance: number, secondsPerTile: number): string;
-export declare function pickRandomText(options: string[]): string;
-export declare function decorateMerchantAlertText(text: string): string;
+};
+export declare function sampleUnique(items: any, count: any): any[];
+export declare function formatEtaFromDistance(distance: any, secondsPerTile: any): string;
+export declare function pickRandomText(options: any): any;
+export declare function decorateMerchantAlertText(text: any): string;

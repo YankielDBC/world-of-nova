@@ -1,1 +1,1 @@
-export declare function formatErrorForLog(error: unknown): string;
+export declare function formatErrorForLog(error: any): any;

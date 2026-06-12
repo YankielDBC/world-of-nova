@@ -1,3 +1,4 @@
+// @ts-nocheck
 function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -103,3 +104,4 @@ export function startTravelCountdownAnimation(bot, params) {
         });
     })();
 }
+//# sourceMappingURL=travel-countdown.js.map

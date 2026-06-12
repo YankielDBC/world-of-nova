@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { getRacialPointsForLevel, getRacialTalentByKey, getRacialTalentsForRace, normalizeRace, } from '../data/racial-talents.js';
 let racialTalentSchemaReady = null;
@@ -313,3 +314,4 @@ export function canLearnTalent(state, talent) {
     }
     return { ok: true };
 }
+//# sourceMappingURL=racial-talents.js.map

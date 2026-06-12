@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 import { detectLanguage, SUPPORTED_LANGUAGES, t } from '../../lib/i18n.js';
 import { calculateCombatStats, createPlayer, getPlayerByTelegramId, prisma, updateLastActive } from '../../lib/db.js';
@@ -455,3 +456,4 @@ export function createRegistrationModule() {
         handleMessage,
     };
 }
+//# sourceMappingURL=registration-module.js.map

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 import { clearConversationState, getConversationState, setConversationState } from '../../lib/conversation-state.js';
 import { getPlayerByTelegramId } from '../../lib/db.js';
@@ -6,7 +7,7 @@ import { sendMapCardSafeViaContext } from '../../services/map-delivery.js';
 import { renderMapCardText } from '../../services/map-message.js';
 import { renderMap } from '../../services/map.js';
 import { buyFromMerchant, getMerchantIntroText, getMerchantSellEntries, getMerchantSnapshotForPlayer, registerMerchantWitness, sellToMerchant, } from '../../services/mystery-merchant.js';
-const MERCHANT_REFRESH_COOLDOWN_MS = 10_000;
+const MERCHANT_REFRESH_COOLDOWN_MS = 10000;
 const merchantRefreshLocks = new Map();
 function getPlayerLanguage(player) {
     return player?.language ?? 'es';
@@ -510,3 +511,4 @@ export function createMysteryMerchantModule() {
         openByCommand,
     };
 }
+//# sourceMappingURL=mystery-merchant-module.js.map

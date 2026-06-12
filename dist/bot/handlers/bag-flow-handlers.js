@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 import { EMOJIS } from '../../data/emojis.js';
 import { getItemShortDescription } from '../../data/game-dictionary.js';
@@ -211,3 +212,4 @@ export function createBagFlowHandlers(deps) {
         startSwitchFlow,
     };
 }
+//# sourceMappingURL=bag-flow-handlers.js.map

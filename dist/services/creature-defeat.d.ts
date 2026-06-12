@@ -1,46 +1,73 @@
-import type { Language } from '../lib/i18n.js';
-import { type BagUsage } from './bags.js';
-import { type CreatureSnapshot } from './creatures.js';
-interface StoredDropLine {
-    emoji: string;
-    name: string;
-    quantity: number;
-}
-interface RejectedDropLine extends StoredDropLine {
-    reason: string;
-}
-interface XpProgress {
-    levelBefore: number;
-    levelAfter: number;
-    levelsGained: number;
-    currentXp: number;
-    requiredXp: number;
-}
-export interface CreatureDefeatSuccess {
-    success: true;
-    creature: CreatureSnapshot;
+export declare function resolveCreatureDefeat(params: any): Promise<{
+    success: boolean;
+    message: any;
+    creature?: undefined;
+    xpAwarded?: undefined;
+    silverAwarded?: undefined;
+    xpProgress?: undefined;
+    classPointsGained?: undefined;
+    generalPointsGained?: undefined;
+    racialPointsGained?: undefined;
+    storedDrops?: undefined;
+    rejectedDrops?: undefined;
+    bagUsageAfter?: undefined;
+} | {
+    success: boolean;
+    creature: {
+        id: number;
+        worldMapId: number;
+        x: number;
+        y: number;
+        spawnSlot: number;
+        biomeName: string;
+        displayName: string;
+        category: string;
+        level: number;
+        attributes: {
+            str: number;
+            dex: number;
+            intelligence: number;
+            vit: number;
+            agi: number;
+            eng: number;
+        };
+        maxHp: number;
+        currentHp: number;
+        attack: number;
+        arcanePower: number;
+        defense: number;
+        critChance: number;
+        evasion: number;
+        moveSpeed: number;
+        xpReward: number;
+        silverMin: number;
+        silverMax: number;
+        coinDropChance: number;
+        respawnSeconds: number;
+        drops: any[];
+        status: string;
+        nextRespawnAt: Date;
+    };
     xpAwarded: number;
     silverAwarded: number;
-    xpProgress: XpProgress;
+    xpProgress: {
+        levelBefore: number;
+        levelAfter: number;
+        levelsGained: number;
+        currentXp: number;
+        requiredXp: number;
+    };
     classPointsGained: number;
     generalPointsGained: number;
     racialPointsGained: number;
-    storedDrops: StoredDropLine[];
-    rejectedDrops: RejectedDropLine[];
-    bagUsageAfter: BagUsage | null;
-}
-export interface CreatureDefeatFailure {
-    success: false;
-    message: string;
-}
-export type CreatureDefeatResult = CreatureDefeatSuccess | CreatureDefeatFailure;
-export declare function resolveCreatureDefeat(params: {
-    playerId: number;
-    worldMapId: number;
-    x: number;
-    y: number;
-    creatureId: number;
-    lang: Language;
-}): Promise<CreatureDefeatResult>;
-export declare function buildCreatureDefeatCard(result: CreatureDefeatSuccess, lang: Language): string;
-export {};
+    storedDrops: any[];
+    rejectedDrops: any[];
+    bagUsageAfter: {
+        usedSlots: any;
+        totalSlots: any;
+        usedWeightKg: number;
+        totalWeightKg: any;
+    };
+    message?: undefined;
+}>;
+export declare function buildCreatureDefeatCard(result: any, lang: any): string;

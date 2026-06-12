@@ -1,20 +1,29 @@
-export type ForgeSellEntryKind = 'resource' | 'tool' | 'bag';
-export interface ForgeSellEntry {
-    listIndex: number;
-    slotUid: number;
-    slotIndex: number;
-    kind: ForgeSellEntryKind;
-    emoji: string;
-    name: string;
-    quantity: number;
+export declare function getForgeSellEntries(playerId: any): Promise<{
+    listIndex: any;
+    slotUid: any;
+    slotIndex: any;
+    kind: string;
+    emoji: any;
+    name: any;
+    quantity: any;
     unitSilver: number;
     totalSilver: number;
-}
-export interface ForgeSaleResult {
+}[]>;
+export declare function sellForgeEntry(playerId: any, slotUid: any, quantity: any): Promise<{
     success: boolean;
     message: string;
-    silverGained?: number;
-}
-export declare function getForgeSellEntries(playerId: number): Promise<ForgeSellEntry[]>;
-export declare function sellForgeEntry(playerId: number, slotUid: number, quantity: number): Promise<ForgeSaleResult>;
-export declare function sellAllForgeEntries(playerId: number): Promise<ForgeSaleResult>;
+    silverGained?: undefined;
+} | {
+    success: boolean;
+    message: string;
+    silverGained: number;
+}>;
+export declare function sellAllForgeEntries(playerId: any): Promise<{
+    success: boolean;
+    message: string;
+    silverGained?: undefined;
+} | {
+    success: boolean;
+    message: string;
+    silverGained: number;
+}>;

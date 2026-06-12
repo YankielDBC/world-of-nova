@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { getPlayerByTelegramId } from '../../lib/db.js';
 import { t } from '../../lib/i18n.js';
 import { compactText } from '../../lib/ui-compact.js';
@@ -537,3 +538,4 @@ export function createBankModule() {
         handleMessage,
     };
 }
+//# sourceMappingURL=bank-module.js.map

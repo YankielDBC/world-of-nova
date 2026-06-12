@@ -1,3 +1,4 @@
+// @ts-nocheck
 export function coordKey(x, y) {
     return `${x},${y}`;
 }
@@ -64,3 +65,4 @@ export function decorateMerchantAlertText(text) {
         `<i>${text}</i>`,
     ].join('\n');
 }
+//# sourceMappingURL=mystery-merchant-utils.js.map

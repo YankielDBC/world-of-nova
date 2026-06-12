@@ -1,3 +1,4 @@
+// @ts-nocheck
 const TALENTS = [
     {
         key: 'zolk_toxic_blood',
@@ -341,3 +342,4 @@ export function getRacialPointsForLevel(level) {
     }
     return Math.floor((safeLevel - 1) / 2);
 }
+//# sourceMappingURL=racial-talents.js.map

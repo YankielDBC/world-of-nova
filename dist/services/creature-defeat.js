@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { compactLabel } from '../lib/ui-compact.js';
 import { getRequiredXpForLevel } from '../lib/player-ui.js';
@@ -238,3 +239,4 @@ export function buildCreatureDefeatCard(result, lang) {
     lines.push(`⏱️ ${t3(lang, 'Respawn aprox', 'Respawn approx', 'Respavn primerno')}: ${formatCreatureRespawnLabel(result.creature.respawnSeconds, lang)}`);
     return lines.join('\n');
 }
+//# sourceMappingURL=creature-defeat.js.map

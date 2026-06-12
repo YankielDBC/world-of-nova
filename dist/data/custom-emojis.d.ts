@@ -1,8 +1,51 @@
-export declare const CUSTOM_EMOJI_FIXED_BY_TEXT: Record<string, string>;
-export declare const CUSTOM_EMOJI_VARIANTS_BY_TEXT: Record<string, string[]>;
+export declare const CUSTOM_EMOJI_FIXED_BY_TEXT: {
+    '\uD83E\uDE93': string;
+    '\u26CF\uFE0F': string;
+    '\uD83E\uDEB5': string;
+    '\uD83D\uDCBC': string;
+    '\uD83D\uDC56': string;
+    '\uD83C\uDF92': string;
+    '\u2702\uFE0F': string;
+    '\uD83C\uDF30': string;
+    '\uD83C\uDF8B': string;
+    '\uD83E\uDD65': string;
+    '\uD83C\uDF4E': string;
+    '\uD83C\uDF4A': string;
+    '\uD83D\uDCC8': string;
+    '\uD83D\uDCDA': string;
+    '\uD83D\uDCDC': string;
+    '\uD83D\uDCCA': string;
+    '\uD83E\uDDEC': string;
+    '\uD83E\uDDB6': string;
+    '\uD83D\uDCD6': string;
+    '\u26A1\uFE0F': string;
+    '\u26A1': string;
+    '\uD83D\uDC9A': string;
+    '\uD83E\uDDD9\u200D\u2642\uFE0F': string;
+    '\uD83D\uDCAA': string;
+    '\uD83D\uDC3E': string;
+    '\uD83C\uDF00': string;
+    '\uD83D\uDD0B': string;
+    '\uD83D\uDDE1': string;
+    '\uD83D\uDCA2': string;
+    '\uD83E\uDD38\u200D\u2640\uFE0F': string;
+    '\uD83C\uDFA3': string;
+    '\uD83D\uDCA7': string;
+    '\uD83C\uDF3D': string;
+    '\uD83C\uDF32': string;
+    '\uD83D\uDCB0': string;
+};
+export declare const CUSTOM_EMOJI_VARIANTS_BY_TEXT: {
+    '\uD83C\uDF3E': string[];
+    '\uD83C\uDF33': string[];
+    '\uD83C\uDF34': string[];
+    '\uD83C\uDF35': string[];
+    '\uD83E\uDEBE': string[];
+    '\uD83C\uDF0B': string[];
+};
 export declare const CUSTOM_EMOJI_TOKENS_SORTED: string[];
-export declare function hasCustomEmojiToken(token: string): boolean;
-export declare function summarizeCustomEmojiTokenCoverage(tokens: Iterable<string>): {
-    supported: string[];
-    pending: string[];
+export declare function hasCustomEmojiToken(token: any): boolean;
+export declare function summarizeCustomEmojiTokenCoverage(tokens: any): {
+    supported: any[];
+    pending: any[];
 };

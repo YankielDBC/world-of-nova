@@ -1,30 +1,31 @@
-import { type MovementMode } from './map-utils.js';
-export interface MoveResult {
+export declare function finalizePlayerMove(tgId: any, playerId: any, toX: any, toY: any, isNewDiscovery: any, energyCost: any, expectedFrom: any): Promise<{
+    applied: boolean;
+    alreadyAtDestination: boolean;
+}>;
+export declare function movePlayer(tgId: any, direction: any): Promise<{
     success: boolean;
     fromX: number;
     fromY: number;
-    toX: number;
-    toY: number;
+    toX: any;
+    toY: any;
     energyCost: number;
     travelTime: number;
-    mode: MovementMode;
+    mode: string;
     message: string;
-    arrivalMessage?: string;
-    placeArrival?: {
-        name: string;
-        emoji: string;
-        buildings: string[];
-    };
     isNewDiscovery: boolean;
-}
-export declare function finalizePlayerMove(tgId: string, playerId: number, toX: number, toY: number, isNewDiscovery: boolean, energyCost: number, expectedFrom?: {
-    x: number;
-    y: number;
-}): Promise<{
-    applied: true;
-    alreadyAtDestination: false;
+    arrivalMessage?: undefined;
+    placeArrival?: undefined;
 } | {
-    applied: false;
-    alreadyAtDestination: boolean;
+    success: boolean;
+    fromX: number;
+    fromY: number;
+    toX: any;
+    toY: any;
+    energyCost: number;
+    travelTime: number;
+    mode: string;
+    message: string;
+    arrivalMessage: any;
+    placeArrival: any;
+    isNewDiscovery: boolean;
 }>;
-export declare function movePlayer(tgId: string, direction: 'up' | 'down' | 'left' | 'right'): Promise<MoveResult>;

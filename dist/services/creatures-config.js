@@ -1,7 +1,8 @@
+// @ts-nocheck
 export const STATUS_ALIVE = 'ALIVE';
 export const STATUS_DEAD = 'DEAD';
-export const CREATURE_CACHE_TTL_MS = 8_000;
-export const RESOURCE_POOL_TTL_MS = 60_000;
+export const CREATURE_CACHE_TTL_MS = 8000;
+export const RESOURCE_POOL_TTL_MS = 60000;
 export const CATEGORY_ORDER = ['boss', 'elite', 'veteran', 'basic'];
 export const CATEGORY_CONFIG = {
     basic: {
@@ -122,3 +123,4 @@ export const BIOME_ATTRIBUTE_BONUS = {
     desert: { agi: 2, dex: 2, eng: 1 },
     tundra: { vit: 2, str: 1, intelligence: 2 },
 };
+//# sourceMappingURL=creatures-config.js.map

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { getPlayerByTelegramId } from '../../lib/db.js';
 import { getCanonicalWorldMap } from '../../services/world-map.js';
 import { clearActivePveEncounter, getActivePveEncounterByPlayerId, getActivePveEncounterByTgId, getActivePveEncounterViewByPlayerId, getCreatureScoutText, resolvePveAction, startPveEncounter, } from '../../services/pve-combat.js';
@@ -222,3 +223,4 @@ export function createPveModule() {
         renderBlockedPrompt,
     };
 }
+//# sourceMappingURL=pve-module.js.map

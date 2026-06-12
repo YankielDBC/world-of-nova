@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { EQUIPMENT_COMBAT_STAT_KEYS, EQUIPMENT_UTILITY_STAT_KEYS } from '../data/equipment.js';
 function isObjectRecord(value) {
     return typeof value === 'object' && value !== null && !Array.isArray(value);
@@ -105,3 +106,4 @@ export function collectEquipmentModifiers(items) {
         gearScore,
     };
 }
+//# sourceMappingURL=equipment-runtime.js.map

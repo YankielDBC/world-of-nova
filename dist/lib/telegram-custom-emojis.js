@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { CUSTOM_EMOJI_FIXED_BY_TEXT, CUSTOM_EMOJI_TOKENS_SORTED, CUSTOM_EMOJI_VARIANTS_BY_TEXT, } from '../data/custom-emojis.js';
 import { debugLooksLikeMapText, debugTextPreview, logEmojiDebug, summarizeTextTokens, } from './map-debug.js';
 export const SKIP_CUSTOM_EMOJI_TRANSFORMER_FLAG = '__skip_custom_emoji_transformer';
@@ -550,3 +551,4 @@ export function installCustomEmojiTransformer(bot) {
         }
     });
 }
+//# sourceMappingURL=telegram-custom-emojis.js.map

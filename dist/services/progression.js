@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { t } from '../lib/i18n.js';
 import { compactLabel } from '../lib/ui-compact.js';
@@ -172,3 +173,4 @@ export async function getSkillsCard(playerId, lang = 'es') {
     }
     return [`📋 ${t(lang, 'skillsCardTitle')}`, '✧═══••═══✧', `💡 ${t(lang, 'skillsCardHint')}`, '', ...rows].join('\n');
 }
+//# sourceMappingURL=progression.js.map

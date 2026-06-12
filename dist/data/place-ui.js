@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { EMOJIS } from './emojis.js';
 export const PLACE_UI_CONFIG = {
     'nova-castle': {
@@ -927,3 +928,4 @@ export function getPlaceUiConfig(placeSlug) {
     }
     return null;
 }
+//# sourceMappingURL=place-ui.js.map

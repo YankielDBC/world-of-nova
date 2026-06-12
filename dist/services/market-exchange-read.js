@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { PRICE_INDEX } from '../data/price-index.js';
 import { aggregateByPrice } from './market-exchange-utils.js';
@@ -195,3 +196,4 @@ export async function getItemMarketInsight(resourceId) {
         supplyTotal: stockQty + marketQty,
     };
 }
+//# sourceMappingURL=market-exchange-read.js.map

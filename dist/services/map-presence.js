@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma, getPlayerByTelegramId } from '../lib/db.js';
 const AFK_TIMEOUT_MS = 5 * 60 * 1000;
 export async function checkAFKStatus(tgId) {
@@ -21,3 +22,4 @@ export async function updateAFKTimer(tgId) {
         data: { isActive: true, lastActiveAt: new Date() },
     });
 }
+//# sourceMappingURL=map-presence.js.map

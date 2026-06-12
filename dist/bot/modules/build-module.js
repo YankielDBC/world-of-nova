@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 import { getPlayerByTelegramId } from '../../lib/db.js';
 import { activateBuildSkill, canLearnBuildSkill, getBuildGameplayEffectsForPlayer, ensureBuildSkillSchema, equipBuildSkill, getBuildResetCost, getBuildRuntimeStatus, getPlayerBuildSkillState, listBuildActiveEffects, learnBuildSkillRank, resetBuildSkills, unequipBuildSkill, } from '../../services/build-skills.js';
@@ -491,3 +492,4 @@ export function createBuildModule() {
         handleCallback,
     };
 }
+//# sourceMappingURL=build-module.js.map

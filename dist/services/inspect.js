@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 import { calculateCombatStats, prisma } from '../lib/db.js';
 import { EMOJIS } from '../data/emojis.js';
@@ -429,3 +430,4 @@ export async function executeInspectAction(params) {
         observePerf('inspect.action', Date.now() - startedAt);
     }
 }
+//# sourceMappingURL=inspect.js.map

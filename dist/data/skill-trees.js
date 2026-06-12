@@ -1,3 +1,4 @@
+// @ts-nocheck
 const CLASS_SKILLS = [
     {
         key: 'ch_marked_strike',
@@ -696,3 +697,4 @@ export function getLocalizedText3(text, lang) {
         return text.ru;
     return text.es;
 }
+//# sourceMappingURL=skill-trees.js.map

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { RUNTIME_CONFIG } from '../lib/runtime-config.js';
 import { prisma } from '../lib/db.js';
 import { COMMUNITY_PATCH_NOTES } from '../data/community-patches.js';
@@ -303,3 +304,4 @@ async function publishPatchNotes(api, patches) {
 export async function publishCommunityPatchNotes(api) {
     return publishPatchNotes(api, COMMUNITY_PATCH_NOTES);
 }
+//# sourceMappingURL=community-updates.js.map

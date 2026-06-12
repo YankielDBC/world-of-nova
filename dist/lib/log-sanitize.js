@@ -1,3 +1,4 @@
+// @ts-nocheck
 function maskTelegramTokenInText(text) {
     if (!text) {
         return text;
@@ -21,3 +22,4 @@ export function formatErrorForLog(error) {
     }
     return maskTelegramTokenInText(String(error));
 }
+//# sourceMappingURL=log-sanitize.js.map

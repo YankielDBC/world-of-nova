@@ -1,10 +1,10 @@
 export declare const WORLD_CENTER: {
-    readonly x: 0;
-    readonly y: 0;
+    x: number;
+    y: number;
 };
-export type ZoneBandId = 'core' | 'inner' | 'middle' | 'outer' | 'frontier';
-export interface ZoneBand {
-    id: ZoneBandId;
+export declare function getRadialDistance(x: any, y: any, originX?: number, originY?: number): number;
+export declare function getZoneBandByDistance(distance: any): {
+    id: string;
     minDistance: number;
     maxDistance: number;
     recommendedLevelMin: number;
@@ -15,7 +15,17 @@ export interface ZoneBand {
     villageExclusionRadius: number;
     caveExclusionRadius: number;
     ruinExclusionRadius: number;
-}
-export declare function getRadialDistance(x: number, y: number, originX?: 0, originY?: 0): number;
-export declare function getZoneBandByDistance(distance: number): ZoneBand;
-export declare function getZoneBandAtCoords(x: number, y: number): ZoneBand;
+};
+export declare function getZoneBandAtCoords(x: any, y: any): {
+    id: string;
+    minDistance: number;
+    maxDistance: number;
+    recommendedLevelMin: number;
+    recommendedLevelMax: number;
+    villageSpawnChance: number;
+    caveSpawnChance: number;
+    ruinSpawnChance: number;
+    villageExclusionRadius: number;
+    caveExclusionRadius: number;
+    ruinExclusionRadius: number;
+};

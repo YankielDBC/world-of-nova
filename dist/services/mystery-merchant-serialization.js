@@ -1,3 +1,4 @@
+// @ts-nocheck
 export function parseOffers(raw) {
     try {
         const parsed = JSON.parse(raw);
@@ -74,3 +75,4 @@ export function toSnapshot(row) {
         offers: parseOffers(row.offersJson),
     };
 }
+//# sourceMappingURL=mystery-merchant-serialization.js.map

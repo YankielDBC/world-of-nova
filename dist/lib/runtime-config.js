@@ -1,3 +1,4 @@
+// @ts-nocheck
 function parseIntEnv(value, fallback, min = 1) {
     if (!value) {
         return fallback;
@@ -44,7 +45,7 @@ export const RUNTIME_CONFIG = {
     climateZoneSize: parseIntEnv(process.env.CLIMATE_ZONE_SIZE, 10, 2),
     climateZoneDurationMinMinutes: parseIntEnv(process.env.CLIMATE_ZONE_DURATION_MIN_MINUTES, 20, 1),
     climateZoneDurationMaxMinutes: parseIntEnv(process.env.CLIMATE_ZONE_DURATION_MAX_MINUTES, 60, 2),
-    climateSweepIntervalMs: parseIntEnv(process.env.CLIMATE_SWEEP_INTERVAL_MS, 30_000, 1_000),
+    climateSweepIntervalMs: parseIntEnv(process.env.CLIMATE_SWEEP_INTERVAL_MS, 30000, 1000),
     climateTransitionBatchSize: parseIntEnv(process.env.CLIMATE_TRANSITION_BATCH_SIZE, 12, 1),
     climateUpdateConcurrency: parseIntEnv(process.env.CLIMATE_UPDATE_CONCURRENCY, 4, 1),
     climateAlertsEnabled: parseBoolEnv(process.env.CLIMATE_ALERTS_ENABLED, true),
@@ -55,7 +56,7 @@ export const RUNTIME_CONFIG = {
     communityUpdatesChannel: parseStringEnv(process.env.COMMUNITY_UPDATES_CHANNEL, '@rpgalert'),
     merchantEnabled: parseBoolEnv(process.env.MERCHANT_ENABLED, true),
     merchantCount: parseIntEnv(process.env.MERCHANT_COUNT, 2, 1),
-    merchantSweepIntervalMs: parseIntEnv(process.env.MERCHANT_SWEEP_INTERVAL_MS, 15_000, 1_000),
+    merchantSweepIntervalMs: parseIntEnv(process.env.MERCHANT_SWEEP_INTERVAL_MS, 15000, 1000),
     merchantStayMinSeconds: parseIntEnv(process.env.MERCHANT_STAY_MIN_SECONDS, 300, 30),
     merchantStayMaxSeconds: parseIntEnv(process.env.MERCHANT_STAY_MAX_SECONDS, 3600, 60),
     merchantRumorRadius: parseIntEnv(process.env.MERCHANT_RUMOR_RADIUS, 18, 3),
@@ -65,16 +66,17 @@ export const RUNTIME_CONFIG = {
     merchantPerimeterMargin: parseIntEnv(process.env.MERCHANT_PERIMETER_MARGIN, 10, 0),
     merchantMaxDistanceToDiscovered: parseIntEnv(process.env.MERCHANT_MAX_DISTANCE_TO_DISCOVERED, 12, 1),
     merchantFallbackRadius: parseIntEnv(process.env.MERCHANT_FALLBACK_RADIUS, 25, 3),
-    inspectNodeCacheTtlMs: parseIntEnv(process.env.INSPECT_NODE_CACHE_TTL_MS, 30_000, 1_000),
-    gatherableCacheTtlMs: parseIntEnv(process.env.GATHERABLE_CACHE_TTL_MS, 30_000, 1_000),
-    recoverySweepIntervalMs: parseIntEnv(process.env.RECOVERY_SWEEP_INTERVAL_MS, 10_000, 1_000),
-    jobSweepIntervalMs: parseIntEnv(process.env.JOB_SWEEP_INTERVAL_MS, 1_000, 250),
+    inspectNodeCacheTtlMs: parseIntEnv(process.env.INSPECT_NODE_CACHE_TTL_MS, 30000, 1000),
+    gatherableCacheTtlMs: parseIntEnv(process.env.GATHERABLE_CACHE_TTL_MS, 30000, 1000),
+    recoverySweepIntervalMs: parseIntEnv(process.env.RECOVERY_SWEEP_INTERVAL_MS, 10000, 1000),
+    jobSweepIntervalMs: parseIntEnv(process.env.JOB_SWEEP_INTERVAL_MS, 1000, 250),
     jobSweepBatchSize: parseIntEnv(process.env.JOB_SWEEP_BATCH_SIZE, 50, 1),
-    jobRunningLockTimeoutMs: parseIntEnv(process.env.JOB_RUNNING_LOCK_TIMEOUT_MS, 90_000, 5_000),
+    jobRunningLockTimeoutMs: parseIntEnv(process.env.JOB_RUNNING_LOCK_TIMEOUT_MS, 90000, 5000),
     perfMetricsEnabled: parseBoolEnv(process.env.PERF_METRICS_ENABLED, true),
-    perfReportIntervalMs: parseIntEnv(process.env.PERF_REPORT_INTERVAL_MS, 60_000, 5_000),
+    perfReportIntervalMs: parseIntEnv(process.env.PERF_REPORT_INTERVAL_MS, 60000, 5000),
     perfSampleLimit: parseIntEnv(process.env.PERF_SAMPLE_LIMIT, 300, 30),
     playerQueueMaxConcurrency: parseIntEnv(process.env.PLAYER_QUEUE_MAX_CONCURRENCY, 24, 1),
     playerQueueMaxPending: parseIntEnv(process.env.PLAYER_QUEUE_MAX_PENDING, 2000, 10),
     playerQueueMaxPendingPerPlayer: parseIntEnv(process.env.PLAYER_QUEUE_MAX_PENDING_PER_PLAYER, 6, 1),
 };
+//# sourceMappingURL=runtime-config.js.map

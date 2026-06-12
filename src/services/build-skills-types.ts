@@ -1,0 +1,38 @@
+// @ts-nocheck
+export const DEFAULT_EFFECTS = {
+    combatModifiers: {
+        attackPct: 0,
+        arcanePct: 0,
+        defensePct: 0,
+        moveSpeedPct: 0,
+        atkSpeedPct: 0,
+        maxHpFlat: 0,
+        maxEnergyFlat: 0,
+        attackFlat: 0,
+        arcaneFlat: 0,
+        defenseFlat: 0,
+        critChanceFlat: 0,
+        evasionFlat: 0,
+        resistPhysicalFlat: 0,
+        resistElementalFlat: 0,
+        resistArcaneFlat: 0,
+        resistHolyFlat: 0,
+        resistChemicalFlat: 0,
+    },
+    travelStaminaCostMultiplier: 1,
+    travelTimeMultiplier: 1,
+    actionEnergyCostMultiplier: {
+        chop: 1,
+        mine: 1,
+        gather: 1,
+        fish: 1,
+    },
+    actionYieldMultiplier: {
+        chop: 1,
+        mine: 1,
+        gather: 1,
+        fish: 1,
+    },
+    passiveStaRegenBonus: 0,
+    counterAttackRatio: 0,
+};

@@ -1,15 +1,34 @@
-import { type DayPeriod } from '../data/day-cycle.js';
-import type { Language } from '../lib/i18n.js';
-export interface DayCycleSnapshot {
-    period: DayPeriod;
-    periodIndex: 0 | 1 | 2 | 3;
+export declare function getDayCycleSnapshot(nowMs?: number): {
+    period: string;
+    periodIndex: number;
     cycleIndex: number;
     elapsedInPeriodMs: number;
     remainingInPeriodMs: number;
     nextTransitionAt: Date;
     isEnabled: boolean;
-}
-export declare function getDayCycleSnapshot(nowMs?: number): DayCycleSnapshot;
-export declare function getDayCycleEffectsForBiome(biomeName: string, snapshot: DayCycleSnapshot): import("../data/day-cycle.js").DayPeriodEffects;
-export declare function formatDayCycleLine(langRaw: Language | string | null | undefined, snapshot: DayCycleSnapshot): string;
-export declare function getDayCycleAmbientLine(langRaw: Language | string | null | undefined, biomeName: string, snapshot: DayCycleSnapshot): string | null;
+};
+export declare function getDayCycleEffectsForBiome(biomeName: any, snapshot: any): {
+    spawnMultiplier: any;
+    yieldMultiplier: any;
+    energyCostMultiplier: any;
+    actionSpawnMultiplier: {
+        gather: number;
+        chop: number;
+        mine: number;
+        fish: number;
+    };
+    actionYieldMultiplier: {
+        gather: number;
+        chop: number;
+        mine: number;
+        fish: number;
+    };
+    actionEnergyCostMultiplier: {
+        gather: number;
+        chop: number;
+        mine: number;
+        fish: number;
+    };
+};
+export declare function formatDayCycleLine(langRaw: any, snapshot: any): string;
+export declare function getDayCycleAmbientLine(langRaw: any, biomeName: any, snapshot: any): any;

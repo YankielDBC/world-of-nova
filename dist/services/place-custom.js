@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { grantToolToPlayer } from './bags.js';
 import { enterCaveForPlayer } from './cave-system.js';
@@ -346,3 +347,4 @@ export async function executeCustomPlaceInteraction(params) {
     }
     return { handled: false };
 }
+//# sourceMappingURL=place-custom.js.map

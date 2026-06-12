@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 import { prisma } from '../../lib/db.js';
 import { EMOJIS } from '../../data/emojis.js';
@@ -13,12 +14,12 @@ export function getPlayerLanguage(player) {
 }
 export function formatShortNumber(value) {
     const abs = Math.abs(value);
-    if (abs >= 1_000_000_000)
-        return `${(value / 1_000_000_000).toFixed(abs >= 10_000_000_000 ? 0 : 1)}B`;
-    if (abs >= 1_000_000)
-        return `${(value / 1_000_000).toFixed(abs >= 10_000_000 ? 0 : 1)}M`;
-    if (abs >= 1_000)
-        return `${(value / 1_000).toFixed(abs >= 10_000 ? 0 : 1)}K`;
+    if (abs >= 1000000000)
+        return `${(value / 1000000000).toFixed(abs >= 10000000000 ? 0 : 1)}B`;
+    if (abs >= 1000000)
+        return `${(value / 1000000).toFixed(abs >= 10000000 ? 0 : 1)}M`;
+    if (abs >= 1000)
+        return `${(value / 1000).toFixed(abs >= 10000 ? 0 : 1)}K`;
     return `${Math.floor(value)}`;
 }
 export function formatInt(value) {
@@ -113,3 +114,4 @@ export function buildExchangeKeyboard(placeId, buildingKey) {
         .row()
         .text('↩ Hub', `market_hub:${placeId}|${buildingKey}`);
 }
+//# sourceMappingURL=market-module-helpers.js.map

@@ -1,29 +1,132 @@
-import { type BankBalance, type BankSummary, type DbClient, type VaultMoveEntry, type VaultMoveResult, type VaultOverview, type VaultProfile } from './crown-bank-core.js';
-export type BankCurrency = 'SILVER' | 'GOLD';
-export type VaultMoveDirection = 'bag_to_vault' | 'vault_to_bag';
-export type { VaultProfile, VaultMoveEntry, VaultMoveResult, VaultOverview, BankBalance, BankSummary } from './crown-bank-core.js';
-export declare function getVaultBalance(playerId: number, db?: DbClient): Promise<BankBalance>;
-export declare function getBankSummary(playerId: number): Promise<BankSummary>;
-export declare function calculateDepositFeeSilver(currency: BankCurrency, amount: number): number;
-export declare function getVaultOverview(playerId: number, profile?: VaultProfile): Promise<VaultOverview>;
-export declare function listVaultMoveEntries(playerId: number, direction: VaultMoveDirection, profile?: VaultProfile): Promise<{
-    entries: VaultMoveEntry[];
-    overview: VaultOverview;
+export declare function getVaultBalance(playerId: any, db?: import("@prisma/client").PrismaClient<import("@prisma/client").Prisma.PrismaClientOptions, import("@prisma/client").Prisma.LogLevel, import("@prisma/client/runtime/library").DefaultArgs>): Promise<{
+    silver: number;
+    gold: number;
 }>;
-export declare function moveVaultObject(playerId: number, direction: VaultMoveDirection, slotUid: number, quantity?: number, profile?: VaultProfile): Promise<VaultMoveResult>;
-export declare function depositToVault(playerId: number, currency: BankCurrency, amount: number): Promise<{
+export declare function getBankSummary(playerId: any): Promise<{
+    carried: {
+        silver: number;
+        gold: number;
+    };
+    vault: {
+        silver: number;
+        gold: number;
+    };
+    total: {
+        silver: number;
+        gold: number;
+    };
+}>;
+export declare function calculateDepositFeeSilver(currency: any, amount: any): number;
+export declare function getVaultOverview(playerId: any, profile?: string): Promise<{
+    usedSlots: any;
+    totalSlots: any;
+    objectStacks: any;
+    objectUnits: any;
+    marketValueSilver: any;
+    summary: {
+        carried: {
+            silver: number;
+            gold: number;
+        };
+        vault: {
+            silver: number;
+            gold: number;
+        };
+        total: {
+            silver: number;
+            gold: number;
+        };
+    };
+}>;
+export declare function listVaultMoveEntries(playerId: any, direction: any, profile?: string): Promise<{
+    entries: any;
+    overview: {
+        usedSlots: any;
+        totalSlots: any;
+        objectStacks: any;
+        objectUnits: any;
+        marketValueSilver: any;
+        summary: {
+            carried: {
+                silver: number;
+                gold: number;
+            };
+            vault: {
+                silver: number;
+                gold: number;
+            };
+            total: {
+                silver: number;
+                gold: number;
+            };
+        };
+    };
+}>;
+export declare function moveVaultObject(playerId: any, direction: any, slotUid: any, quantity: any, profile?: string): Promise<{
     success: boolean;
     message: string;
-    summary?: BankSummary;
 }>;
-export declare function depositToVaultWithFee(playerId: number, currency: BankCurrency, amount: number): Promise<{
+export declare function depositToVault(playerId: any, currency: any, amount: any): Promise<{
     success: boolean;
     message: string;
-    summary?: BankSummary;
-    feeSilver?: number;
-}>;
-export declare function withdrawFromVault(playerId: number, currency: BankCurrency, amount: number): Promise<{
+    summary: {
+        carried: {
+            silver: number;
+            gold: number;
+        };
+        vault: {
+            silver: number;
+            gold: number;
+        };
+        total: {
+            silver: number;
+            gold: number;
+        };
+    };
+} | {
     success: boolean;
     message: string;
-    summary?: BankSummary;
+}>;
+export declare function depositToVaultWithFee(playerId: any, currency: any, amount: any): Promise<{
+    success: boolean;
+    message: string;
+    summary: {
+        carried: {
+            silver: number;
+            gold: number;
+        };
+        vault: {
+            silver: number;
+            gold: number;
+        };
+        total: {
+            silver: number;
+            gold: number;
+        };
+    };
+    feeSilver: number;
+} | {
+    success: boolean;
+    message: string;
+}>;
+export declare function withdrawFromVault(playerId: any, currency: any, amount: any): Promise<{
+    success: boolean;
+    message: string;
+    summary: {
+        carried: {
+            silver: number;
+            gold: number;
+        };
+        vault: {
+            silver: number;
+            gold: number;
+        };
+        total: {
+            silver: number;
+            gold: number;
+        };
+    };
+} | {
+    success: boolean;
+    message: string;
 }>;

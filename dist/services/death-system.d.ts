@@ -1,38 +1,29 @@
 import { InlineKeyboard } from 'grammy';
-import type { Language } from '../lib/i18n.js';
-import type { DeathTransitionResult } from './death-system-types.js';
-export type { ActiveDeathState, CorpseSnapshotEntry, DeathTransitionResult, PlayerCorpseState, } from './death-system-types.js';
 export { ensureDeathSystemSchema, getActiveCorpseById, getActiveCorpseForPlayer, getActiveDeathStateByPlayerId, getActiveDeathStateByTgId, isPlayerGhostByTgId, setSoulAnchorForPlayer, } from './death-system-state.js';
-export declare function getNearestCemeteryCoords(x: number, y: number): {
+export declare function getNearestCemeteryCoords(x: any, y: any): {
     x: number;
     y: number;
     label: string;
     distance: number;
 };
-export declare function isNearCemetery(x: number, y: number, radius?: number): boolean;
-export declare function killPlayerAndCreateCorpse(params: {
-    playerId: number;
-    tgId: string;
-    worldMapId: number;
-    deathX: number;
-    deathY: number;
-}): Promise<DeathTransitionResult>;
-export declare function recoverOwnCorpse(tgId: string): Promise<{
+export declare function isNearCemetery(x: any, y: any, radius?: number): boolean;
+export declare function killPlayerAndCreateCorpse(params: any): Promise<any>;
+export declare function recoverOwnCorpse(tgId: any): Promise<any>;
+export declare function moveGhostPlayer(tgId: any, direction: any): Promise<{
     success: boolean;
     message: string;
-}>;
-export declare function moveGhostPlayer(tgId: string, direction: 'up' | 'down' | 'left' | 'right'): Promise<{
+} | {
     success: boolean;
-    message?: string;
+    message?: undefined;
 }>;
-export declare function renderGhostMap(tgId: string): Promise<{
-    header: string;
+export declare function renderGhostMap(tgId: any): Promise<{
+    header: any;
     biomeName: string;
     grid: string;
-    footer: string;
+    footer: any;
     keyboard: InlineKeyboard;
-} | null>;
-export declare function getGhostHintText(tgId: string): Promise<string | null>;
-export declare function buildGhostBlockedText(tgId: string): Promise<string | null>;
-export declare function getDeathSummaryForProfile(tgId: string): Promise<string | null>;
-export declare function buildPveDeathCard(lang: Language, outcome: DeathTransitionResult, combatLog: string[]): string;
+}>;
+export declare function getGhostHintText(tgId: any): Promise<any>;
+export declare function buildGhostBlockedText(tgId: any): Promise<any>;
+export declare function getDeathSummaryForProfile(tgId: any): Promise<string>;
+export declare function buildPveDeathCard(lang: any, outcome: any, combatLog: any): string;

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { RUNTIME_CONFIG } from '../lib/runtime-config.js';
 export async function runStartupSequence(bot, deps) {
     console.log('⚔️ World of Nova - Nightfall v1.0');
@@ -57,3 +58,4 @@ export async function runStartupSequence(bot, deps) {
     console.log('✅ Bot ready!');
     console.log('👂 Listening for messages...');
 }
+//# sourceMappingURL=startup-sequence.js.map

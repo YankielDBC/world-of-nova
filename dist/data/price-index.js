@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const PRICE_INDEX = {
     forge: {
         repairQuickSilver: 4,
@@ -66,3 +67,4 @@ export function getBankDepositFeeSilverByValue(depositSilverValue) {
     }
     return Math.max(1, Math.ceil(depositSilverValue * PRICE_INDEX.bank.depositFeeRate));
 }
+//# sourceMappingURL=price-index.js.map

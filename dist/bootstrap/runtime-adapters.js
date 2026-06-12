@@ -1,3 +1,4 @@
+// @ts-nocheck
 export function asStringPlayerTgIdGetter(fn) {
     return (playerTgId) => fn(String(playerTgId));
 }
@@ -13,3 +14,4 @@ export function asOptionalLanguageSecondArg(fn) {
 export function asOptionalLanguageThirdArg(fn) {
     return (first, second, lang) => fn(first, second, lang);
 }
+//# sourceMappingURL=runtime-adapters.js.map

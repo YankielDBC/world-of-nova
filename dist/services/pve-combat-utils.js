@@ -1,3 +1,4 @@
+// @ts-nocheck
 export function t3(lang, es, en, ru) {
     if (lang === 'en')
         return en;
@@ -110,3 +111,4 @@ export function aggregatePlayerEffects(effects) {
 export function aggregateEnemyEffects(effects) {
     return effects.reduce((acc, effect) => mergeCombatModifiers(acc, effect.modifiers), {});
 }
+//# sourceMappingURL=pve-combat-utils.js.map

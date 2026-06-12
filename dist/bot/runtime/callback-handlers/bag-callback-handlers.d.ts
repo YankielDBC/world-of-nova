@@ -1,2 +1,1 @@
-import type { CallbackHandler } from '../callback-router-types.js';
-export declare const handleBagCallbacks: CallbackHandler;
+export declare const handleBagCallbacks: (ctx: any, callbackData: any, deps: any) => Promise<boolean>;

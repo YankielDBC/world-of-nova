@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const handleVentureConversationMessage = async (ctx, text, deps) => {
     const tgId = ctx.from.id;
     const ventureState = await deps.getVentureState(tgId);
@@ -226,3 +227,4 @@ export const handleBagConversationMessage = async (ctx, text, deps) => {
     }
     return true;
 };
+//# sourceMappingURL=conversation-message-handlers.js.map

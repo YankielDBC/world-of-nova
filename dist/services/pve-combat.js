@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma, calculateCombatStats } from '../lib/db.js';
 import { observePerf } from '../lib/perf-metrics.js';
 import { getCreatureSnapshotById, } from './creatures.js';
@@ -729,3 +730,4 @@ export async function resolvePveAction(params) {
         observePerf('pve.resolve', Date.now() - startedAt);
     }
 }
+//# sourceMappingURL=pve-combat.js.map

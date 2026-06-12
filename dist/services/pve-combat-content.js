@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { getLocalizedText3, } from '../data/skill-trees.js';
 import { RACIAL_TALENT_BALANCE } from '../data/racial-balance.js';
 import { buildCreatureDefeatCard } from './creature-defeat.js';
@@ -334,3 +335,4 @@ export function getCreatureScoutText(snapshot, lang) {
     }
     return lines.join('\n');
 }
+//# sourceMappingURL=pve-combat-content.js.map

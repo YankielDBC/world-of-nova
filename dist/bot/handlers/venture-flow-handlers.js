@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 import { prisma } from '../../lib/db.js';
 import { EMOJIS } from '../../data/emojis.js';
@@ -242,3 +243,4 @@ export function createVentureFlowHandlers(deps) {
         executeVenture,
     };
 }
+//# sourceMappingURL=venture-flow-handlers.js.map

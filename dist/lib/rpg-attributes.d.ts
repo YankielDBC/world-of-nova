@@ -1,25 +1,53 @@
-export type RaceKey = 'zolk' | 'uren';
-export type ClassKey = 'curse_hunter' | 'alchemist_rogue' | 'dark_druid' | 'arcane';
-export type PrimaryAttrKey = 'str' | 'dex' | 'int' | 'vit' | 'agi' | 'eng';
-export interface PrimaryAttributes {
-    str: number;
-    dex: number;
-    int: number;
-    vit: number;
-    agi: number;
-    eng: number;
-}
-export declare const CLASS_BONUS_TABLE: Record<ClassKey, PrimaryAttributes>;
-export declare function getClassAttributesAtLevel(params: {
-    race?: string | null;
-    classKey?: string | null;
-    level: number;
-}): PrimaryAttributes | null;
-export declare function getClassGrowthDebug(params: {
-    race?: string | null;
-    classKey?: string | null;
-    level: number;
-}): {
+export declare const CLASS_BONUS_TABLE: {
+    curse_hunter: {
+        str: number;
+        dex: number;
+        int: number;
+        vit: number;
+        agi: number;
+        eng: number;
+    };
+    alchemist_rogue: {
+        str: number;
+        dex: number;
+        int: number;
+        vit: number;
+        agi: number;
+        eng: number;
+    };
+    dark_druid: {
+        str: number;
+        dex: number;
+        int: number;
+        vit: number;
+        agi: number;
+        eng: number;
+    };
+    arcane: {
+        str: number;
+        dex: number;
+        int: number;
+        vit: number;
+        agi: number;
+        eng: number;
+    };
+};
+export declare function getClassAttributesAtLevel(params: any): {
+    str: any;
+    dex: any;
+    int: any;
+    vit: any;
+    agi: any;
+    eng: any;
+};
+export declare function getClassGrowthDebug(params: any): {
     lines: string[];
-    attrs: PrimaryAttributes | null;
+    attrs: {
+        str: any;
+        dex: any;
+        int: any;
+        vit: any;
+        agi: any;
+        eng: any;
+    };
 };

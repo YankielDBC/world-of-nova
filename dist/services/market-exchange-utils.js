@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { TOOLS } from '../types/tools.js';
 export function safeInt(value) {
     if (typeof value === 'number' && Number.isFinite(value))
@@ -62,3 +63,4 @@ export function formatAgoMinutes(createdAt) {
     const rem = mins % 60;
     return rem === 0 ? `${hours}h` : `${hours}h ${rem}m`;
 }
+//# sourceMappingURL=market-exchange-utils.js.map

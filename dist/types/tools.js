@@ -1,3 +1,4 @@
+// @ts-nocheck
 // ============================================
 // WORLD OF NOVA - TOOLS SYSTEM
 // ============================================
@@ -85,3 +86,4 @@ export function getToolsByType(type) {
 export function getToolById(toolId) {
     return TOOLS[toolId];
 }
+//# sourceMappingURL=tools.js.map

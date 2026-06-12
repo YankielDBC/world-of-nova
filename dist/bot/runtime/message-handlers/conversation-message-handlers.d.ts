@@ -1,4 +1,3 @@
-import type { MessageHandler } from '../message-router-types.js';
-export declare const handleVentureConversationMessage: MessageHandler;
-export declare const handleInspectConversationMessage: MessageHandler;
-export declare const handleBagConversationMessage: MessageHandler;
+export declare const handleVentureConversationMessage: (ctx: any, text: any, deps: any) => Promise<boolean>;
+export declare const handleInspectConversationMessage: (ctx: any, text: any, deps: any) => Promise<boolean>;
+export declare const handleBagConversationMessage: (ctx: any, text: any, deps: any) => Promise<boolean>;

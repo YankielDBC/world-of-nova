@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { EMOJIS } from '../data/emojis.js';
 export function getRequiredXpForLevel(level) {
     return Math.max(150, level * 150);
@@ -72,3 +73,4 @@ export function buildProfileCard(data, lang = 'es') {
     ];
     return lines.join('\n');
 }
+//# sourceMappingURL=player-ui.js.map

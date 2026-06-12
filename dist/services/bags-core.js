@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 import { EMOJIS } from '../data/emojis.js';
 import { EQUIPMENT_SLOT_LABELS } from '../data/equipment.js';
@@ -425,3 +426,4 @@ export function buildBagText(bag, usage, slotViews, lang) {
     }
     return lines.join('\n').trim();
 }
+//# sourceMappingURL=bags-core.js.map

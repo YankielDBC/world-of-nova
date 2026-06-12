@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const handleFeatureModuleMessages = async (ctx, text, deps) => {
     if (await deps.bankModule.handleMessage(ctx, text))
         return true;
@@ -24,3 +25,4 @@ export const handleRegistrationFallbackMessage = async (ctx, text, deps) => {
     }
     return false;
 };
+//# sourceMappingURL=module-message-handlers.js.map

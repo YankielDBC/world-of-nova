@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 import { randomUUID } from 'node:crypto';
 import { prisma, getPlayerByTelegramId } from '../lib/db.js';
@@ -120,7 +121,7 @@ async function markRetryOrFailed(jobId, lockToken, attempts, maxAttempts, error)
         }));
         return;
     }
-    const retryInMs = Math.min(30_000, attempts * 2_000);
+    const retryInMs = Math.min(30000, attempts * 2000);
     await withPrismaRetry('game-jobs.mark-retry', () => prisma.gameJob.updateMany({
         where: { id: jobId, status: 'RUNNING', lockToken },
         data: {
@@ -330,3 +331,4 @@ export function startGameJobWorker(bot) {
     }, RUNTIME_CONFIG.jobSweepIntervalMs);
     void processDueGameJobsOnce(bot);
 }
+//# sourceMappingURL=game-jobs.js.map

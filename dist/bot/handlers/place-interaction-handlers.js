@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 import { EMOJIS } from '../../data/emojis.js';
 function getCurrencyLabel(costType, lang) {
@@ -456,3 +457,4 @@ export function createPlaceInteractionHandlers(deps) {
         handlePlaceInteraction,
     };
 }
+//# sourceMappingURL=place-interaction-handlers.js.map

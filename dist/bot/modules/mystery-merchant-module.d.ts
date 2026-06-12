@@ -1,5 +1,5 @@
 export declare function createMysteryMerchantModule(): {
-    handleCallback: (ctx: any, callbackData: string) => Promise<boolean>;
-    handleMessage: (ctx: any, text: string) => Promise<boolean>;
+    handleCallback: (ctx: any, callbackData: any) => Promise<boolean>;
+    handleMessage: (ctx: any, text: any) => Promise<boolean>;
     openByCommand: (ctx: any) => Promise<void>;
 };

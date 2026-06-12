@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const WORLD_CENTER = { x: 0, y: 0 };
 const ZONE_BANDS = [
     {
@@ -82,3 +83,4 @@ export function getZoneBandByDistance(distance) {
 export function getZoneBandAtCoords(x, y) {
     return getZoneBandByDistance(getRadialDistance(x, y));
 }
+//# sourceMappingURL=world-zones.js.map

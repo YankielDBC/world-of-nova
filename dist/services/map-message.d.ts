@@ -1,8 +1,2 @@
-import { type Language } from '../lib/i18n.js';
-export declare function getMapSituationNotice(lang: Language, footer: string): string;
-export declare function renderMapCardText(mapResult: {
-    header: string;
-    biomeName: string;
-    grid: string;
-    footer: string;
-}, lang: Language): string;
+export declare function getMapSituationNotice(lang: any, footer: any): "" | "🔔 There is activity on this coordinate. Use 🧩 Interact." | "🔔 V etoy tochke est aktivnost. Ispolzuy 🧩 Vzaim." | "🔔 Hay actividad en esta coordenada. Usa 🧩 Interactuar.";
+export declare function renderMapCardText(mapResult: any, lang: any): string;

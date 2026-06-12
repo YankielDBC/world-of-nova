@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const handlePlaceCallbacks = async (ctx, callbackData, deps) => {
     if (callbackData.startsWith('place_building:')) {
         const payload = callbackData.replace('place_building:', '');
@@ -82,3 +83,4 @@ export const handleFeatureModuleCallbacks = async (ctx, callbackData, deps) => {
         return true;
     return false;
 };
+//# sourceMappingURL=place-callback-handlers.js.map

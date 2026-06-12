@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const ACTIVE_STATUS = 'ACTIVE';
 export const STORED_STATUS = 'STORED';
 export const DORMANT_STATUS = 'DORMANT';
@@ -22,3 +23,4 @@ export const bagInclude = {
         },
     },
 };
+//# sourceMappingURL=bags-types.js.map

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { getBuildSkillByKey, getLocalizedText3, } from '../data/skill-trees.js';
 import { getRacialTalentByKey } from '../data/racial-talents.js';
 import { aggregateEnemyEffects, aggregatePlayerEffects, clamp, effectSetToCombatModifiers, round1, t3, toNumber, turnsFromSeconds, } from './pve-combat-utils.js';
@@ -225,3 +226,4 @@ export function buildCurrentEnemyStats(view, extraEffects) {
         moveSpeed: round1(view.enemy.moveSpeed * (1 + (local.moveSpeedPct || 0))),
     };
 }
+//# sourceMappingURL=pve-combat-engine.js.map

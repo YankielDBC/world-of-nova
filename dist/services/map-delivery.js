@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { CUSTOM_EMOJI_TOKENS_SORTED } from '../data/custom-emojis.js';
 import { buildCustomEmojiHtmlFromEntities, buildCustomEmojiEntitiesForText, clampCustomEmojiEntitiesForMessage, SKIP_CUSTOM_EMOJI_TRANSFORMER_FLAG, } from '../lib/telegram-custom-emojis.js';
 import { debugTextPreview, logMapDebug, summarizeTextTokens } from '../lib/map-debug.js';
@@ -344,3 +345,4 @@ export async function sendMapCardSafeViaBot(params) {
         send,
     });
 }
+//# sourceMappingURL=map-delivery.js.map

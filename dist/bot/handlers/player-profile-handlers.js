@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { InlineKeyboard } from 'grammy';
 import { resolvePlayerDisplayTitle } from './player-misc-handlers.js';
 export function createPlayerProfileHandlers(deps) {
@@ -132,3 +133,4 @@ export function createPlayerProfileHandlers(deps) {
         },
     };
 }
+//# sourceMappingURL=player-profile-handlers.js.map

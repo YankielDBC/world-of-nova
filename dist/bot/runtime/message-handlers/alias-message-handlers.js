@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const handleInteractionAliasMessage = async (ctx, text, deps) => {
     const tgId = ctx.from.id;
     const interactAliasCommand = text.trim().match(/^\/ia_(\d+)(?:\.\.\.)?$/i);
@@ -87,3 +88,4 @@ export const handleBagAliasMessage = async (ctx, text, deps) => {
     }
     return true;
 };
+//# sourceMappingURL=alias-message-handlers.js.map

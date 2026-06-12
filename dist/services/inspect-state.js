@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { applyNodeCooldownRecovery, readTileResourceState, } from '../lib/tile-state.js';
 import { TOOLS } from '../types/tools.js';
@@ -9,7 +10,7 @@ import { getClimateEffectsForBiome } from './climate.js';
 import { getDayCycleEffectsForBiome } from './day-cycle.js';
 import { canRefreshNodesOnPeriodShift, detectActionFromTool, deterministicRandom, filterYieldsByPeriod, getDayActionKey, getNodeDominantRarity, getVisibleCountRange, isFishingNodeType, parseYields, toRarityCode, } from './inspect-utils.js';
 import { getZoneResourcePolicyAtCoords, getZoneSpawnMultiplierForNode, isNodeLevelAllowedInZone, } from './world-resource-rules.js';
-const RESOURCE_NODE_CACHE_TTL_MS = 60_000;
+const RESOURCE_NODE_CACHE_TTL_MS = 60000;
 const resourceNodeCache = new Map();
 export function getNodeRequiredSkill(action, nodeType, requiredTool) {
     if (requiredTool) {
@@ -282,3 +283,4 @@ export function buildGroundNodeView(entry, listIndex) {
         rarityCode: toRarityCode('common'),
     };
 }
+//# sourceMappingURL=inspect-state.js.map

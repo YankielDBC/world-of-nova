@@ -1,12 +1,9 @@
-import { Prisma, type WorldMap } from '@prisma/client';
-import { prisma } from '../lib/db.js';
-type DbClient = typeof prisma | Prisma.TransactionClient;
+import { Prisma } from '@prisma/client';
 export declare function invalidateCanonicalWorldMapCache(): void;
-export declare function getCanonicalWorldMap(tx?: DbClient): Promise<WorldMap>;
-export declare function getCanonicalWorldMapId(tx?: DbClient): Promise<number>;
+export declare function getCanonicalWorldMap(tx?: import("@prisma/client").PrismaClient<Prisma.PrismaClientOptions, Prisma.LogLevel, import("@prisma/client/runtime/library").DefaultArgs>): Promise<any>;
+export declare function getCanonicalWorldMapId(tx?: import("@prisma/client").PrismaClient<Prisma.PrismaClientOptions, Prisma.LogLevel, import("@prisma/client/runtime/library").DefaultArgs>): Promise<any>;
 export declare function ensureSingleCanonicalWorldMap(): Promise<{
     canonicalMapId: number;
     canonicalMapName: string;
-    mergedMapIds: number[];
+    mergedMapIds: any[];
 }>;
-export {};

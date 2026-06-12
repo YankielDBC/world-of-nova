@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { EMOJIS } from '../data/emojis.js';
 const NOVA_FISHING_INTERACTIONS = [
@@ -61,3 +62,4 @@ export async function ensureNovaFishingEnabled() {
         });
     }
 }
+//# sourceMappingURL=place-bootstrap.js.map

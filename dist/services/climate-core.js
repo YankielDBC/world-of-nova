@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { RUNTIME_CONFIG } from '../lib/runtime-config.js';
 export const KIND_EMOJI = {
     calm: '🌤️',
@@ -521,3 +522,4 @@ export function formatClimateLine(langRaw, snapshot) {
     const eventEmoji = EVENT_EMOJI[snapshot.specialEvent];
     return `🌦️ ${CLIMATE_TITLE[lang]}: ${kindEmoji} ${kindLabel} ${intensity} · ${EVENT_TITLE[lang]}: ${eventEmoji} ${eventLabel}`;
 }
+//# sourceMappingURL=climate-core.js.map

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { EMOJIS } from '../data/emojis.js';
 import { EQUIPMENT_SLOT_LABELS } from '../data/equipment.js';
@@ -723,3 +724,4 @@ export async function getEquipmentCardImpl(playerId) {
     lines.push('', 'Tip: /u_<id> desequipa tools, /ue_<slot> desequipa gear.');
     return lines.join('\n').trim();
 }
+//# sourceMappingURL=bags-tools.js.map

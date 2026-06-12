@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { RUNTIME_CONFIG } from './runtime-config.js';
 const metricMap = new Map();
 let reporterTimer = null;
@@ -81,3 +82,4 @@ export function startPerfReporter() {
     }
     reporterTimer = setInterval(flushPerfReport, RUNTIME_CONFIG.perfReportIntervalMs);
 }
+//# sourceMappingURL=perf-metrics.js.map

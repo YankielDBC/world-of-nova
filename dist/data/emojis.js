@@ -1,3 +1,4 @@
+// @ts-nocheck
 // ============================================
 // WORLD OF NOVA - EMOJI INDEX
 // Centralized emoji definitions for the entire game
@@ -148,3 +149,4 @@ export const EMOJIS = {
 export function getEmoji(category, key) {
     return EMOJIS[category][key];
 }
+//# sourceMappingURL=emojis.js.map

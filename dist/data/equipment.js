@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const EQUIPMENT_SLOT_ORDER = [
     'head',
     'chest',
@@ -69,3 +70,4 @@ export const EQUIPMENT_UTILITY_STAT_KEYS = [
     'bankFeeReductionPct',
     'dropRateMinorPct',
 ];
+//# sourceMappingURL=equipment.js.map

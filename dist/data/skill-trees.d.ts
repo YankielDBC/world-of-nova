@@ -1,86 +1,2096 @@
-export type SkillFamily = 'class' | 'general';
-export type SkillType = 'passive' | 'active' | 'keystone' | 'reaction';
-export type SkillCategory = 'offense' | 'defense' | 'mobility' | 'utility' | 'reaction' | 'keystone';
-export type SkillClassKey = 'curse_hunter' | 'arcane' | 'dark_druid' | 'alchemist_rogue';
-export type SkillEventKey = 'on_turn_start' | 'on_hit_taken' | 'on_crit_taken' | 'on_crit_evaded' | 'on_crit_blocked' | 'on_hp_below_threshold' | 'on_sta_below_threshold';
-export type BuildActionKey = 'chop' | 'mine' | 'gather' | 'fish';
-export interface LocalizedText3 {
-    es: string;
-    en: string;
-    ru: string;
-}
-export interface BuildCombatModifierSet {
-    attackPct?: number;
-    arcanePct?: number;
-    defensePct?: number;
-    moveSpeedPct?: number;
-    atkSpeedPct?: number;
-    maxHpFlat?: number;
-    maxEnergyFlat?: number;
-    attackFlat?: number;
-    arcaneFlat?: number;
-    defenseFlat?: number;
-    critChanceFlat?: number;
-    evasionFlat?: number;
-    resistPhysicalFlat?: number;
-    resistElementalFlat?: number;
-    resistArcaneFlat?: number;
-    resistHolyFlat?: number;
-    resistChemicalFlat?: number;
-}
-export interface BuildSkillEffectSet {
-    combatModifiers?: BuildCombatModifierSet;
-    travelStaminaCostMultiplierDelta?: number;
-    travelTimeMultiplierDelta?: number;
-    actionEnergyCostMultiplierDelta?: Partial<Record<BuildActionKey, number>>;
-    actionYieldMultiplierDelta?: Partial<Record<BuildActionKey, number>>;
-    passiveStaRegenBonusDelta?: number;
-    counterAttackRatio?: number;
-}
-export interface BuildSkillCondition {
-    hpBelowPct?: number;
-    hpAbovePct?: number;
-    staBelowPct?: number;
-    staAbovePct?: number;
-}
-export interface BuildConditionalEffect {
-    condition: BuildSkillCondition;
-    effects: BuildSkillEffectSet;
-}
-export interface BuildActiveConfig {
-    cooldownSeconds: number;
-    castSeconds: number;
-    durationSeconds: number;
-    effects: BuildSkillEffectSet;
-}
-export interface BuildReactionConfig {
-    event: SkillEventKey;
-    cooldownSeconds: number;
-    durationSeconds: number;
-    effects: BuildSkillEffectSet;
-    condition?: BuildSkillCondition;
-}
-export interface BuildSkillDefinition {
+export declare function getClassSkillDefinitions(classKey: any): ({
     key: string;
-    family: SkillFamily;
-    classKey?: SkillClassKey;
-    type: SkillType;
-    category: SkillCategory;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
     maxRank: number;
     costPerRank: number;
     sortOrder: number;
-    name: LocalizedText3;
-    summary: LocalizedText3;
-    prerequisites?: string[];
-    passiveEffectsPerRank?: BuildSkillEffectSet;
-    passiveEffectsFlat?: BuildSkillEffectSet;
-    conditionalEffectsPerRank?: BuildConditionalEffect[];
-    activeConfig?: BuildActiveConfig;
-    reactionConfig?: BuildReactionConfig;
-}
-export declare function getClassSkillDefinitions(classKey: string | null | undefined): BuildSkillDefinition[];
-export declare function getGeneralSkillDefinitions(): BuildSkillDefinition[];
-export declare function getBuildSkillByKey(skillKeyRaw: string): BuildSkillDefinition | null;
-export declare function getClassSkillPointsForLevel(level: number): number;
-export declare function getGeneralSkillPointsForLevel(level: number): number;
-export declare function getLocalizedText3(text: LocalizedText3, lang: 'es' | 'en' | 'ru'): string;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsPerRank: {
+        combatModifiers: {
+            attackPct: number;
+            critChanceFlat: number;
+            evasionFlat?: undefined;
+            moveSpeedPct?: undefined;
+            arcanePct?: undefined;
+            defensePct?: undefined;
+            resistArcaneFlat?: undefined;
+            maxHpFlat?: undefined;
+        };
+        travelTimeMultiplierDelta?: undefined;
+        travelStaminaCostMultiplierDelta?: undefined;
+    };
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsPerRank: {
+        combatModifiers: {
+            evasionFlat: number;
+            moveSpeedPct: number;
+            attackPct?: undefined;
+            critChanceFlat?: undefined;
+            arcanePct?: undefined;
+            defensePct?: undefined;
+            resistArcaneFlat?: undefined;
+            maxHpFlat?: undefined;
+        };
+        travelTimeMultiplierDelta: number;
+        travelStaminaCostMultiplierDelta?: undefined;
+    };
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    conditionalEffectsPerRank: {
+        condition: {
+            hpBelowPct: number;
+        };
+        effects: {
+            combatModifiers: {
+                defensePct: number;
+                resistPhysicalFlat: number;
+            };
+        };
+    }[];
+    passiveEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    activeConfig: {
+        cooldownSeconds: number;
+        castSeconds: number;
+        durationSeconds: number;
+        effects: {
+            combatModifiers: {
+                attackPct: number;
+                moveSpeedPct: number;
+                arcanePct?: undefined;
+                atkSpeedPct?: undefined;
+                maxHpFlat?: undefined;
+                defensePct?: undefined;
+                evasionFlat?: undefined;
+            };
+            passiveStaRegenBonusDelta?: undefined;
+        };
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    reactionConfig: {
+        event: string;
+        cooldownSeconds: number;
+        durationSeconds: number;
+        effects: {
+            combatModifiers: {
+                attackPct: number;
+                critChanceFlat: number;
+                arcanePct?: undefined;
+                defensePct?: undefined;
+                evasionFlat?: undefined;
+            };
+            counterAttackRatio: number;
+        };
+        condition?: undefined;
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsFlat: {
+        combatModifiers: {
+            attackPct: number;
+            defensePct: number;
+            resistPhysicalFlat: number;
+            arcanePct?: undefined;
+            critChanceFlat?: undefined;
+            maxHpFlat?: undefined;
+            moveSpeedPct?: undefined;
+        };
+        actionEnergyCostMultiplierDelta?: undefined;
+        passiveStaRegenBonusDelta?: undefined;
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsPerRank: {
+        combatModifiers: {
+            arcanePct: number;
+            critChanceFlat: number;
+            attackPct?: undefined;
+            evasionFlat?: undefined;
+            moveSpeedPct?: undefined;
+            defensePct?: undefined;
+            resistArcaneFlat?: undefined;
+            maxHpFlat?: undefined;
+        };
+        travelTimeMultiplierDelta?: undefined;
+        travelStaminaCostMultiplierDelta?: undefined;
+    };
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsPerRank: {
+        combatModifiers: {
+            defensePct: number;
+            resistArcaneFlat: number;
+            attackPct?: undefined;
+            critChanceFlat?: undefined;
+            evasionFlat?: undefined;
+            moveSpeedPct?: undefined;
+            arcanePct?: undefined;
+            maxHpFlat?: undefined;
+        };
+        travelTimeMultiplierDelta?: undefined;
+        travelStaminaCostMultiplierDelta?: undefined;
+    };
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    conditionalEffectsPerRank: {
+        condition: {
+            staAbovePct: number;
+        };
+        effects: {
+            combatModifiers: {
+                arcanePct: number;
+            };
+        };
+    }[];
+    passiveEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    activeConfig: {
+        cooldownSeconds: number;
+        castSeconds: number;
+        durationSeconds: number;
+        effects: {
+            combatModifiers: {
+                arcanePct: number;
+                atkSpeedPct: number;
+                attackPct?: undefined;
+                moveSpeedPct?: undefined;
+                maxHpFlat?: undefined;
+                defensePct?: undefined;
+                evasionFlat?: undefined;
+            };
+            passiveStaRegenBonusDelta?: undefined;
+        };
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    reactionConfig: {
+        event: string;
+        cooldownSeconds: number;
+        durationSeconds: number;
+        effects: {
+            combatModifiers: {
+                arcanePct: number;
+                attackPct: number;
+                critChanceFlat?: undefined;
+                defensePct?: undefined;
+                evasionFlat?: undefined;
+            };
+            counterAttackRatio?: undefined;
+        };
+        condition?: undefined;
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsFlat: {
+        combatModifiers: {
+            arcanePct: number;
+            critChanceFlat: number;
+            attackPct?: undefined;
+            defensePct?: undefined;
+            resistPhysicalFlat?: undefined;
+            maxHpFlat?: undefined;
+            moveSpeedPct?: undefined;
+        };
+        actionEnergyCostMultiplierDelta: {
+            mine: number;
+            gather: number;
+        };
+        passiveStaRegenBonusDelta?: undefined;
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsPerRank: {
+        combatModifiers: {
+            maxHpFlat: number;
+            defensePct: number;
+            attackPct?: undefined;
+            critChanceFlat?: undefined;
+            evasionFlat?: undefined;
+            moveSpeedPct?: undefined;
+            arcanePct?: undefined;
+            resistArcaneFlat?: undefined;
+        };
+        travelTimeMultiplierDelta?: undefined;
+        travelStaminaCostMultiplierDelta?: undefined;
+    };
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsPerRank: {
+        travelStaminaCostMultiplierDelta: number;
+        travelTimeMultiplierDelta: number;
+        combatModifiers: {
+            moveSpeedPct: number;
+            attackPct?: undefined;
+            critChanceFlat?: undefined;
+            evasionFlat?: undefined;
+            arcanePct?: undefined;
+            defensePct?: undefined;
+            resistArcaneFlat?: undefined;
+            maxHpFlat?: undefined;
+        };
+    };
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    activeConfig: {
+        cooldownSeconds: number;
+        castSeconds: number;
+        durationSeconds: number;
+        effects: {
+            passiveStaRegenBonusDelta: number;
+            combatModifiers: {
+                maxHpFlat: number;
+                defensePct: number;
+                attackPct?: undefined;
+                moveSpeedPct?: undefined;
+                arcanePct?: undefined;
+                atkSpeedPct?: undefined;
+                evasionFlat?: undefined;
+            };
+        };
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    reactionConfig: {
+        event: string;
+        cooldownSeconds: number;
+        durationSeconds: number;
+        effects: {
+            combatModifiers: {
+                defensePct: number;
+                attackPct?: undefined;
+                critChanceFlat?: undefined;
+                arcanePct?: undefined;
+                evasionFlat?: undefined;
+            };
+            counterAttackRatio: number;
+        };
+        condition?: undefined;
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsFlat: {
+        combatModifiers: {
+            maxHpFlat: number;
+            defensePct: number;
+            attackPct?: undefined;
+            resistPhysicalFlat?: undefined;
+            arcanePct?: undefined;
+            critChanceFlat?: undefined;
+            moveSpeedPct?: undefined;
+        };
+        passiveStaRegenBonusDelta: number;
+        actionEnergyCostMultiplierDelta?: undefined;
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    conditionalEffectsPerRank: {
+        condition: {
+            hpBelowPct: number;
+        };
+        effects: {
+            combatModifiers: {
+                attackPct: number;
+                arcanePct: number;
+            };
+        };
+    }[];
+    passiveEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    activeConfig: {
+        cooldownSeconds: number;
+        castSeconds: number;
+        durationSeconds: number;
+        effects: {
+            combatModifiers: {
+                evasionFlat: number;
+                moveSpeedPct: number;
+                attackPct?: undefined;
+                arcanePct?: undefined;
+                atkSpeedPct?: undefined;
+                maxHpFlat?: undefined;
+                defensePct?: undefined;
+            };
+            passiveStaRegenBonusDelta?: undefined;
+        };
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    reactionConfig: {
+        event: string;
+        cooldownSeconds: number;
+        durationSeconds: number;
+        effects: {
+            combatModifiers: {
+                defensePct: number;
+                evasionFlat: number;
+                attackPct?: undefined;
+                critChanceFlat?: undefined;
+                arcanePct?: undefined;
+            };
+            counterAttackRatio?: undefined;
+        };
+        condition: {
+            hpBelowPct: number;
+        };
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsFlat: {
+        combatModifiers: {
+            attackPct: number;
+            moveSpeedPct: number;
+            critChanceFlat: number;
+            defensePct?: undefined;
+            resistPhysicalFlat?: undefined;
+            arcanePct?: undefined;
+            maxHpFlat?: undefined;
+        };
+        actionEnergyCostMultiplierDelta?: undefined;
+        passiveStaRegenBonusDelta?: undefined;
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+})[];
+export declare function getGeneralSkillDefinitions(): ({
+    key: string;
+    family: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsPerRank: {
+        combatModifiers: {
+            moveSpeedPct: number;
+            atkSpeedPct: number;
+            defensePct?: undefined;
+            resistArcaneFlat?: undefined;
+            resistElementalFlat?: undefined;
+        };
+        travelTimeMultiplierDelta: number;
+        actionYieldMultiplierDelta?: undefined;
+        actionEnergyCostMultiplierDelta?: undefined;
+    };
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsPerRank: {
+        actionYieldMultiplierDelta: {
+            gather: number;
+            chop: number;
+        };
+        combatModifiers?: undefined;
+        travelTimeMultiplierDelta?: undefined;
+        actionEnergyCostMultiplierDelta?: undefined;
+    };
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsPerRank: {
+        actionEnergyCostMultiplierDelta: {
+            gather: number;
+            chop: number;
+            mine: number;
+        };
+        combatModifiers?: undefined;
+        travelTimeMultiplierDelta?: undefined;
+        actionYieldMultiplierDelta?: undefined;
+    };
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsPerRank: {
+        combatModifiers: {
+            defensePct: number;
+            resistArcaneFlat: number;
+            resistElementalFlat: number;
+            moveSpeedPct?: undefined;
+            atkSpeedPct?: undefined;
+        };
+        travelTimeMultiplierDelta?: undefined;
+        actionYieldMultiplierDelta?: undefined;
+        actionEnergyCostMultiplierDelta?: undefined;
+    };
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    conditionalEffectsPerRank: {
+        condition: {
+            staBelowPct: number;
+        };
+        effects: {
+            passiveStaRegenBonusDelta: number;
+            travelStaminaCostMultiplierDelta: number;
+            actionEnergyCostMultiplierDelta: {
+                gather: number;
+                chop: number;
+                mine: number;
+                fish: number;
+            };
+        };
+    }[];
+    passiveEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    conditionalEffectsPerRank: {
+        condition: {
+            hpBelowPct: number;
+        };
+        effects: {
+            combatModifiers: {
+                defensePct: number;
+                maxHpFlat: number;
+            };
+        };
+    }[];
+    passiveEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    activeConfig: {
+        cooldownSeconds: number;
+        castSeconds: number;
+        durationSeconds: number;
+        effects: {
+            combatModifiers: {
+                attackPct: number;
+                arcanePct: number;
+                critChanceFlat: number;
+            };
+        };
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsFlat: {
+        combatModifiers: {
+            defensePct: number;
+            attackPct: number;
+            maxEnergyFlat: number;
+        };
+        passiveStaRegenBonusDelta: number;
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+})[];
+export declare function getBuildSkillByKey(skillKeyRaw: any): {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsPerRank: {
+        combatModifiers: {
+            attackPct: number;
+            critChanceFlat: number;
+            evasionFlat?: undefined;
+            moveSpeedPct?: undefined;
+            arcanePct?: undefined;
+            defensePct?: undefined;
+            resistArcaneFlat?: undefined;
+            maxHpFlat?: undefined;
+        };
+        travelTimeMultiplierDelta?: undefined;
+        travelStaminaCostMultiplierDelta?: undefined;
+    };
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsPerRank: {
+        combatModifiers: {
+            evasionFlat: number;
+            moveSpeedPct: number;
+            attackPct?: undefined;
+            critChanceFlat?: undefined;
+            arcanePct?: undefined;
+            defensePct?: undefined;
+            resistArcaneFlat?: undefined;
+            maxHpFlat?: undefined;
+        };
+        travelTimeMultiplierDelta: number;
+        travelStaminaCostMultiplierDelta?: undefined;
+    };
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    conditionalEffectsPerRank: {
+        condition: {
+            hpBelowPct: number;
+        };
+        effects: {
+            combatModifiers: {
+                defensePct: number;
+                resistPhysicalFlat: number;
+            };
+        };
+    }[];
+    passiveEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    activeConfig: {
+        cooldownSeconds: number;
+        castSeconds: number;
+        durationSeconds: number;
+        effects: {
+            combatModifiers: {
+                attackPct: number;
+                moveSpeedPct: number;
+                arcanePct?: undefined;
+                atkSpeedPct?: undefined;
+                maxHpFlat?: undefined;
+                defensePct?: undefined;
+                evasionFlat?: undefined;
+            };
+            passiveStaRegenBonusDelta?: undefined;
+        };
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    reactionConfig: {
+        event: string;
+        cooldownSeconds: number;
+        durationSeconds: number;
+        effects: {
+            combatModifiers: {
+                attackPct: number;
+                critChanceFlat: number;
+                arcanePct?: undefined;
+                defensePct?: undefined;
+                evasionFlat?: undefined;
+            };
+            counterAttackRatio: number;
+        };
+        condition?: undefined;
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsFlat: {
+        combatModifiers: {
+            attackPct: number;
+            defensePct: number;
+            resistPhysicalFlat: number;
+            arcanePct?: undefined;
+            critChanceFlat?: undefined;
+            maxHpFlat?: undefined;
+            moveSpeedPct?: undefined;
+        };
+        actionEnergyCostMultiplierDelta?: undefined;
+        passiveStaRegenBonusDelta?: undefined;
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsPerRank: {
+        combatModifiers: {
+            arcanePct: number;
+            critChanceFlat: number;
+            attackPct?: undefined;
+            evasionFlat?: undefined;
+            moveSpeedPct?: undefined;
+            defensePct?: undefined;
+            resistArcaneFlat?: undefined;
+            maxHpFlat?: undefined;
+        };
+        travelTimeMultiplierDelta?: undefined;
+        travelStaminaCostMultiplierDelta?: undefined;
+    };
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsPerRank: {
+        combatModifiers: {
+            defensePct: number;
+            resistArcaneFlat: number;
+            attackPct?: undefined;
+            critChanceFlat?: undefined;
+            evasionFlat?: undefined;
+            moveSpeedPct?: undefined;
+            arcanePct?: undefined;
+            maxHpFlat?: undefined;
+        };
+        travelTimeMultiplierDelta?: undefined;
+        travelStaminaCostMultiplierDelta?: undefined;
+    };
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    conditionalEffectsPerRank: {
+        condition: {
+            staAbovePct: number;
+        };
+        effects: {
+            combatModifiers: {
+                arcanePct: number;
+            };
+        };
+    }[];
+    passiveEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    activeConfig: {
+        cooldownSeconds: number;
+        castSeconds: number;
+        durationSeconds: number;
+        effects: {
+            combatModifiers: {
+                arcanePct: number;
+                atkSpeedPct: number;
+                attackPct?: undefined;
+                moveSpeedPct?: undefined;
+                maxHpFlat?: undefined;
+                defensePct?: undefined;
+                evasionFlat?: undefined;
+            };
+            passiveStaRegenBonusDelta?: undefined;
+        };
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    reactionConfig: {
+        event: string;
+        cooldownSeconds: number;
+        durationSeconds: number;
+        effects: {
+            combatModifiers: {
+                arcanePct: number;
+                attackPct: number;
+                critChanceFlat?: undefined;
+                defensePct?: undefined;
+                evasionFlat?: undefined;
+            };
+            counterAttackRatio?: undefined;
+        };
+        condition?: undefined;
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsFlat: {
+        combatModifiers: {
+            arcanePct: number;
+            critChanceFlat: number;
+            attackPct?: undefined;
+            defensePct?: undefined;
+            resistPhysicalFlat?: undefined;
+            maxHpFlat?: undefined;
+            moveSpeedPct?: undefined;
+        };
+        actionEnergyCostMultiplierDelta: {
+            mine: number;
+            gather: number;
+        };
+        passiveStaRegenBonusDelta?: undefined;
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsPerRank: {
+        combatModifiers: {
+            maxHpFlat: number;
+            defensePct: number;
+            attackPct?: undefined;
+            critChanceFlat?: undefined;
+            evasionFlat?: undefined;
+            moveSpeedPct?: undefined;
+            arcanePct?: undefined;
+            resistArcaneFlat?: undefined;
+        };
+        travelTimeMultiplierDelta?: undefined;
+        travelStaminaCostMultiplierDelta?: undefined;
+    };
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsPerRank: {
+        travelStaminaCostMultiplierDelta: number;
+        travelTimeMultiplierDelta: number;
+        combatModifiers: {
+            moveSpeedPct: number;
+            attackPct?: undefined;
+            critChanceFlat?: undefined;
+            evasionFlat?: undefined;
+            arcanePct?: undefined;
+            defensePct?: undefined;
+            resistArcaneFlat?: undefined;
+            maxHpFlat?: undefined;
+        };
+    };
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    activeConfig: {
+        cooldownSeconds: number;
+        castSeconds: number;
+        durationSeconds: number;
+        effects: {
+            passiveStaRegenBonusDelta: number;
+            combatModifiers: {
+                maxHpFlat: number;
+                defensePct: number;
+                attackPct?: undefined;
+                moveSpeedPct?: undefined;
+                arcanePct?: undefined;
+                atkSpeedPct?: undefined;
+                evasionFlat?: undefined;
+            };
+        };
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    reactionConfig: {
+        event: string;
+        cooldownSeconds: number;
+        durationSeconds: number;
+        effects: {
+            combatModifiers: {
+                defensePct: number;
+                attackPct?: undefined;
+                critChanceFlat?: undefined;
+                arcanePct?: undefined;
+                evasionFlat?: undefined;
+            };
+            counterAttackRatio: number;
+        };
+        condition?: undefined;
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsFlat: {
+        combatModifiers: {
+            maxHpFlat: number;
+            defensePct: number;
+            attackPct?: undefined;
+            resistPhysicalFlat?: undefined;
+            arcanePct?: undefined;
+            critChanceFlat?: undefined;
+            moveSpeedPct?: undefined;
+        };
+        passiveStaRegenBonusDelta: number;
+        actionEnergyCostMultiplierDelta?: undefined;
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    conditionalEffectsPerRank: {
+        condition: {
+            hpBelowPct: number;
+        };
+        effects: {
+            combatModifiers: {
+                attackPct: number;
+                arcanePct: number;
+            };
+        };
+    }[];
+    passiveEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    activeConfig: {
+        cooldownSeconds: number;
+        castSeconds: number;
+        durationSeconds: number;
+        effects: {
+            combatModifiers: {
+                evasionFlat: number;
+                moveSpeedPct: number;
+                attackPct?: undefined;
+                arcanePct?: undefined;
+                atkSpeedPct?: undefined;
+                maxHpFlat?: undefined;
+                defensePct?: undefined;
+            };
+            passiveStaRegenBonusDelta?: undefined;
+        };
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    reactionConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    reactionConfig: {
+        event: string;
+        cooldownSeconds: number;
+        durationSeconds: number;
+        effects: {
+            combatModifiers: {
+                defensePct: number;
+                evasionFlat: number;
+                attackPct?: undefined;
+                critChanceFlat?: undefined;
+                arcanePct?: undefined;
+            };
+            counterAttackRatio?: undefined;
+        };
+        condition: {
+            hpBelowPct: number;
+        };
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    classKey: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsFlat: {
+        combatModifiers: {
+            attackPct: number;
+            moveSpeedPct: number;
+            critChanceFlat: number;
+            defensePct?: undefined;
+            resistPhysicalFlat?: undefined;
+            arcanePct?: undefined;
+            maxHpFlat?: undefined;
+        };
+        actionEnergyCostMultiplierDelta?: undefined;
+        passiveStaRegenBonusDelta?: undefined;
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    reactionConfig?: undefined;
+} | {
+    key: string;
+    family: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsPerRank: {
+        combatModifiers: {
+            moveSpeedPct: number;
+            atkSpeedPct: number;
+            defensePct?: undefined;
+            resistArcaneFlat?: undefined;
+            resistElementalFlat?: undefined;
+        };
+        travelTimeMultiplierDelta: number;
+        actionYieldMultiplierDelta?: undefined;
+        actionEnergyCostMultiplierDelta?: undefined;
+    };
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsPerRank: {
+        actionYieldMultiplierDelta: {
+            gather: number;
+            chop: number;
+        };
+        combatModifiers?: undefined;
+        travelTimeMultiplierDelta?: undefined;
+        actionEnergyCostMultiplierDelta?: undefined;
+    };
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsPerRank: {
+        actionEnergyCostMultiplierDelta: {
+            gather: number;
+            chop: number;
+            mine: number;
+        };
+        combatModifiers?: undefined;
+        travelTimeMultiplierDelta?: undefined;
+        actionYieldMultiplierDelta?: undefined;
+    };
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsPerRank: {
+        combatModifiers: {
+            defensePct: number;
+            resistArcaneFlat: number;
+            resistElementalFlat: number;
+            moveSpeedPct?: undefined;
+            atkSpeedPct?: undefined;
+        };
+        travelTimeMultiplierDelta?: undefined;
+        actionYieldMultiplierDelta?: undefined;
+        actionEnergyCostMultiplierDelta?: undefined;
+    };
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    conditionalEffectsPerRank: {
+        condition: {
+            staBelowPct: number;
+        };
+        effects: {
+            passiveStaRegenBonusDelta: number;
+            travelStaminaCostMultiplierDelta: number;
+            actionEnergyCostMultiplierDelta: {
+                gather: number;
+                chop: number;
+                mine: number;
+                fish: number;
+            };
+        };
+    }[];
+    passiveEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    conditionalEffectsPerRank: {
+        condition: {
+            hpBelowPct: number;
+        };
+        effects: {
+            combatModifiers: {
+                defensePct: number;
+                maxHpFlat: number;
+            };
+        };
+    }[];
+    passiveEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    activeConfig: {
+        cooldownSeconds: number;
+        castSeconds: number;
+        durationSeconds: number;
+        effects: {
+            combatModifiers: {
+                attackPct: number;
+                arcanePct: number;
+                critChanceFlat: number;
+            };
+        };
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    passiveEffectsFlat?: undefined;
+} | {
+    key: string;
+    family: string;
+    type: string;
+    category: string;
+    maxRank: number;
+    costPerRank: number;
+    sortOrder: number;
+    name: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    summary: {
+        es: string;
+        en: string;
+        ru: string;
+    };
+    passiveEffectsFlat: {
+        combatModifiers: {
+            defensePct: number;
+            attackPct: number;
+            maxEnergyFlat: number;
+        };
+        passiveStaRegenBonusDelta: number;
+    };
+    passiveEffectsPerRank?: undefined;
+    conditionalEffectsPerRank?: undefined;
+    activeConfig?: undefined;
+};
+export declare function getClassSkillPointsForLevel(level: any): number;
+export declare function getGeneralSkillPointsForLevel(level: any): number;
+export declare function getLocalizedText3(text: any, lang: any): any;

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { TOOLS } from '../types/tools.js';
 const WATER_BIOMES = new Set(['river', 'lake']);
 const BASE_ENERGY_BY_ACTION = {
@@ -184,16 +185,16 @@ export function getMovementStaForBiome(biomeName) {
     return WATER_BIOMES.has(biomeName) ? 2 : 1;
 }
 export function shortNum(n) {
-    if (n >= 1_000_000_000)
-        return `${(n / 1_000_000_000).toFixed(1).replace(/\\.0$/, '')}B`;
-    if (n >= 1_000_000)
-        return `${(n / 1_000_000).toFixed(1).replace(/\\.0$/, '')}M`;
-    if (n >= 1_000)
-        return `${(n / 1_000).toFixed(1).replace(/\\.0$/, '')}K`;
+    if (n >= 1000000000)
+        return `${(n / 1000000000).toFixed(1).replace(/\\.0$/, '')}B`;
+    if (n >= 1000000)
+        return `${(n / 1000000).toFixed(1).replace(/\\.0$/, '')}M`;
+    if (n >= 1000)
+        return `${(n / 1000).toFixed(1).replace(/\\.0$/, '')}K`;
     return `${n}`;
 }
 export function formatMs(ms) {
-    if (ms < 1_000)
+    if (ms < 1000)
         return `${ms}ms`;
     const sec = Math.round(ms / 100) / 10;
     if (sec < 60)
@@ -210,3 +211,4 @@ export function formatPercent(part, total) {
 export function increment(record, key, amount = 1) {
     record[key] = (record[key] || 0) + amount;
 }
+//# sourceMappingURL=dev-explorer-utils.js.map

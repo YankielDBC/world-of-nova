@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { EMOJIS } from '../data/emojis.js';
 const CANONICAL_BIOMES = [
@@ -412,3 +413,4 @@ export async function ensureExpandedWorldGenerationCatalog() {
         }
     }
 }
+//# sourceMappingURL=world-bootstrap.js.map

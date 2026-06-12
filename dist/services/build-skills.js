@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { calculateCombatStats, prisma } from '../lib/db.js';
 import { observePerf } from '../lib/perf-metrics.js';
 import { getBuildSkillByKey, getClassSkillDefinitions, getClassSkillPointsForLevel, getGeneralSkillDefinitions, getGeneralSkillPointsForLevel, } from '../data/skill-trees.js';
@@ -664,3 +665,4 @@ export async function listBuildActiveEffects(playerId) {
     })
         .filter((row) => row.startsInSeconds > 0 || row.activeSeconds > 0);
 }
+//# sourceMappingURL=build-skills.js.map
