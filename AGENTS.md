@@ -103,9 +103,20 @@ Esto compila el backend con `tsc`. El frontend se valida con `npm run web:build`
 
 ## Documentos clave
 
-- `docs/GAME_BIBLE.md` – todo el diseño del juego.
+- `docs/INDEX.md` – índice maestro de toda la documentación.
+- `docs/GAME_CORE.md` – atributos, stats y fórmulas exactas.
+- `docs/RACES_CLASSES.md` – razas, clases, talentos y skills.
+- `docs/ACTIONS.md` – todas las acciones del juego.
+- `docs/PLAYER_FLOW.md` – flujo completo del jugador.
+- `docs/PVE_COMBAT.md` – combate PvE por turnos.
+- `docs/PLACES.md` – lugares y servicios.
+- `docs/ECONOMY.md` – banco, mercado y precios.
+- `docs/DEATH_AND_CAVES.md` – muerte y cuevas.
+- `docs/WEBAPP_MIGRATION.md` – guía para migrar a webapp.
+- `docs/GAME_BIBLE.md` – visión general del diseño.
 - `docs/WEB_API.md` – API y frontend.
 - `docs/ARCHITECTURE_MASTER_MAP.md` – mapa de la arquitectura legacy.
+- `README.md` – pitch, instalación y estado del proyecto.
 
 ---
 
@@ -116,4 +127,4 @@ Esto compila el backend con `tsc`. El frontend se valida con `npm run web:build`
 
 ---
 
-*Actualizado: 2026-06-17*
+*Actualizado: 2026-07-01*

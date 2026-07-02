@@ -317,3 +317,148 @@ export const PROGRESS_TRACKER = {
     { name: 'Cuentas/autenticación real', status: 'pending' },
   ],
 };
+
+export const PROFILE_FIELDS = [
+  { field: 'Nickname', source: 'Elegido en registro. Único, 3-16 caracteres.' },
+  { field: 'Título', source: 'Desbloqueado por nivel (LEVEL_TITLES). Puede cambiarse.' },
+  { field: 'Nivel / XP', source: 'XP ganada en combate y actividades. Ver curva en GAME_CORE.' },
+  { field: 'Raza / Clase', source: 'Elegidas en registro. Determinan atributos base y talentos.' },
+  { field: 'Coordenadas', source: 'Posición actual en el mapa (mapX, mapY).' },
+  { field: 'HP / STA', source: 'Calculados con fórmulas de GAME_CORE. Equipo y talentos modifican.' },
+  { field: 'Atributos primarios', source: 'Base 5 + bono de clase + 1 por nivel rotando por GROWTH_PRIORITY.' },
+  { field: 'Stats de combate', source: 'Derivados de atributos + equipo + efectos activos.' },
+  { field: 'Resistencias', source: 'Derivadas de atributos + equipo + bonos raciales.' },
+  { field: 'Uso de bolsa', source: 'Slots y peso de la bolsa activa.' },
+];
+
+export const BAG_DEFINITIONS = [
+  { slug: 'pockets', name: 'Bolsillos', emoji: '👖', slots: 5, weightKg: 5.0, ownWeightKg: 0.0, maxStack: 20, isPocket: true, command: '—' },
+  { slug: 'travel-bag', name: 'Bolsa de Viaje', emoji: '💼', slots: 12, weightKg: 15.0, ownWeightKg: 0.5, maxStack: 20, isPocket: false, command: '/bag' },
+  { slug: 'leather-pack', name: 'Mochila de Cuero', emoji: '🎒', slots: 20, weightKg: 25.0, ownWeightKg: 0.8, maxStack: 30, isPocket: false, command: '/pack' },
+  { slug: 'vault_chamber', name: 'Bóveda de la Corona', emoji: '🏦', slots: 20, weightKg: 9999, ownWeightKg: 0.5, maxStack: 999, isPocket: false, command: '/vault' },
+  { slug: 'village_chest', name: 'Baúl del Pueblo', emoji: '🧰', slots: 10, weightKg: 9999, ownWeightKg: 0.5, maxStack: 999, isPocket: false, command: '/chest' },
+];
+
+export const ACTION_LIST = [
+  { action: '/start', cost: '—', effect: 'Inicia registro (nickname, raza, clase).' },
+  { action: '/profile', cost: '—', effect: 'Muestra perfil completo del jugador.' },
+  { action: '/map', cost: '—', effect: 'Renderiza mapa centrado en el jugador.' },
+  { action: 'Moverse 1 tile', cost: '1-3 STA', effect: 'Cambia coordenadas según terreno.' },
+  { action: '/venture', cost: 'STA total ruta', effect: 'Viaje largo a coordenadas exploradas.' },
+  { action: '/inspect', cost: '—', effect: 'Muestra nodos, loot y datos del tile.' },
+  { action: 'Recolectar', cost: 'Ver fórmula en ACTIONS', effect: 'Obtiene recursos, reduce durabilidad, da XP.' },
+  { action: '/bag', cost: '—', effect: 'Abre inventario/mochila activa.' },
+  { action: 'Usar ítem', cost: '—', effect: 'Consume consumible (HP/STA).' },
+  { action: 'Tirar ítem', cost: '—', effect: 'Deja loot en el suelo del tile.' },
+  { action: '/equip', cost: '—', effect: 'Gestiona equipo y herramientas.' },
+  { action: '/starterkit', cost: '—', effect: 'Otorga hacha, pico y canasta.' },
+  { action: '/combat', cost: '— inicio', effect: 'Inicia encuentro PvE.' },
+  { action: 'Ataque', cost: '5 STA', effect: 'Daño físico/arcano básico.' },
+  { action: 'Guardia', cost: '3 STA', effect: '+16% def, +1 eva, -34% daño (1 turno).' },
+  { action: 'Huir', cost: '4 STA', effect: 'Intento de escape del combate.' },
+  { action: '/place', cost: '—', effect: 'Entra a edificios de un lugar.' },
+  { action: 'Recuperación', cost: '0-40 plata', effect: 'Recupera HP/STA en lugar seguro.' },
+  { action: 'Forja', cost: '4-10 plata', effect: 'Repara o compra herramientas.' },
+  { action: 'Entrenamiento', cost: '5-15 plata', effect: 'Aprende/practica skills de recolección.' },
+  { action: '/bank', cost: 'tarifa depósito', effect: 'Depósito/retiro de oro/plata y objetos.' },
+  { action: '/market', cost: '5% tarifa', effect: 'Compra/venta de recursos y oro.' },
+  { action: '/merchant', cost: '—', effect: 'Comercia con mercader ambulante.' },
+  { action: '/sos', cost: '5 plata', effect: 'Entrega 1-2 frutas de emergencia.' },
+  { action: '/racial', cost: 'reset: 25+P*5 plata', effect: 'Gestiona talentos raciales.' },
+  { action: '/bs', cost: 'reset: 40+(C+G)*6 plata', effect: 'Gestiona build skills.' },
+];
+
+export const COMBAT_DETAILS = {
+  categories: [
+    { key: 'basic', label: 'Básico', hp: '×1.0', atk: '×1.0', def: '×1.0', xp: '×6' },
+    { key: 'veteran', label: 'Veterano', hp: '×1.34', atk: '×1.20', def: '×1.16', xp: '×10' },
+    { key: 'elite', label: 'Élite', hp: '×1.72', atk: '×1.42', def: '×1.35', xp: '×16' },
+    { key: 'boss', label: 'Jefe', hp: '×2.55', atk: '×1.86', def: '×1.70', xp: '×28' },
+  ],
+  damageSteps: [
+    '1. Roll crítico: random(0..100) <= critChance + critBonus',
+    '2. Evasión efectiva: max(0, target.evasion - accuracyBonus)',
+    '3. Si evade → daño = 0',
+    '4. Daño base = baseDamage + attack*physicalMult + arcanePower*arcaneMult',
+    '5. Si crítico y no bloqueado → ×1.55; si bloqueado → ×1.08',
+    '6. Restar target.defense * 0.58',
+    '7. Restar resistFlat',
+    '8. Aplicar (1 - damageReductionPct)',
+    '9. Aplicar (1 + damageBonusPct/pressure)',
+    '10. max(1, round(daño))',
+  ],
+  pressure: [
+    { turn: '1-3', bonus: '0%' },
+    { turn: '4', bonus: '4%' },
+    { turn: '5', bonus: '8%' },
+    { turn: '6', bonus: '12%' },
+    { turn: '7', bonus: '16%' },
+    { turn: '8', bonus: '20%' },
+    { turn: '9', bonus: '24%' },
+    { turn: '10', bonus: '28%' },
+    { turn: '11+', bonus: '32%' },
+  ],
+};
+
+export const PLACE_SERVICES = [
+  { building: 'Gilded Rest', service: 'Descanso gratis', cost: '—', effect: 'Recupera STA muy lentamente (~24h).' },
+  { building: 'Gilded Rest', service: 'Descanso normal', cost: '10 plata / 60s', effect: 'Recupera STA.' },
+  { building: 'Gilded Rest', service: 'Descanso rápido', cost: '25 plata / 20s', effect: 'Recupera STA rápido.' },
+  { building: 'Mercy Edge', service: 'Curación gratis', cost: '—', effect: 'Recupera HP muy lentamente.' },
+  { building: 'Mercy Edge', service: 'Curación normal', cost: '15 plata / 45s', effect: 'Recupera HP.' },
+  { building: 'Mercy Edge', service: 'Curación divina', cost: '40 plata / instant', effect: 'Recupera HP al instante.' },
+  { building: 'Crow Forge', service: 'Reparación rápida', cost: '4 plata', effect: '+40% durabilidad herramientas.' },
+  { building: 'Crow Forge', service: 'Reparación completa', cost: '10 plata', effect: '100% durabilidad herramientas.' },
+  { building: 'Crow Forge', service: 'Comprar pico', cost: '8 plata', effect: 'Pico de Piedra.' },
+  { building: 'Crow Forge', service: 'Comprar hacha', cost: '8 plata', effect: 'Hacha de Piedra.' },
+  { building: 'Crow Forge', service: 'Comprar caña', cost: '9 plata', effect: 'Caña de Bambú.' },
+  { building: 'Crown Chamber', service: 'Abrir bóveda', cost: '—', effect: 'Interfaz de banco.' },
+  { building: 'Crown Chamber', service: 'Depositar 25 plata', cost: 'tarifa', effect: 'Deposita plata en bóveda.' },
+  { building: 'Crown Chamber', service: 'Retirar 25 plata', cost: '—', effect: 'Retira plata de bóveda.' },
+  { building: 'Training Yard', service: 'Lección de Tala', cost: '5 plata / Nvl 1', effect: 'Aprende/practica chop.' },
+  { building: 'Training Yard', service: 'Lección de Recolección', cost: '8 plata / Nvl 3', effect: 'Aprende/practica gather.' },
+  { building: 'Training Yard', service: 'Lección de Minería', cost: '12 plata / Nvl 5', effect: 'Aprende/practica mine.' },
+  { building: 'Training Yard', service: 'Lección de Pesca', cost: '15 plata / Nvl 8', effect: 'Aprende/practica fish.' },
+  { building: 'Grand Exchange', service: 'Abrir mercado', cost: '—', effect: 'Órdenes de recursos y divisas.' },
+];
+
+export const ECONOMY_SUMMARY = [
+  { concept: 'Relación oro/plata', value: '1 oro = 100 plata' },
+  { concept: 'Tarifa mercado', value: '5% del importe (mínimo 1 plata)' },
+  { concept: 'Tarifa banco (<=100 plata)', value: 'max(1, ceil(valor * 0.05))' },
+  { concept: 'Tarifa banco (>100 plata)', value: '10 plata planos' },
+  { concept: 'Venta recursos a NPC', value: 'floor(baseValue * 0.25), mínimo 1' },
+  { concept: 'Venta herramienta a NPC', value: 'floor(baseValue * 0.2 * durabilityRatio)' },
+  { concept: 'Venta bolsa a NPC', value: 'floor((slots + peso*2) * 0.35), mínimo 2' },
+  { concept: 'SOS', value: '5 plata; 2/día, 10/mes' },
+  { concept: 'Reset racial', value: '25 + puntos*5 plata' },
+  { concept: 'Reset build', value: '40 + (clase+general)*6 plata' },
+];
+
+export const DEATH_CAVE_SUMMARY = [
+  { topic: 'Muerte', detail: 'Al llegar a 0 HP se crea cadáver y el jugador va al cementerio más cercano como fantasma.' },
+  { topic: 'Pérdida de plata', detail: 'Se pierde 10% de la plata actual; queda en el cadáver.' },
+  { topic: 'Pérdida de ítems', detail: 'Recursos libres, herramientas no equipadas y bolsas almacenadas caen al cadáver. Equipo equipado NO cae.' },
+  { topic: 'Gracia del dueño', detail: '10 minutos durante los cuales solo el propietario puede recuperar el cadáver.' },
+  { topic: 'Movimiento fantasma', detail: '1 tile por acción, sin coste STA, sin obstáculos. Solo moverse, ver perfil y recuperar cuerpo.' },
+  { topic: 'Recuperar cuerpo', detail: 'Requiere estar en coordenadas del cadáver. Restaura ítems/plata y HP/STA al 50%.' },
+  { topic: 'Cuevas', detail: 'Entrada desde lugar con cueva; mapa procedural; 1 STA por paso; solo celdas camino.' },
+];
+
+export const DAY_NIGHT_PERIODS = [
+  { period: 'dawn', label: 'Amanecer', emoji: '🌅', durationMin: 20 },
+  { period: 'day', label: 'Día', emoji: '☀️', durationMin: 280 },
+  { period: 'dusk', label: 'Atardecer', emoji: '🌇', durationMin: 20 },
+  { period: 'night', label: 'Noche', emoji: '🌙', durationMin: 160 },
+];
+
+export const CLIMATE_TYPES = [
+  { type: 'calm', label: 'Calma', emoji: '🌤️' },
+  { type: 'humid', label: 'Húmedo', emoji: '🌧️' },
+  { type: 'dry', label: 'Seco', emoji: '🏜️' },
+  { type: 'mist', label: 'Neblina', emoji: '🌫️' },
+  { type: 'heat', label: 'Calor', emoji: '🔥' },
+  { type: 'storm', label: 'Tormenta', emoji: '⛈️' },
+  { type: 'ash', label: 'Ceniza', emoji: '🌋' },
+];
+

@@ -3,11 +3,14 @@ import {
   BIOMES, RESOURCES, BIOME_RESOURCE_LINKS, RESOURCE_WINDOWS_GLOBAL,
   CREATURE_CATEGORIES, BIOME_SPECIES, DAY_PERIOD_LABELS, BIOME_DAY_EFFECTS,
   TOOLS, EQUIPMENT_TEMPLATES, ZONE_BANDS, RACES, CLASSES, RACIAL_TALENTS,
-  COMBAT_FORMULAS, PROGRESS_TRACKER,
+  COMBAT_FORMULAS, PROGRESS_TRACKER, PROFILE_FIELDS, BAG_DEFINITIONS,
+  ACTION_LIST, COMBAT_DETAILS, PLACE_SERVICES, ECONOMY_SUMMARY,
+  DEATH_CAVE_SUMMARY, DAY_NIGHT_PERIODS, CLIMATE_TYPES,
 } from '../data/game-data';
 import './Dashboard.css';
 
-type Section = 'biomes' | 'resources' | 'creatures' | 'equipment' | 'races' | 'formulas' | 'progress';
+type Section = 'biomes' | 'resources' | 'creatures' | 'equipment' | 'races' | 'formulas' | 'progress'
+  | 'profile' | 'bags' | 'actions' | 'combat' | 'places' | 'economy' | 'death' | 'daynight';
 
 const SECTIONS: { key: Section; label: string; emoji: string }[] = [
   { key: 'biomes', label: 'Biomas', emoji: '🌍' },
@@ -16,6 +19,14 @@ const SECTIONS: { key: Section; label: string; emoji: string }[] = [
   { key: 'equipment', label: 'Equipo', emoji: '🛡️' },
   { key: 'races', label: 'Razas/Clases', emoji: '🧬' },
   { key: 'formulas', label: 'Fórmulas', emoji: '📊' },
+  { key: 'profile', label: 'Perfil', emoji: '👤' },
+  { key: 'bags', label: 'Mochilas', emoji: '🎒' },
+  { key: 'actions', label: 'Acciones', emoji: '⚡' },
+  { key: 'combat', label: 'Combate', emoji: '⚔️' },
+  { key: 'places', label: 'Lugares', emoji: '🏰' },
+  { key: 'economy', label: 'Economía', emoji: '💰' },
+  { key: 'death', label: 'Muerte/Cuevas', emoji: '💀' },
+  { key: 'daynight', label: 'Día/Clima', emoji: '🌗' },
   { key: 'progress', label: 'Progreso', emoji: '📈' },
 ];
 
@@ -283,6 +294,206 @@ export default function Dashboard({ onEnterGame }: { onEnterGame?: () => void })
     </div>
   );
 
+  const renderProfile = () => (
+    <div className="dash-card">
+      <h3>👤 Campos del perfil</h3>
+      <p className="dash-intro">Cada campo del perfil se calcula o se obtiene de estas fuentes:</p>
+      <div className="dash-table-wrap">
+        <table className="dash-table">
+          <thead>
+            <tr><th>Campo</th><th>Fuente / Cálculo</th></tr>
+          </thead>
+          <tbody>
+            {PROFILE_FIELDS.map((p) => (
+              <tr key={p.field}><td>{p.field}</td><td>{p.source}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+
+  const renderBags = () => (
+    <div className="dash-card">
+      <h3>🎒 Tipos de mochila</h3>
+      <div className="dash-table-wrap">
+        <table className="dash-table">
+          <thead>
+            <tr><th>Tipo</th><th>Slots</th><th>Peso máx.</th><th>Peso propio</th><th>Stack</th><th>Comando</th></tr>
+          </thead>
+          <tbody>
+            {BAG_DEFINITIONS.map((b) => (
+              <tr key={b.slug}>
+                <td>{b.emoji} {b.name}{b.isPocket ? ' (bolsillo)' : ''}</td>
+                <td>{b.slots}</td>
+                <td>{b.weightKg} kg</td>
+                <td>{b.ownWeightKg} kg</td>
+                <td>{b.maxStack}</td>
+                <td>{b.command}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="dash-card" style={{ marginTop: 16 }}>
+        <h4>Reglas de uso</h4>
+        <ul className="dash-list">
+          <li>Solo una bolsa puede estar ACTIVE; las demás se almacenan o quedan DORMANT.</li>
+          <li>Las herramientas equipadas no cuentan para el peso ni los slots.</li>
+          <li>Al cambiar de bolsa, la destino debe estar vacía y debe caber todo el contenido.</li>
+          <li>Los bolsillos siempre existen y actúan como fallback si no hay otra bolsa.</li>
+        </ul>
+      </div>
+    </div>
+  );
+
+  const renderActions = () => (
+    <div className="dash-card">
+      <h3>⚡ Acciones del juego</h3>
+      <div className="dash-table-wrap">
+        <table className="dash-table">
+          <thead>
+            <tr><th>Acción</th><th>Costo</th><th>Efecto</th></tr>
+          </thead>
+          <tbody>
+            {ACTION_LIST.map((a) => (
+              <tr key={a.action}><td>{a.action}</td><td>{a.cost}</td><td>{a.effect}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+
+  const renderCombat = () => (
+    <div className="dash-combat">
+      <div className="dash-card">
+        <h3>⚔️ Categorías de criaturas</h3>
+        <div className="dash-table-wrap">
+          <table className="dash-table">
+            <thead>
+              <tr><th>Categoría</th><th>HP</th><th>ATK</th><th>DEF</th><th>XP</th></tr>
+            </thead>
+            <tbody>
+              {COMBAT_DETAILS.categories.map((c) => (
+                <tr key={c.key}><td>{c.label}</td><td>{c.hp}</td><td>{c.atk}</td><td>{c.def}</td><td>{c.xp}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div className="dash-card">
+        <h3>🎯 Fórmula de daño paso a paso</h3>
+        <ol className="dash-list numbered">
+          {COMBAT_DETAILS.damageSteps.map((step, i) => (
+            <li key={i}>{step}</li>
+          ))}
+        </ol>
+      </div>
+      <div className="dash-card">
+        <h3>🔥 Presión de combate</h3>
+        <div className="dash-table-wrap">
+          <table className="dash-table">
+            <thead><tr><th>Turno</th><th>Bonus daño</th></tr></thead>
+            <tbody>
+              {COMBAT_DETAILS.pressure.map((p) => (
+                <tr key={p.turn}><td>{p.turn}</td><td>{p.bonus}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderPlaces = () => (
+    <div className="dash-card">
+      <h3>🏰 Servicios de Nova Castle</h3>
+      <div className="dash-table-wrap">
+        <table className="dash-table">
+          <thead>
+            <tr><th>Edificio</th><th>Servicio</th><th>Costo</th><th>Efecto</th></tr>
+          </thead>
+          <tbody>
+            {PLACE_SERVICES.map((p, i) => (
+              <tr key={i}><td>{p.building}</td><td>{p.service}</td><td>{p.cost}</td><td>{p.effect}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="dash-card" style={{ marginTop: 16 }}>
+        <h4>Reglas de recuperación</h4>
+        <ul className="dash-list">
+          <li>El plan gratuito recupera aproximadamente 1.04 puntos cada 15 minutos.</li>
+          <li>Al interrumpir una recuperación se conserva el progreso.</li>
+          <li>Durante recuperación no se pueden realizar otras acciones.</li>
+        </ul>
+      </div>
+    </div>
+  );
+
+  const renderEconomy = () => (
+    <div className="dash-card">
+      <h3>💰 Conceptos económicos</h3>
+      <div className="dash-table-wrap">
+        <table className="dash-table">
+          <thead>
+            <tr><th>Concepto</th><th>Valor / Regla</th></tr>
+          </thead>
+          <tbody>
+            {ECONOMY_SUMMARY.map((e, i) => (
+              <tr key={i}><td>{e.concept}</td><td>{e.value}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+
+  const renderDeath = () => (
+    <div className="dash-card">
+      <h3>💀 Muerte y cuevas</h3>
+      <div className="dash-death-grid">
+        {DEATH_CAVE_SUMMARY.map((d, i) => (
+          <div key={i} className="dash-death-item">
+            <strong>{d.topic}</strong>
+            <span>{d.detail}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  const renderDayNight = () => (
+    <div className="dash-daynight">
+      <div className="dash-card">
+        <h3>🌗 Ciclo día/noche</h3>
+        <div className="dash-daynight-grid">
+          {DAY_NIGHT_PERIODS.map((p) => (
+            <div key={p.period} className="dash-daynight-cell">
+              <span className="dash-daynight-emoji">{p.emoji}</span>
+              <strong>{p.label}</strong>
+              <span>{p.durationMin} min</span>
+            </div>
+          ))}
+        </div>
+        <p className="dash-note">Ciclo total: 480 minutos (8 horas). La duración es configurable por variables de entorno.</p>
+      </div>
+      <div className="dash-card">
+        <h3>🌦️ Tipos de clima</h3>
+        <div className="dash-climate-grid">
+          {CLIMATE_TYPES.map((c) => (
+            <div key={c.type} className="dash-climate-cell">
+              <span>{c.emoji}</span>
+              <strong>{c.label}</strong>
+            </div>
+          ))}
+        </div>
+        <p className="dash-note">El clima modifica spawn, yield y coste de energía de las acciones de recolección.</p>
+      </div>
+    </div>
+  );
+
   return (
     <div className="dashboard">
       <aside className="dash-sidebar">
@@ -319,6 +530,14 @@ export default function Dashboard({ onEnterGame }: { onEnterGame?: () => void })
           {section === 'equipment' && renderEquipment()}
           {section === 'races' && renderRaces()}
           {section === 'formulas' && renderFormulas()}
+          {section === 'profile' && renderProfile()}
+          {section === 'bags' && renderBags()}
+          {section === 'actions' && renderActions()}
+          {section === 'combat' && renderCombat()}
+          {section === 'places' && renderPlaces()}
+          {section === 'economy' && renderEconomy()}
+          {section === 'death' && renderDeath()}
+          {section === 'daynight' && renderDayNight()}
           {section === 'progress' && renderProgress()}
         </div>
       </main>
