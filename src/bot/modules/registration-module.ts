@@ -7,6 +7,7 @@ import { ensurePlayerProgression } from '../../services/progression.js';
 import { getTitleForLevel } from '../../types/player.js';
 import { getClassAttributesAtLevel } from '../../lib/rpg-attributes.js';
 import { clearConversationState, getConversationState, setConversationState, } from '../../lib/conversation-state.js';
+import { EMOJIS } from '../../data/emojis.js';
 const REGISTRATION_SCOPE = 'registration';
 const RACES = {
     uren: {
@@ -165,21 +166,21 @@ function buildClassKeyboard(race) {
 function buildRacePrompt() {
     return [
         '🏛️ ELIGE TU RAZA',
+        '✧═══••═══✧',
         '',
-        `${RACES.uren.emoji} UREN`,
-        RACES.uren.description,
+        `${RACES.uren.emoji}  UREN — Herejes del bosque oscuro`,
+        `└ ${RACES.uren.description}`,
         '',
-        `${RACES.zolk.emoji} ZOLK`,
-        RACES.zolk.description,
+        `${RACES.zolk.emoji}  ZOLK — Parias alquímicos`,
+        `└ ${RACES.zolk.description}`,
     ].join('\n');
 }
 function buildClassPrompt(race) {
     const raceData = RACES[race];
     const classEntries = Object.entries(CLASSES[race]);
     const lines = [
-        `${raceData.emoji} ${raceData.name.toUpperCase()} - ELIGE TU CLASE`,
-        '',
-        raceData.description,
+        `${raceData.emoji} ${raceData.name.toUpperCase()} — ELIGE TU CLASE`,
+        '✧═══••═══✧',
         '',
     ];
     for (const [classKey, classData] of classEntries) {
@@ -190,9 +191,9 @@ function buildClassPrompt(race) {
             level: 1,
         });
         lines.push(`${classData.emoji} ${classData.name}`);
-        lines.push(classData.description);
-        lines.push(`STR ${attrs.str} DEX ${attrs.dex} INT ${attrs.int} VIT ${attrs.vit} AGI ${attrs.agi} ENG ${attrs.eng}`);
-        lines.push(`HP ${stats.maxHp} | STA ${stats.maxEnergy} | ATK ${stats.attack} | ARC ${stats.arcanePower} | MOV ${stats.moveSpeed}`);
+        lines.push(`└ ${classData.description}`);
+        lines.push(`  ${EMOJIS.ui.stats} Atributos: STR ${attrs.str} · DEX ${attrs.dex} · INT ${attrs.int} · VIT ${attrs.vit} · AGI ${attrs.agi} · ENG ${attrs.eng}`);
+        lines.push(`  ${EMOJIS.ui.heart} HP ${stats.maxHp} ${EMOJIS.ui.stamina} STA ${stats.maxEnergy} ${EMOJIS.ui.sword} ATK ${stats.attack} ${EMOJIS.ui.scroll} ARC ${stats.arcanePower} ${EMOJIS.ui.movement} MOV ${stats.moveSpeed}`);
         lines.push('');
     }
     return lines.join('\n').trim();
@@ -336,14 +337,24 @@ export function createRegistrationModule() {
             },
         });
         const message = [
-            '🎉 ¡Registro completo!',
+            '🎉 ¡REGISTRO COMPLETO!',
+            '✧═══••═══✧',
             '',
-            `👤 ${player.nickname}`,
-            `🧬 ${RACES[raceKey].emoji} ${RACES[raceKey].name}`,
-            `♟️ ${classData.emoji} ${classData.name}`,
+            `${EMOJIS.ui.profile} ${player.nickname}`,
+            `${EMOJIS.ui.race} ${RACES[raceKey].emoji} ${RACES[raceKey].name}`,
+            `${EMOJIS.ui.class} ${classData.emoji} ${classData.name}`,
             '',
-            `STR ${attrs.str} | DEX ${attrs.dex} | INT ${attrs.int} | VIT ${attrs.vit} | AGI ${attrs.agi} | ENG ${attrs.eng}`,
-            `HP ${stats.maxHp} | STA ${stats.maxEnergy} | ATK ${stats.attack} | ARC ${stats.arcanePower} | MOV ${stats.moveSpeed}`,
+            `${EMOJIS.ui.stats} Atributos:`,
+            `┌💪 STR ${attrs.str} 🌀 DEX ${attrs.dex}`,
+            `├🔮 INT ${attrs.int} ⚡️ ENG ${attrs.eng}`,
+            `├💚 VIT ${attrs.vit} 🦶 AGI ${attrs.agi}`,
+            '',
+            `${EMOJIS.ui.stats} Stats:`,
+            `┌${EMOJIS.ui.heart} HP ${stats.maxHp}`,
+            `├${EMOJIS.ui.stamina} STA ${stats.maxEnergy}`,
+            `├${EMOJIS.ui.sword} ATK ${stats.attack}`,
+            `├${EMOJIS.ui.scroll} ARC ${stats.arcanePower}`,
+            `└${EMOJIS.ui.movement} MOV ${stats.moveSpeed}`,
             '',
             '¡Bienvenido a World of Nova!',
         ].join('\n');

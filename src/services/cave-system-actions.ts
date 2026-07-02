@@ -7,7 +7,7 @@ import { getZoneBandAtCoords } from './world-zones.js';
 
 const CAVE_REVEAL_RADIUS = 3;
 const WALL_CELL = 'wall';
-const PATH_CELL = 'path';
+export const PATH_CELL = 'path';
 
 let caveSchemaReady = null;
 

@@ -1,37 +1,37 @@
 // @ts-nocheck
 import { RACIAL_TALENT_CATEGORIES, getLocalizedText3, getRacialTalentByKey, } from '../../data/racial-talents.js';
 import { canLearnTalent } from '../../services/racial-talents.js';
-function t3(lang, es, en, ru) {
+export function t3(lang, es, en, ru) {
     if (lang === 'en')
         return en;
     if (lang === 'ru')
         return ru;
     return es;
 }
-function formatNumber(value, digits = 1) {
+export function formatNumber(value, digits = 1) {
     const rounded = Math.round(value * Math.pow(10, digits)) / Math.pow(10, digits);
     return Number.isInteger(rounded) ? String(rounded) : rounded.toFixed(digits);
 }
-function formatPctFraction(value, digits = 1) {
+export function formatPctFraction(value, digits = 1) {
     return `${value >= 0 ? '+' : ''}${formatNumber(value * 100, digits)}%`;
 }
-function formatPctPoints(value, digits = 1) {
+export function formatPctPoints(value, digits = 1) {
     return `${value >= 0 ? '+' : ''}${formatNumber(value, digits)}%`;
 }
-function formatFlat(value, digits = 1) {
+export function formatFlat(value, digits = 1) {
     return `${value >= 0 ? '+' : ''}${formatNumber(value, digits)}`;
 }
-function shortLabel(text, max = 18) {
+export function shortLabel(text, max = 18) {
     if (text.length <= max)
         return text;
     return `${text.slice(0, Math.max(1, max - 1))}…`;
 }
-function formatRaceLabel(race) {
+export function formatRaceLabel(race) {
     if (!race)
         return '-';
     return race.slice(0, 1).toUpperCase() + race.slice(1);
 }
-function formatTalentType(def, lang) {
+export function formatTalentType(def, lang) {
     if (def.type === 'passive') {
         return t3(lang, 'Pasiva', 'Passive', 'Passiv');
     }
@@ -40,7 +40,7 @@ function formatTalentType(def, lang) {
     }
     return t3(lang, 'Keystone', 'Keystone', 'Keystone');
 }
-function categoryIcon(category) {
+export function categoryIcon(category) {
     if (category === 'offense')
         return '⚔️';
     if (category === 'defense')
@@ -53,7 +53,7 @@ function categoryIcon(category) {
         return '✨';
     return '👑';
 }
-function activeSlotLabel(state, def, lang) {
+export function activeSlotLabel(state, def, lang) {
     if (def.type === 'passive') {
         return t3(lang, 'Pasiva global', 'Global passive', 'Global passive');
     }

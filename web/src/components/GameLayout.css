@@ -1,0 +1,68 @@
+.game-layout {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-deep);
+}
+.gl-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 18px;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.gl-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px #ffd70022;
+}
+.gl-player-name {
+  font-size: 14px;
+  color: var(--text-bright);
+  font-weight: 600;
+}
+.gl-coords {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-left: auto;
+}
+.gl-logout {
+  padding: 4px 12px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 12px;
+  font-family: var(--font);
+}
+.gl-logout:hover { border-color: var(--danger); color: var(--danger); }
+
+.gl-main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 280px 1fr 280px;
+  gap: 0;
+  overflow: hidden;
+}
+.gl-panel {
+  background: var(--bg-panel);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.gl-panel + .gl-panel { border-left: 1px solid var(--border); }
+.gl-panel-header {
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}

@@ -1,48 +1,52 @@
 # World of Nova – Progreso del proyecto (Nightfall v1.0)
 
 ## Estado general
-El bot ya ejecuta los flujos base de onboarding, combate, inventario, exploración y economía. La rama actual se centra en estabilizar el mapa dinámico y pulir la interacción con lugares fijos mientras se consolida la experiencia principal de Nightfall.
+El juego ejecuta los flujos base de onboarding, combate, inventario, exploración y economía. La interfaz principal ahora es una **aplicación web React + Express + Socket.io**. El código legacy del bot de Telegram permanece en `src/bot/` pero no es el target activo.
 
 ## Sistemas implementados
-- **Onboarding / Registro**: idiomas ES/EN, selección de nickname, raza (Uren/Zolk) y clase (dos por raza). Los botones se limpian al avanzar entre pasos.
+- **Onboarding / Registro web**: input de nickname, selección de raza (Uren/Zolk) y clase (dos por raza).
 - **Combate**: sistema por turnos con estadísticas (HP, energía, daño, defensa, velocidad) y daño aleatorio con variaciones de ±20%.
-- **Inventario**: soporte para ítems, capacidad limitada y operaciones de agregar/quitar.
-- **Exploración**: mapa procedural 10×10 con fog of war, biomas reales (forest, swamp, plains, river, volcano), generación con tiles y lugares.
-- **Misiones y economía**: quest principal Nightfall, quests secundarias y sistema de recompensas con tiendas y moneda (gold/silver).
-- **Habilidades**: spells y skills por clase disponibles en combate.
+- **Inventario**: soporte para ítems, equipamiento, bolsas, capacidad limitada y operaciones de agregar/quitar.
+- **Exploración**: mapa procedural por tiles, fog of war, 10 biomas reales, generación bajo demanda.
+- **Economía**: sistema de recompensas, tiendas, doble moneda (gold/silver), mercado de jugadores y mercader misterioso.
+- **Habilidades**: talentos raciales, skills de clase y skills generales.
+- **Web UI**: layout 3-columnas, mini-mapa, panel de personaje, D-pad, recolectar.
 
-## Bugs arreglados
-1. `prisma is not defined` → se importó correctamente el cliente en `src/index.ts`.
-2. Los botones del onboarding seguían visibles → se agregó `editMessageReplyMarkup` en cada callback para limpiarlos.
-3. El renderizado de mapa realizaba cientos de queries por vista → ahora se precargan los tiles, lugares y exploraciones visibles antes de iterar el grid.
+## Migración a web (2026-06-17)
+- Creado servidor Express en `src/server/`.
+- Creado frontend React en `web/`.
+- API funcional: auth, player, map (move + gather).
+- Socket.io para presencia de jugadores en el mismo tile.
+- Vite con proxy a Express en desarrollo.
+- Ver `docs/WEB_API.md` para detalles.
 
 ## Infraestructura y stack
-- **Lenguajes / frameworks**: Node.js (ESM), TypeScript, [grammy](https://grammy.dev/) para Telegram, Prisma ORM.
-- **Base de datos**: SQLite con `.env` apuntando a `file:./dev.db`. Ya existen migraciones en `prisma/migrations/` y seeds independientes (`prisma/seed-*.ts`).
+- **Lenguajes / frameworks**: Node.js (ESM), TypeScript, React, Vite, Express, Socket.io, Prisma ORM.
+- **Base de datos**: SQLite con `.env` apuntando a `file:./dev.db`. Migraciones en `prisma/migrations/` y seeds independientes (`prisma/seed-*.ts`).
 - **Scripts**:
-  - `npm run dev` (tsx watch `src/index.ts`)
+  - `npm run dev` (Express :3000 + Vite :5173)
+  - `npm run server:dev` (solo servidor con watch)
+  - `npm run web:dev` (solo Vite)
+  - `npm run web:build` (build a `web/dist`)
   - `npm run build` (tsc → `dist/`)
-  - `npm start` (node `dist/index.js`)
   - `npm run lint` (tsc --noEmit)
-  - `npm test` (alias a `npm run lint`, para pruebas rápidas)
-  - Prisma: `db:generate`, `db:push`, `db:migrate`, `db:studio`, `db:seed:resources`, `db:seed:bags`.
+  - Prisma: `db:generate`, `db:push`, `db:migrate`, `db:studio`, `db:seed:all`.
 
 ## Sistema de lugares y biomas
-- **Nova Castle (0,0)**: PvP/PvE desactivados, servicios curativos y de energía (The Gilded Rest, Mercy's Edge, Swift Slumber, Divine Intervention).
-- **Comandos próximos**: `/castle` y `/place` para teletransportarse al lugar actual.
-- **Biomas reales**: forest, swamp, plains, river y volcano. Cada uno tiene recursos asociados (madera, frutas, hierbas, agua, lava, etc.) y nodos con `yieldsJson` para la recolección.
+- **Nova Castle (0,0)**: PvP/PvE desactivados, servicios de descanso, curación, forja, banco, entrenamiento y mercado.
+- **Biomas reales**: plains, forest, swamp, volcano, ashlands, highlands, desert, tundra, river, lake. Cada uno tiene recursos asociados.
 
 ## Notas de seguridad y mantenimiento
-- El token de Telegram no se almacena aquí; usa `docs/OVERVIEW.md` junto a `.env.example` como plantilla y genera tu propio `.env` con marcas rotas antes de compartir.
-- `node_modules/`, `dist/` y `prisma/dev.db` no deberían seguir en el control de versiones. Añadir `.gitignore` antes de crear el historial es urgente.
-- `docs/PROGRESS.md` y el resto de documentación deben reescribirse si el flujo de datos o la infraestructura cambian (ya no se usa PostgreSQL como indicaban versiones previas).
+- El token legacy del bot sigue en `.env`; rotarlo y excluir `.env` del control de versiones es imprescindible.
+- `node_modules/`, `dist/`, `web/dist/` y `prisma/dev.db` no deben estar en git.
 
 ## Mejoras recientes
-1. El mapa ahora consulta las exploraciones (`playerExploredTile`), tiles y lugares dentro de la ventana visible con una sola llamada, lo que reduce la cantidad de queries cuadráticamente.
-2. `markTileExplored` utiliza la información del jugador que ya se trajo (id + tgId), evitando una consulta extra al actualizar tiles o seguir un plan de movimiento.
+1. Capa web funcional con registro, login, movimiento y recolección.
+2. Documentación centralizada: `GAME_BIBLE.md`, `WEB_API.md`, `ENCYCLOPEDIA.md` actualizados.
+3. Seeds completos: 10 biomas, 33 recursos, 5 bolsas, 13 equipos, 1 lugar + 19 interacciones.
 
 ## Próximos pasos
-1. Inicializar Git con `.gitignore` y limpiar dependencias/artefactos que no deben compartirse.
-2. Definir cronogramas de pruebas/lint (aunque sea `tsc` + `prisma fmt`).
-3. Automatizar seeds y documentar qué archivos se regeneran.
-4. Confirmar quién gestiona el token y cómo se despliega en el entorno final.
+1. Extender API web: inventario, equipar, combate PvE, crafteo, mercado.
+2. Sincronizar UI React con nuevos endpoints.
+3. Añadir pruebas automatizadas mínimas.
+4. Definir despliegue de producción (servir `web/dist` desde Express).

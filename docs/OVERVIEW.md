@@ -1,49 +1,55 @@
 # World of Nova – Nightfall v1.0 Overview
 
 ## Objetivo
-«World of Nova» es un bot de Telegram que combina onboarding multilenguaje, combate por turnos, exploración de un mapa dinámico y una economía basada en recursos. El código se organiza principalmente en TypeScript y Prisma, y apunta a una experiencia jugable dentro de las limitaciones de un chat.
+«World of Nova» es un RPG por tiles con onboarding multilenguaje, combate por turnos, exploración de un mapa dinámico y una economía basada en recursos. Originalmente nació como bot de Telegram; desde 2026-06-17 la interfaz principal es una **aplicación web React + Express + Socket.io**.
 
 ## Estructura principal
-- `src/index.ts`: arranca el bot, registra comandos, callbacks y efectos secundarios (datos/DB, servicios de mapa e inventarios).
-- `src/services/*`: lógica de juego aislada (mapa, exploración, recolección, bolsas, progresión).
-- `src/lib/*`: utilidades transversales (`db.ts`, `i18n.ts`, `map-exploration.ts`, `player-ui.ts`).
+- `src/server/index.ts`: servidor Express + Socket.io que expone la API web.
+- `src/server/start.ts`: entry point del servidor web.
+- `web/`: frontend React + Vite.
+- `src/services/*`: lógica de juego aislada (mapa, exploración, recolección, bolsas, progresión, combate).
+- `src/lib/*`: utilidades transversales (`db.ts`, `i18n.ts`, `player-ui.ts`).
 - `src/data/*` y `src/types/*`: constantes, íconos y tipos compartidos.
+- `src/bot/*`: código legacy del bot de Telegram (en desuso).
 - `prisma/`: esquema, seeds y base empaquetada (`dev.db`).
-- `docs/`: notas de progreso, especificaciones y esta visión general.
+- `docs/`: notas de progreso, especificaciones y referencias.
 
 ## Scripts y flujo de desarrollo
-1. `npm run dev` → `tsx watch src/index.ts`: arranque en vivo (requiere `TELEGRAM_BOT_TOKEN` en `.env`).
-2. `npm run build` → `tsc`: transpila a `dist/`.
-3. `npm start` → `node dist/index.js`.
-4. `npm run lint` → `tsc --noEmit` para validación rápida de tipos.
-5. `npm test` → alias de `npm run lint`, útil para CI ligera.
-4. Prisma: `npm run db:generate`, `db:push`, `db:migrate`, `db:studio`.
-5. Seeds concretos: `npm run db:seed:resources` y `npm run db:seed:bags`.
-6. Carga típica: copiar `.env` (token + `DATABASE_URL="file:./dev.db"`), instalar deps (`npm install`), ejecutar `npm run dev`.
+1. `npm run dev` → arranca servidor Express :3000 + Vite :5173 en paralelo.
+2. `npm run server:dev` → servidor con watch.
+3. `npm run web:dev` → solo frontend Vite.
+4. `npm run web:build` → build de producción en `web/dist`.
+5. `npm run build` → `tsc`: transpila backend a `dist/`.
+6. `npm run lint` → `tsc --noEmit` para validación rápida de tipos.
+7. Prisma: `npm run db:generate`, `db:push`, `db:migrate`, `db:studio`.
+8. Seeds: `npm run db:seed:all`.
+9. Carga típica: copiar `.env` (`DATABASE_URL="file:./dev.db"`), instalar deps (`npm install`), ejecutar `npm run dev`.
 
 ## Base de datos y entorno
-- Prisma usa SQLite (`DATABASE_URL="file:./dev.db"`) y bundle con un archivo de desarrollo (`prisma/dev.db`). Hay migraciones en `prisma/migrations/` y un `.env.example` para copiar y proporcionar tu propio token en `.env`.
-- Las tablas más relevantes para la optimización actual son `mapTile`, `player`, `playerExploredTile`, `place` y `resourceNode`.
-- El bot lee `TELEGRAM_BOT_TOKEN` desde `.env` y debería cambiarse si este repositorio se comparte.
+- Prisma usa SQLite (`DATABASE_URL="file:./dev.db"`) y bundle con un archivo de desarrollo (`prisma/dev.db`). Hay migraciones en `prisma/migrations/` y un `.env.example` para copiar.
+- Las tablas más relevantes son `mapTile`, `player`, `playerExploredTile`, `place`, `resource`, `biome`, `equipmentTemplate` y las tablas runtime migradas a Prisma.
+- El token del bot legacy sigue en `.env`; rotarlo y excluir `.env` del control de versiones es imprescindible antes de publicar el proyecto.
 
 ## Estado actual y mejoras recientes
-- La hoja de progreso consolidada resume características implementadas (onboarding, combate, inventario, exploración, misiones, economía); ver [docs/PROGRESS.md](C:\Users\marti\Downloads\WorldOfNova-no-deps\docs\PROGRESS.md).
-- Renderizado de mapa actualizado: ahora se precarga la cuadrícula visible y los lugares para evitar 100+ queries por vista; el cálculo se hace en `src/services/map.ts`.
-- `markTileExplored` ya no vuelve a buscar el jugador cada vez, lo usa directamente en los flujos de movimiento y ruta.
+- Capa web creada: Express + Socket.io + React + Vite (2026-06-17).
+- API funcional: registro/login, datos de jugador, movimiento, recolección.
+- UI de juego: layout 3-columnas con mapa, acciones y panel de personaje.
+- Ver `docs/WEB_API.md` para detalles de la API web.
+- Ver `docs/GAME_BIBLE.md` para referencia completa del juego.
 
 ## Observaciones y riesgos
 - No hay pruebas ni lint automáticos definidos.
-- `node_modules/`, `dist/` y `prisma/dev.db` están presentes en esta copia y deben excluirse de git en cuanto se inicialice.
+- `node_modules/`, `dist/`, `web/dist/` y `prisma/dev.db` deben excluirse de git.
 - La documentación antigua menciona PostgreSQL, pero el entorno real es SQLite.
-- El token del bot está en `.env`; rotarlo y excluir `.env` del control de versiones es imprescindible antes de publicar el proyecto.
 
 ## Próximos pasos recomendados
-1. Iniciar el repositorio Git oficial, añadir `.gitignore` para `node_modules/`, `dist/`, `docs/PROGRESS` si expone secretos y `prisma/dev.db`.
-2. Añadir pruebas y lint básicos, incluso comandos `npm run test`/`lint` mínimos que ejecuten TypeScript o Prisma.
-3. Desplegar semillas documentadas y decidir si se mantiene `dev.db` o se vuelve a generar con `prisma db push` + `seed`.
-4. Mantener una página de referencia rápida (esta) sincronizada con cualquier refactor grande del bot.
+1. Inicializar el repositorio Git oficial con `.gitignore` correcto.
+2. Añadir pruebas y lint básicos.
+3. Extender la API web con inventario, combate, crafteo y mercado.
+4. Mantener esta página sincronizada con cada refactor.
 
 ## Referencias clave
-- `[docs/PROGRESS.md](C:\Users\marti\Downloads\WorldOfNova-no-deps\docs\PROGRESS.md)` – seguimiento de sistemas implementados y bugs abordados.
-- `[docs/ENCYCLOPEDIA.md](C:\Users\marti\Downloads\WorldOfNova-no-deps\docs\ENCYCLOPEDIA.md)` – índice corto de nombres, skills y rarezas para mantener la UI compacta.
-- `[src/services/map.ts](C:\Users\marti\Downloads\WorldOfNova-no-deps\src\services\map.ts)` – lógica de mapa y exploración optimizada.
+- `[docs/PROGRESS.md](./PROGRESS.md)` – seguimiento de sistemas implementados.
+- `[docs/GAME_BIBLE.md](./GAME_BIBLE.md)` – referencia completa del juego.
+- `[docs/WEB_API.md](./WEB_API.md)` – API y frontend web.
+- `[docs/ENCYCLOPEDIA.md](./ENCYCLOPEDIA.md)` – índice compacto de nombres y códigos.

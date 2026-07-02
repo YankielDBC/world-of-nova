@@ -1,0 +1,1101 @@
+// World of Nova - Database Schema
+// Nightfall Patch v1.0
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// 0. Emoji Index
+// ============================================
+model EmojiIndex {
+  id          Int      @id @default(autoincrement())
+  emoji       String   @unique
+  name        String
+  category    String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([category])
+  @@index([name])
+}
+
+// ============================================
+// 1. World Biomes
+// ============================================
+model Biome {
+  id             Int             @id @default(autoincrement())
+  name           String          @unique
+  emoji          String
+  displayName    String
+  description    String?
+  movementFactor Float           @default(1.0)
+  color          String?
+  resources      BiomeResource[]
+  mapTiles       MapTile[]
+  resourceNodes  ResourceNode[]
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  @@index([name])
+}
+
+// ============================================
+// Biome Resources
+// ============================================
+model BiomeResource {
+  id          Int      @id @default(autoincrement())
+  biomeId     Int
+  resourceId  Int
+  spawnChance Float    @default(50.0)
+  minQuantity Int      @default(1)
+  maxQuantity Int      @default(5)
+  biome       Biome    @relation(fields: [biomeId], references: [id], onDelete: Cascade)
+  resource    Resource @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([biomeId, resourceId])
+  @@index([biomeId])
+  @@index([resourceId])
+}
+
+// ============================================
+// Game Resources
+// ============================================
+model Resource {
+  id           Int             @id @default(autoincrement())
+  name         String          @unique
+  emoji        String
+  description  String?
+  type         String
+  rarity       String          @default("common")
+  weightKg     Float           @default(0.2)
+  usable       Boolean         @default(false)
+  effectType   String?
+  effectValue  Int?
+  baseValue    Int             @default(1)
+  stackable    Boolean         @default(true)
+  maxStack     Int             @default(99)
+  biomes       BiomeResource[]
+  recipeInputs RecipeInput[]
+  asOutput     Recipe[]
+  bagSlots     PlayerBagSlot[]
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+
+  @@index([type])
+  @@index([name])
+}
+
+// ============================================
+// World Map
+// ============================================
+model WorldMap {
+  id          Int               @id @default(autoincrement())
+  name        String            @unique
+  width       Int               @default(100)
+  height      Int               @default(100)
+  description String?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  tiles       MapTile[]
+  climates    ClimateZone[]
+  merchants   MysteryMerchant[]
+}
+
+model MapTile {
+  id                  Int       @id @default(autoincrement())
+  worldMapId          Int
+  x                   Int
+  y                   Int
+  biomeId             Int?
+  loreName            String?
+  elevation           Int       @default(0)
+  isWater             Boolean   @default(false)
+  isGenerated         Boolean   @default(false)
+  firstDiscoveredById String?
+  firstDiscoveredAt   DateTime?
+  hasNpc              Boolean   @default(false)
+  npcId               Int?
+  hasEvent            Boolean   @default(false)
+  eventId             Int?
+  resourcesJson       String?   @default("[]")
+  worldMap            WorldMap  @relation(fields: [worldMapId], references: [id], onDelete: Cascade)
+  biome               Biome?    @relation(fields: [biomeId], references: [id])
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  @@unique([worldMapId, x, y])
+  @@index([worldMapId])
+  @@index([biomeId])
+}
+
+model ClimateZone {
+  id           Int      @id @default(autoincrement())
+  worldMapId   Int
+  zoneX        Int
+  zoneY        Int
+  climateKind  String
+  intensity    Int      @default(1)
+  specialEvent String?
+  biomeHint    String?
+  biomeLabel   String?
+  nextChangeAt DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  worldMap     WorldMap @relation(fields: [worldMapId], references: [id], onDelete: Cascade)
+
+  @@unique([worldMapId, zoneX, zoneY])
+  @@index([worldMapId, nextChangeAt])
+  @@index([nextChangeAt])
+}
+
+// ============================================
+// Crafting Recipes
+// ============================================
+model Recipe {
+  id            Int           @id @default(autoincrement())
+  name          String        @unique
+  description   String?
+  emoji         String
+  outputId      Int
+  output        Resource      @relation(fields: [outputId], references: [id])
+  inputs        RecipeInput[]
+  requiredLevel Int           @default(1)
+  successRate   Float         @default(100.0)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@index([outputId])
+}
+
+model RecipeInput {
+  id         Int      @id @default(autoincrement())
+  recipeId   Int
+  resourceId Int
+  quantity   Int      @default(1)
+  recipe     Recipe   @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  resource   Resource @relation(fields: [resourceId], references: [id])
+
+  @@index([recipeId])
+  @@index([resourceId])
+}
+
+// ============================================
+// Resource Nodes
+// ============================================
+model ResourceNode {
+  id            Int      @id @default(autoincrement())
+  biomeId       Int
+  nodeType      String
+  emoji         String
+  displayName   String
+  spawnChance   Float
+  requiredTool  String?
+  requiredLevel Int      @default(1)
+  yieldsJson    String   @default("[]")
+  biome         Biome    @relation(fields: [biomeId], references: [id], onDelete: Cascade)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@unique([biomeId, nodeType])
+  @@index([biomeId])
+}
+
+// ============================================
+// Player System
+// ============================================
+model Player {
+  id                Int                      @id @default(autoincrement())
+  tgId              String                   @unique
+  tgUsername        String?
+  tgFirstName       String?
+  tgLastName        String?
+  tgLanguageCode    String?
+  nickname          String
+  title             String?
+  language          String                   @default("es")
+  race              String?
+  class             String?
+  form              String                   @default("Normal")
+  steps             Int                      @default(0)
+  soul              Int                      @default(0)
+  maxSoul           Int                      @default(5)
+  str               Int                      @default(5)
+  dex               Int                      @default(5)
+  intelligence      Int                      @default(5)
+  vit               Int                      @default(5)
+  eng               Int                      @default(5)
+  wis               Int                      @default(5)
+  agi               Int                      @default(5)
+  baseDamage        Float                    @default(0.0)
+  critChance        Float                    @default(5.0)
+  evasion           Float                    @default(5.0)
+  atkSpeed          Float                    @default(100.0)
+  defense           Float                    @default(0.0)
+  moveSpeed         Float                    @default(0.042)
+  resistPhysical    Int                      @default(0)
+  resistElemental   Int                      @default(0)
+  resistArcane      Int                      @default(0)
+  resistHoly        Int                      @default(0)
+  resistChemical    Int                      @default(0)
+  registeredAt      DateTime                 @default(now())
+  lastActiveAt      DateTime                 @default(now())
+  level             Int                      @default(1)
+  currentXp         Int                      @default(0)
+  totalXp           Int                      @default(0)
+  hp                Int                      @default(100)
+  maxHp             Int                      @default(100)
+  energy            Int                      @default(100)
+  maxEnergy         Int                      @default(100)
+  lowHpThreshold    Int                      @default(10)
+  lowStaThreshold   Int                      @default(10)
+  lowHpAlertSent    Boolean                  @default(false)
+  lowStaAlertSent   Boolean                  @default(false)
+  sosDailyKey       String                   @default("")
+  sosDailyCount     Int                      @default(0)
+  sosMonthlyKey     String                   @default("")
+  sosMonthlyCount   Int                      @default(0)
+  speed             Float                    @default(1.0)
+  gold              Int                      @default(0)
+  silver            Int                      @default(10)
+  mapX              Int                      @default(0)
+  mapY              Int                      @default(0)
+  inventoryJson     String                   @default("[]")
+  toolsJson         String                   @default("[]")
+  isActive          Boolean                  @default(true)
+  lastActionAt      DateTime?
+  exploredTiles     PlayerExploredTile[]
+  bags              PlayerBag[]
+  skills            PlayerSkill[]
+  toolInstances     PlayerTool[]
+  equipmentItems    EquipmentInstance[]
+  equipment         PlayerEquipment?
+  bankAccount       PlayerBankAccount?
+  activeRecovery    PlayerRecovery?
+  jobs              GameJob[]
+  merchantSightings MysteryMerchantWitness[]
+  caveStates        PlayerCaveState[]
+  buildSkills       PlayerBuildSkill[]
+  buildLoadout      PlayerBuildLoadout?
+  buildEffects      PlayerBuildEffect[]
+  buildCooldowns    PlayerBuildCooldown[]
+  buildTelemetry    BuildTelemetryEvent[]
+  soulAnchor        PlayerSoulAnchor?
+  corpses           PlayerCorpse[]
+  deathState        PlayerDeathState?
+  pveEncounter      PlayerPveEncounter?
+  racialTalents     PlayerRacialTalent[]
+  racialLoadout     PlayerRacialLoadout?
+  createdAt         DateTime                 @default(now())
+  updatedAt         DateTime                 @updatedAt
+
+  @@index([tgId])
+  @@index([nickname])
+  @@index([level])
+  @@index([mapX, mapY])
+  @@index([isActive, lastActiveAt])
+  @@index([mapX, mapY, isActive, lastActiveAt])
+}
+
+model MysteryMerchant {
+  id                Int       @id
+  worldMapId        Int
+  mapX              Int
+  mapY              Int
+  prevX             Int?
+  prevY             Int?
+  arrivedAt         DateTime
+  departsAt         DateTime
+  stayToken         String    @default("")
+  offersJson        String    @default("[]")
+  buybackMultiplier Int       @default(3)
+  rumorSentAt       DateTime?
+  confirmedAt       DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  worldMap          WorldMap  @relation(fields: [worldMapId], references: [id], onDelete: Cascade)
+
+  @@index([worldMapId, mapX, mapY])
+  @@index([departsAt])
+}
+
+model MysteryMerchantWitness {
+  id        Int      @id @default(autoincrement())
+  stayToken String
+  playerId  Int
+  createdAt DateTime @default(now())
+  player    Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@unique([stayToken, playerId])
+  @@index([stayToken])
+  @@index([playerId])
+}
+
+model PlayerRecovery {
+  id            Int      @id @default(autoincrement())
+  playerId      Int      @unique
+  tgId          String   @unique
+  token         String
+  slug          String
+  placeId       Int
+  buildingKey   String
+  serviceName   String
+  lore          String   @default("")
+  effectType    String
+  startValue    Int
+  maxValue      Int
+  ratePerSecond Float
+  startedAt     DateTime
+  endsAt        DateTime
+  chatId        BigInt
+  status        String   @default("ACTIVE")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  player        Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@index([status, endsAt])
+  @@index([tgId, status])
+}
+
+model GameJob {
+  id          Int       @id @default(autoincrement())
+  kind        String
+  status      String    @default("PENDING")
+  playerId    Int?
+  tgId        String?
+  chatId      BigInt?
+  messageId   Int?
+  payloadJson String
+  executeAt   DateTime
+  lockedAt    DateTime?
+  lockToken   String?
+  attempts    Int       @default(0)
+  maxAttempts Int       @default(5)
+  lastError   String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  player      Player?   @relation(fields: [playerId], references: [id], onDelete: SetNull)
+
+  @@index([status, executeAt])
+  @@index([kind, status, executeAt])
+  @@index([playerId, status])
+  @@index([tgId, status])
+}
+
+model PlayerBankAccount {
+  playerId  Int      @id
+  silver    Int      @default(0)
+  gold      Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  player    Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+}
+
+model MarketItemOrder {
+  id                Int      @id @default(autoincrement())
+  playerId          Int
+  resourceId        Int
+  side              String   @default("SELL")
+  priceSilver       Int
+  quantityTotal     Int
+  quantityRemaining Int
+  status            String   @default("OPEN")
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([resourceId, status, priceSilver, createdAt])
+  @@index([playerId, status, createdAt])
+}
+
+model MarketItemTrade {
+  id           Int      @id @default(autoincrement())
+  resourceId   Int
+  orderId      Int?
+  buyPlayerId  Int
+  sellPlayerId Int
+  quantity     Int
+  priceSilver  Int
+  grossSilver  Int
+  feeSilver    Int
+  createdAt    DateTime @default(now())
+
+  @@index([resourceId, createdAt])
+  @@index([createdAt])
+  @@index([buyPlayerId, createdAt])
+  @@index([sellPlayerId, createdAt])
+}
+
+model MarketCurrencyOrder {
+  id                 Int      @id @default(autoincrement())
+  playerId           Int
+  side               String
+  priceSilverPerGold Int
+  goldTotal          Int
+  goldRemaining      Int
+  reservedSilver     Int      @default(0)
+  reservedGold       Int      @default(0)
+  status             String   @default("OPEN")
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@index([side, status, priceSilverPerGold, createdAt])
+  @@index([playerId, status, createdAt])
+}
+
+model MarketCurrencyTrade {
+  id                 Int      @id @default(autoincrement())
+  orderId            Int?
+  buyPlayerId        Int
+  sellPlayerId       Int
+  goldAmount         Int
+  priceSilverPerGold Int
+  grossSilver        Int
+  feeSilver          Int
+  createdAt          DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([buyPlayerId, createdAt])
+  @@index([sellPlayerId, createdAt])
+}
+
+// ============================================
+// Bags
+// ============================================
+model BagDefinition {
+  id                 Int         @id @default(autoincrement())
+  slug               String      @unique
+  name               String
+  displayName        String
+  emoji              String
+  quickCommand       String?
+  description        String?
+  slotCapacity       Int
+  weightCapacityKg   Float
+  itemWeightKg       Float       @default(0.5)
+  allowResourceStack Boolean     @default(true)
+  maxResourceStack   Int         @default(20)
+  isPocket           Boolean     @default(false)
+  createdAt          DateTime    @default(now())
+  updatedAt          DateTime    @updatedAt
+  bags               PlayerBag[]
+
+  @@index([slug])
+}
+
+model PlayerBag {
+  id              Int             @id @default(autoincrement())
+  playerId        Int
+  bagDefinitionId Int
+  status          String          @default("STORED")
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  player          Player          @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  definition      BagDefinition   @relation(fields: [bagDefinitionId], references: [id], onDelete: Cascade)
+  slots           PlayerBagSlot[] @relation("BagContainerSlots")
+  storedInSlot    PlayerBagSlot?  @relation("StoredBagItem")
+
+  @@index([playerId])
+  @@index([bagDefinitionId])
+  @@index([status])
+}
+
+model PlayerBagSlot {
+  id                  Int                @id @default(autoincrement())
+  bagId               Int
+  slotIndex           Int
+  resourceId          Int?
+  merchantLockedQty   Int                @default(0)
+  storedBagId         Int?               @unique
+  toolKey             String?
+  playerToolId        Int?               @unique
+  equipmentInstanceId Int?               @unique
+  quantity            Int                @default(1)
+  createdAt           DateTime           @default(now())
+  updatedAt           DateTime           @updatedAt
+  bag                 PlayerBag          @relation("BagContainerSlots", fields: [bagId], references: [id], onDelete: Cascade)
+  resource            Resource?          @relation(fields: [resourceId], references: [id])
+  storedBag           PlayerBag?         @relation("StoredBagItem", fields: [storedBagId], references: [id])
+  playerTool          PlayerTool?        @relation(fields: [playerToolId], references: [id])
+  equipmentInstance   EquipmentInstance? @relation(fields: [equipmentInstanceId], references: [id])
+
+  @@unique([bagId, slotIndex])
+  @@index([bagId])
+  @@index([resourceId])
+}
+
+model PlayerTool {
+  id              Int               @id @default(autoincrement())
+  playerId        Int
+  toolKey         String
+  rarity          String            @default("common")
+  merchantLocked  Boolean           @default(false)
+  durability      Int
+  maxDurability   Int
+  isBroken        Boolean           @default(false)
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  player          Player            @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  bagSlot         PlayerBagSlot?
+  chopEquipment   PlayerEquipment[] @relation("ChopTool")
+  mineEquipment   PlayerEquipment[] @relation("MineTool")
+  gatherEquipment PlayerEquipment[] @relation("GatherTool")
+
+  @@index([playerId])
+  @@index([toolKey])
+}
+
+model PlayerEquipment {
+  id            Int                @id @default(autoincrement())
+  playerId      Int                @unique
+  chopToolId    Int?
+  mineToolId    Int?
+  gatherToolId  Int?
+  fishingToolId Int?
+  headId        Int?
+  chestId       Int?
+  legsId        Int?
+  bootsId       Int?
+  glovesId      Int?
+  beltId        Int?
+  cloakId       Int?
+  ring1Id       Int?
+  ring2Id       Int?
+  amuletId      Int?
+  mainHandId    Int?
+  offHandId     Int?
+  twoHandId     Int?
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+  player        Player             @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  chopTool      PlayerTool?        @relation("ChopTool", fields: [chopToolId], references: [id])
+  mineTool      PlayerTool?        @relation("MineTool", fields: [mineToolId], references: [id])
+  gatherTool    PlayerTool?        @relation("GatherTool", fields: [gatherToolId], references: [id])
+  fishingTool   EquipmentInstance? @relation("EquipFishingTool", fields: [fishingToolId], references: [id])
+  head          EquipmentInstance? @relation("EquipHead", fields: [headId], references: [id])
+  chest         EquipmentInstance? @relation("EquipChest", fields: [chestId], references: [id])
+  legs          EquipmentInstance? @relation("EquipLegs", fields: [legsId], references: [id])
+  boots         EquipmentInstance? @relation("EquipBoots", fields: [bootsId], references: [id])
+  gloves        EquipmentInstance? @relation("EquipGloves", fields: [glovesId], references: [id])
+  belt          EquipmentInstance? @relation("EquipBelt", fields: [beltId], references: [id])
+  cloak         EquipmentInstance? @relation("EquipCloak", fields: [cloakId], references: [id])
+  ring1         EquipmentInstance? @relation("EquipRing1", fields: [ring1Id], references: [id])
+  ring2         EquipmentInstance? @relation("EquipRing2", fields: [ring2Id], references: [id])
+  amulet        EquipmentInstance? @relation("EquipAmulet", fields: [amuletId], references: [id])
+  mainHand      EquipmentInstance? @relation("EquipMainHand", fields: [mainHandId], references: [id])
+  offHand       EquipmentInstance? @relation("EquipOffHand", fields: [offHandId], references: [id])
+  twoHand       EquipmentInstance? @relation("EquipTwoHand", fields: [twoHandId], references: [id])
+
+  @@index([fishingToolId])
+  @@index([headId])
+  @@index([chestId])
+  @@index([legsId])
+  @@index([bootsId])
+  @@index([glovesId])
+  @@index([beltId])
+  @@index([cloakId])
+  @@index([ring1Id])
+  @@index([ring2Id])
+  @@index([amuletId])
+  @@index([mainHandId])
+  @@index([offHandId])
+  @@index([twoHandId])
+}
+
+model EquipmentTemplate {
+  id                      Int                 @id @default(autoincrement())
+  key                     String              @unique
+  name                    String
+  shortName               String?
+  emoji                   String
+  slot                    String
+  archetype               String?
+  weaponClass             String?
+  armorClass              String?
+  description             String?
+  requiredLevel           Int                 @default(1)
+  allowedClassesJson      String              @default("[]")
+  allowedRacesJson        String              @default("[]")
+  bindTypeDefault         String              @default("bind_on_equip")
+  baseValue               Int                 @default(1)
+  weightKg                Float               @default(0.5)
+  stackable               Boolean             @default(false)
+  salvageTableKey         String?
+  implicitStatProfileJson String              @default("{}")
+  dropFamily              String?
+  isEnabled               Boolean             @default(true)
+  createdAt               DateTime            @default(now())
+  updatedAt               DateTime            @updatedAt
+  instances               EquipmentInstance[]
+
+  @@index([key])
+  @@index([slot, isEnabled])
+  @@index([dropFamily])
+}
+
+model EquipmentInstance {
+  id                    Int               @id @default(autoincrement())
+  templateId            Int
+  ownerPlayerId         Int?
+  currentContainerType  String            @default("inventory")
+  currentContainerId    Int?
+  rarity                String            @default("common")
+  itemLevel             Int               @default(1)
+  qualityScore          Int               @default(0)
+  bindType              String            @default("bind_on_equip")
+  boundPlayerId         Int?
+  boundAt               DateTime?
+  requiredLevel         Int               @default(1)
+  requiredClass         String?
+  requiredRace          String?
+  durability            Int               @default(100)
+  maxDurability         Int               @default(100)
+  isBroken              Boolean           @default(false)
+  prefixKey             String?
+  suffixKey             String?
+  implicitStatsJson     String            @default("{}")
+  explicitStatsJson     String            @default("{}")
+  specialEffectKey      String?
+  merchantLocked        Boolean           @default(false)
+  tradable              Boolean           @default(true)
+  baseMarketValue       Int               @default(1)
+  rolledMarketValue     Int               @default(1)
+  createdFrom           String            @default("generated")
+  createdAt             DateTime          @default(now())
+  updatedAt             DateTime          @updatedAt
+  template              EquipmentTemplate @relation(fields: [templateId], references: [id], onDelete: Restrict)
+  ownerPlayer           Player?           @relation(fields: [ownerPlayerId], references: [id], onDelete: SetNull)
+  bagSlot               PlayerBagSlot?
+  fishingToolEquipments PlayerEquipment[] @relation("EquipFishingTool")
+  headEquipments        PlayerEquipment[] @relation("EquipHead")
+  chestEquipments       PlayerEquipment[] @relation("EquipChest")
+  legsEquipments        PlayerEquipment[] @relation("EquipLegs")
+  bootsEquipments       PlayerEquipment[] @relation("EquipBoots")
+  glovesEquipments      PlayerEquipment[] @relation("EquipGloves")
+  beltEquipments        PlayerEquipment[] @relation("EquipBelt")
+  cloakEquipments       PlayerEquipment[] @relation("EquipCloak")
+  ring1Equipments       PlayerEquipment[] @relation("EquipRing1")
+  ring2Equipments       PlayerEquipment[] @relation("EquipRing2")
+  amuletEquipments      PlayerEquipment[] @relation("EquipAmulet")
+  mainHandEquipments    PlayerEquipment[] @relation("EquipMainHand")
+  offHandEquipments     PlayerEquipment[] @relation("EquipOffHand")
+  twoHandEquipments     PlayerEquipment[] @relation("EquipTwoHand")
+
+  @@index([templateId])
+  @@index([ownerPlayerId, currentContainerType])
+  @@index([rarity, itemLevel])
+  @@index([tradable, merchantLocked])
+}
+
+model PlayerSkill {
+  id        Int      @id @default(autoincrement())
+  playerId  Int
+  skillKey  String
+  level     Int      @default(1)
+  xp        Float    @default(0)
+  learned   Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  player    Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@unique([playerId, skillKey])
+  @@index([playerId])
+  @@index([skillKey])
+}
+
+// ============================================
+// Per-player Exploration
+// ============================================
+model PlayerExploredTile {
+  id         Int      @id @default(autoincrement())
+  playerId   Int
+  tileX      Int
+  tileY      Int
+  exploredAt DateTime @default(now())
+  player     Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@unique([playerId, tileX, tileY])
+  @@index([playerId])
+}
+
+// ============================================
+// Level Titles
+// ============================================
+model LevelTitle {
+  level       Int     @id
+  title       String
+  emoji       String
+  description String?
+  requiredXp  Int
+}
+
+// ============================================
+// Races
+// ============================================
+model Race {
+  id          Int         @id @default(autoincrement())
+  name        String      @unique
+  displayName String
+  emoji       String
+  description String?
+  classes     RaceClass[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+// ============================================
+// Race Classes
+// ============================================
+model RaceClass {
+  id             Int      @id @default(autoincrement())
+  raceId         Int
+  name           String
+  displayName    String
+  emoji          String
+  description    String?
+  baseHp         Int      @default(100)
+  baseEnergy     Int      @default(100)
+  baseSpeed      Float    @default(1.0)
+  baseStr        Int      @default(10)
+  baseDex        Int      @default(10)
+  baseInt        Int      @default(10)
+  hpPerLevel     Int      @default(10)
+  energyPerLevel Int      @default(5)
+  race           Race     @relation(fields: [raceId], references: [id], onDelete: Cascade)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@unique([raceId, name])
+  @@index([raceId])
+}
+
+// ============================================
+// Places
+// ============================================
+model Place {
+  id            Int                @id @default(autoincrement())
+  slug          String             @unique
+  name          String
+  displayName   String
+  description   String?
+  type          String
+  coordX        Int?
+  coordY        Int?
+  emoji         String
+  pvpAllowed    Boolean            @default(true)
+  combatAllowed Boolean            @default(true)
+  triggerType   String?
+  expiresAt     DateTime?
+  isActive      Boolean            @default(true)
+  interactions  PlaceInteraction[]
+  caveInstance  CaveInstance?
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+
+  @@index([type])
+  @@index([coordX, coordY])
+  @@index([type, isActive, coordX, coordY])
+}
+
+model CaveInstance {
+  id            Int               @id @default(autoincrement())
+  placeId       Int               @unique
+  width         Int
+  height        Int
+  startX        Int
+  startY        Int
+  walkableCount Int               @default(0)
+  layoutJson    String
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+  place         Place             @relation(fields: [placeId], references: [id], onDelete: Cascade)
+  playerStates  PlayerCaveState[]
+
+  @@index([placeId])
+}
+
+model PlayerCaveState {
+  id             Int          @id @default(autoincrement())
+  playerId       Int
+  caveInstanceId Int
+  isInside       Boolean      @default(false)
+  posX           Int          @default(0)
+  posY           Int          @default(0)
+  exploredJson   String       @default("[]")
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  player         Player       @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  caveInstance   CaveInstance @relation(fields: [caveInstanceId], references: [id], onDelete: Cascade)
+
+  @@unique([playerId, caveInstanceId])
+  @@index([playerId, isInside])
+  @@index([caveInstanceId])
+}
+
+// ============================================
+// Place Interactions
+// ============================================
+model PlaceInteraction {
+  id          Int      @id @default(autoincrement())
+  placeId     Int
+  slug        String
+  name        String
+  displayName String
+  description String?
+  type        String
+  emoji       String
+  costType    String?
+  costAmount  Int?
+  effectType  String?
+  effectValue Int?
+  instantFull Boolean  @default(false)
+  sortOrder   Int      @default(0)
+  place       Place    @relation(fields: [placeId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([placeId, slug])
+  @@index([placeId])
+  @@index([slug])
+}
+
+// ============================================
+// Build Skills System
+// ============================================
+model PlayerBuildSkill {
+  id        Int      @id @default(autoincrement())
+  playerId  Int
+  skillKey  String
+  rank      Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  player    Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@unique([playerId, skillKey])
+  @@index([playerId])
+}
+
+model PlayerBuildLoadout {
+  playerId    Int      @id
+  activeSlot1 String?
+  activeSlot2 String?
+  activeSlot3 String?
+  keystoneKey String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  player      Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+}
+
+model PlayerBuildEffect {
+  id           Int      @id @default(autoincrement())
+  playerId     Int
+  skillKey     String
+  effectType   String
+  sourceFamily String
+  rank         Int      @default(1)
+  startsAt     DateTime
+  endsAt       DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  player       Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@index([playerId, endsAt])
+}
+
+model PlayerBuildCooldown {
+  id        Int      @id @default(autoincrement())
+  playerId  Int
+  skillKey  String
+  readyAt   DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  player    Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@unique([playerId, skillKey])
+}
+
+model BuildTelemetryEvent {
+  id          Int      @id @default(autoincrement())
+  playerId    Int?
+  eventType   String
+  skillKey    String?
+  payloadJson String   @default("{}")
+  createdAt   DateTime @default(now())
+  player      Player?  @relation(fields: [playerId], references: [id], onDelete: SetNull)
+
+  @@index([createdAt])
+}
+
+// ============================================
+// Community Announcements
+// ============================================
+model CommunityAnnouncement {
+  id          Int      @id @default(autoincrement())
+  slug        String   @unique
+  channel     String
+  messageId   Int?
+  contentHash String?
+  postedAt    DateTime @default(now())
+
+  @@index([channel, postedAt])
+}
+
+// ============================================
+// World Creatures
+// ============================================
+model WorldCreatureSpawn {
+  id              Int      @id @default(autoincrement())
+  worldMapId      Int
+  tileX           Int
+  tileY           Int
+  spawnSlot       Int
+  biomeName       String
+  displayName     String
+  category        String
+  level           Int
+  str             Int
+  dex             Int
+  intelligence    Int
+  vit             Int
+  agi             Int
+  eng             Int
+  maxHp           Int
+  currentHp       Int
+  attack          Float
+  arcanePower     Float
+  defense         Float
+  critChance      Float
+  evasion         Float
+  moveSpeed       Float
+  xpReward        Int
+  silverMin       Int      @default(0)
+  silverMax       Int      @default(0)
+  coinDropChance  Float    @default(0)
+  respawnSeconds  Int
+  dropsJson       String   @default("[]")
+  status          String   @default("ALIVE")
+  lastDefeatedAt  DateTime?
+  nextRespawnAt   DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@unique([worldMapId, tileX, tileY, spawnSlot])
+  @@index([worldMapId, tileX, tileY])
+  @@index([status, nextRespawnAt])
+}
+
+// ============================================
+// Death System
+// ============================================
+model PlayerSoulAnchor {
+  playerId   Int      @id
+  worldMapId Int
+  mapX       Int
+  mapY       Int
+  placeId    Int?
+  placeLabel String   @default("")
+  sourceSlug String   @default("")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  player     Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+}
+
+model PlayerCorpse {
+  id              Int              @id @default(autoincrement())
+  playerId        Int
+  tgId            String
+  worldMapId      Int
+  mapX            Int
+  mapY            Int
+  snapshotJson    String           @default("[]")
+  silverDropped   Int              @default(0)
+  silverRemaining Int              @default(0)
+  graceUntil      DateTime
+  status          String           @default("ACTIVE")
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  recoveredAt     DateTime?
+  player          Player           @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  deathStates     PlayerDeathState[]
+
+  @@index([status, worldMapId, mapX, mapY])
+  @@index([playerId, status, createdAt])
+}
+
+model PlayerDeathState {
+  playerId         Int          @id
+  tgId             String       @unique
+  corpseId         Int          @unique
+  worldMapId       Int
+  deathX           Int
+  deathY           Int
+  cemeteryX        Int
+  cemeteryY        Int
+  anchorWorldMapId Int?
+  anchorX          Int?
+  anchorY          Int?
+  anchorLabel      String       @default("")
+  status           String       @default("GHOST")
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+  player           Player       @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  corpse           PlayerCorpse @relation(fields: [corpseId], references: [id], onDelete: Cascade)
+}
+
+// ============================================
+// PvE Combat
+// ============================================
+model PlayerPveEncounter {
+  playerId          Int      @id
+  creatureId        Int      @unique
+  worldMapId        Int
+  tileX             Int
+  tileY             Int
+  creatureJson      String
+  creatureCurrentHp Int
+  turnNumber        Int      @default(1)
+  enemyIntentJson   String
+  playerEffectsJson String   @default("[]")
+  enemyEffectsJson  String   @default("[]")
+  cooldownsJson     String   @default("{}")
+  logJson           String   @default("[]")
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  player            Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@index([creatureId])
+  @@index([worldMapId, tileX, tileY])
+}
+
+// ============================================
+// Racial Talents
+// ============================================
+model PlayerRacialTalent {
+  id        Int      @id @default(autoincrement())
+  playerId  Int
+  talentKey String
+  rank      Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  player    Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@unique([playerId, talentKey])
+  @@index([playerId])
+}
+
+model PlayerRacialLoadout {
+  playerId    Int      @id
+  activeSlot1 String?
+  activeSlot2 String?
+  keystoneKey String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  player      Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+}

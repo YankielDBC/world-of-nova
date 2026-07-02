@@ -1,0 +1,423 @@
+.dashboard {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background: var(--bg-deep);
+  color: var(--text);
+  overflow: hidden;
+}
+
+/* Sidebar */
+.dash-sidebar {
+  width: 220px;
+  background: var(--bg-panel);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 18px 0;
+  flex-shrink: 0;
+}
+.dash-brand {
+  padding: 0 18px 18px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.dash-brand h1 {
+  font-size: 18px;
+  color: var(--gold-bright);
+  letter-spacing: 1px;
+}
+.dash-brand p {
+  font-size: 11px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.dash-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 10px;
+}
+.dash-nav button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all .12s;
+  text-align: left;
+}
+.dash-nav button:hover {
+  background: var(--bg-card);
+  color: var(--text-bright);
+}
+.dash-nav button.active {
+  background: var(--bg-card);
+  color: var(--gold);
+  border-left: 2px solid var(--gold);
+}
+.dash-game-btn {
+  margin: 12px;
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid var(--border-glow);
+  background: linear-gradient(135deg, #1a2a10, #2a4418);
+  color: var(--success);
+  font-weight: 700;
+  cursor: pointer;
+}
+.dash-game-btn:hover {
+  border-color: var(--success);
+  box-shadow: 0 0 12px #4ade8033;
+}
+
+/* Content */
+.dash-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.dash-topbar {
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-panel);
+}
+.dash-topbar h2 {
+  font-size: 16px;
+  color: var(--text-bright);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.dash-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+/* Cards */
+.dash-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--panel-radius);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.dash-card h3 {
+  font-size: 14px;
+  color: var(--gold);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.dash-card h4 {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin: 16px 0 8px;
+}
+.dash-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+/* Biomes */
+.dash-biomes {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 16px;
+  height: 100%;
+}
+.dash-biome-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.dash-biome-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid transparent;
+  border-radius: 4px;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+  transition: all .12s;
+}
+.dash-biome-btn:hover {
+  background: #1e1e35;
+}
+.dash-biome-btn.active {
+  background: #1e1e35;
+  border-color: var(--border-glow);
+}
+.dash-biome-btn-emoji { font-size: 18px; }
+.dash-biome-btn-name { font-size: 13px; font-weight: 600; }
+
+.dash-biome-detail { overflow-y: auto; }
+.dash-biome-header {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 4px solid;
+  border-radius: var(--panel-radius);
+  margin-bottom: 16px;
+}
+.dash-biome-emoji { font-size: 42px; }
+.dash-biome-header h2 {
+  font-size: 20px;
+  color: var(--text-bright);
+}
+.dash-biome-header p {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+.dash-day-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+.dash-day-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px;
+  background: #111122;
+  border-radius: 4px;
+  font-size: 12px;
+}
+.dash-day-cell strong { color: var(--text-bright); }
+.dash-day-note { color: var(--text-dim); font-style: italic; }
+
+.dash-resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 8px;
+}
+.dash-resource-grid.big {
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+.dash-resource-item {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background: #111122;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+.dash-resource-item.rarity-uncommon { border-color: #2a5a2a; }
+.dash-resource-item.rarity-rare { border-color: #2a2a7a; }
+.dash-resource-item.rarity-epic { border-color: #5a2a7a; }
+.dash-resource-item.rarity-legendary { border-color: #7a6a1a; }
+.dash-resource-emoji { font-size: 22px; }
+.dash-resource-item div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.dash-resource-item strong { font-size: 13px; color: var(--text-bright); }
+.dash-resource-item span { font-size: 11px; color: var(--text-dim); }
+.dash-resource-meta { font-style: italic; }
+
+.dash-creature-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.dash-creature-tag {
+  padding: 4px 10px;
+  background: #1a1a30;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+/* Creatures */
+.dash-creature-cats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+}
+.dash-cat-card {
+  padding: 12px;
+  background: #111122;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.dash-cat-emoji { font-size: 24px; }
+.dash-cat-card strong { color: var(--text-bright); }
+.dash-cat-card span { font-size: 11px; color: var(--text-dim); }
+
+.dash-biome-creatures {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+.dash-biome-creature-group {
+  padding: 10px;
+  background: #111122;
+  border-radius: 4px;
+}
+.dash-biome-creature-group strong {
+  display: block;
+  color: var(--text-bright);
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+
+.dash-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.dash-table th, .dash-table td {
+  padding: 8px;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+.dash-table th {
+  background: #1a1a30;
+  color: var(--text-bright);
+}
+
+/* Equipment */
+.dash-equip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 10px;
+}
+.dash-equip-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  background: #111122;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+.dash-equip-emoji { font-size: 24px; }
+.dash-equip-item div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.dash-equip-item strong { color: var(--text-bright); font-size: 13px; }
+.dash-equip-item span { font-size: 11px; color: var(--text-dim); }
+.dash-equip-implicit { color: var(--gold); font-style: italic; }
+
+/* Races */
+.dash-classes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+  margin: 12px 0;
+}
+.dash-class-card {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background: #111122;
+  border-radius: 4px;
+}
+.dash-class-emoji { font-size: 22px; }
+.dash-class-card strong { color: var(--text-bright); display: block; }
+.dash-class-card span { font-size: 11px; color: var(--text-dim); }
+
+.dash-talent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+}
+.dash-talent-item {
+  padding: 10px;
+  background: #111122;
+  border-radius: 4px;
+  border-left: 3px solid var(--border-glow);
+}
+.dash-talent-item.type-active { border-left-color: #4a9fff; }
+.dash-talent-item.type-keystone { border-left-color: var(--gold); }
+.dash-talent-item strong { display: block; color: var(--text-bright); font-size: 12px; }
+.dash-talent-item span { font-size: 10px; color: var(--text-dim); display: block; }
+.dash-talent-effect { margin-top: 4px; color: var(--text); font-style: italic; }
+
+/* Formulas */
+.dash-formula-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 10px;
+}
+.dash-formula-item {
+  padding: 12px;
+  background: #111122;
+  border-radius: 4px;
+}
+.dash-formula-item strong { display: block; color: var(--text-bright); margin-bottom: 4px; }
+.dash-formula-item code {
+  font-size: 12px;
+  color: var(--success);
+  background: #0a0a15;
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+
+/* Progress */
+.dash-progress-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.dash-progress-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: #111122;
+  border-radius: 4px;
+}
+.dash-progress-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+.dash-progress-item.status-done .dash-progress-dot { background: var(--success); box-shadow: 0 0 6px var(--success); }
+.dash-progress-item.status-partial .dash-progress-dot { background: var(--gold); }
+.dash-progress-item.status-pending .dash-progress-dot { background: var(--danger); }
+.dash-progress-item strong { color: var(--text-bright); }
+.dash-progress-status {
+  margin-left: auto;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+}
+.dash-progress-item.status-done .dash-progress-status { color: var(--success); }
+.dash-progress-item.status-partial .dash-progress-status { color: var(--gold); }
+.dash-progress-item.status-pending .dash-progress-status { color: var(--danger); }
+
+.dash-empty { color: var(--text-dim); font-style: italic; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .dashboard { flex-direction: column; }
+  .dash-sidebar { width: 100%; height: auto; padding: 10px; }
+  .dash-nav { flex-direction: row; flex-wrap: wrap; }
+  .dash-biomes { grid-template-columns: 1fr; }
+  .dash-biome-list { flex-direction: row; flex-wrap: wrap; }
+}

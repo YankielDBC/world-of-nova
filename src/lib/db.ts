@@ -4,7 +4,6 @@ import { PrismaClient } from '@prisma/client';
 import { getClassAttributesAtLevel, getClassGrowthDebug } from './rpg-attributes.js';
 const poolConfig = {
     log: ['error', 'warn'],
-    connectionTimeout: 10000,
 };
 export const prisma = new PrismaClient(poolConfig);
 export async function connectDB() {

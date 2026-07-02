@@ -1,0 +1,42 @@
+:root {
+  --bg-deep: #0a0a12;
+  --bg-panel: #111122;
+  --bg-card: #1a1a2e;
+  --bg-input: #1c1c30;
+  --border: #2a2a4a;
+  --border-glow: #4a4a8a;
+  --text: #c8c8d8;
+  --text-dim: #6a6a80;
+  --text-bright: #e8e8f8;
+  --gold: #daa520;
+  --gold-bright: #ffd700;
+  --hp: #4ae04a;
+  --hp-dim: #2a6020;
+  --sta: #4a9fff;
+  --sta-dim: #1a3a60;
+  --xp: #c07aff;
+  --danger: #ff4455;
+  --danger-glow: #ff334477;
+  --success: #4ade80;
+  --panel-radius: 6px;
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg-deep);
+  color: var(--text);
+  image-rendering: pixelated;
+}
