@@ -128,6 +128,9 @@ export default function Dashboard({ onEnterGame }: { onEnterGame?: () => void })
               <strong>{r.name}</strong>
               <span>{r.type} · {r.rarity} · {r.weightKg}kg · ${r.baseValue}</span>
               <span className="dash-resource-meta">{r.effect}</span>
+              <span className="dash-resource-meta"><strong>Obtención:</strong> {r.obtainedFrom}</span>
+              <span className="dash-resource-meta"><strong>Uso:</strong> {r.consumeIdea}</span>
+              <span className="dash-resource-meta"><strong>Efectos secundarios:</strong> {r.sideEffects}</span>
             </div>
           </div>
         ))}

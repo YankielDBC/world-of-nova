@@ -210,7 +210,7 @@
   gap: 8px;
 }
 .dash-resource-grid.big {
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 }
 .dash-resource-item {
   display: flex;
@@ -232,7 +232,8 @@
 }
 .dash-resource-item strong { font-size: 13px; color: var(--text-bright); }
 .dash-resource-item span { font-size: 11px; color: var(--text-dim); }
-.dash-resource-meta { font-style: italic; }
+.dash-resource-meta { font-style: italic; color: var(--text-dim); }
+.dash-resource-meta strong { color: var(--gold); font-size: 11px; font-style: normal; }
 
 .dash-creature-list {
   display: flex;

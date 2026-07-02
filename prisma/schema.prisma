@@ -78,11 +78,14 @@ model Resource {
   rarity       String          @default("common")
   weightKg     Float           @default(0.2)
   usable       Boolean         @default(false)
-  effectType   String?
-  effectValue  Int?
-  baseValue    Int             @default(1)
-  stackable    Boolean         @default(true)
-  maxStack     Int             @default(99)
+  effectType      String?
+  effectValue     Int?
+  baseValue       Int             @default(1)
+  stackable       Boolean         @default(true)
+  maxStack        Int             @default(99)
+  obtainedFrom    String?
+  consumeIdea     String?
+  sideEffects     String?
   biomes       BiomeResource[]
   recipeInputs RecipeInput[]
   asOutput     Recipe[]
