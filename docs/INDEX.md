@@ -16,6 +16,12 @@
 | [EQUIPMENT.md](./EQUIPMENT.md) | Slots de equipo, plantillas base, rareza, bind, modifiers y generador procedural. |
 | [BAGS.md](./BAGS.md) | Tipos de mochila, capacidad, peso, slots, herramientas y equipamiento. |
 
+## Inspiración y referencia externa
+
+| Documento | Propósito |
+|-----------|-----------|
+| [WOW_INSPIRATION.md](./WOW_INSPIRATION.md) | Tipologías de criaturas y razas de World of Warcraft como referencia de diseño. |
+
 ## Flujo de juego y acciones
 
 | Documento | Propósito |
