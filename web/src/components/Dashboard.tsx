@@ -6,7 +6,9 @@ import {
   COMBAT_FORMULAS, PROGRESS_TRACKER, PROFILE_FIELDS, BAG_DEFINITIONS,
   ACTION_LIST, COMBAT_DETAILS, PLACE_SERVICES, ECONOMY_SUMMARY,
   DEATH_CAVE_SUMMARY, DAY_NIGHT_PERIODS, CLIMATE_TYPES,
-  WOW_CREATURE_TYPES, WOW_BEASTS, WOW_RACES,
+  WOW_CREATURE_TYPES, WOW_BEASTS, WOW_RACES, WOW_CREATURE_DROPS,
+  WOW_PROFESSIONS, WOW_ACHIEVEMENT_CATEGORIES, WOW_DUNGEON_DESIGN,
+  WOW_ITEM_DISTRIBUTION,
 } from '../data/game-data';
 import './Dashboard.css';
 
@@ -512,6 +514,22 @@ export default function Dashboard({ onEnterGame }: { onEnterGame?: () => void })
       </div>
 
       <div className="dash-card">
+        <h3>🎒 Drops por tipo de criatura</h3>
+        <div className="dash-table-wrap">
+          <table className="dash-table">
+            <thead>
+              <tr><th>Tipo</th><th>Drops típicos</th><th>Profesiones</th></tr>
+            </thead>
+            <tbody>
+              {WOW_CREATURE_DROPS.map((d) => (
+                <tr key={d.type}><td>{d.type}</td><td>{d.drops}</td><td>{d.professions}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div className="dash-card">
         <h3>🐻 Bestias como inspiración</h3>
         <div className="dash-table-wrap">
           <table className="dash-table">
@@ -543,6 +561,92 @@ export default function Dashboard({ onEnterGame }: { onEnterGame?: () => void })
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="dash-card">
+        <h3>⚒️ Profesiones de WoW</h3>
+        <h4>Recolección</h4>
+        <div className="dash-table-wrap">
+          <table className="dash-table">
+            <thead><tr><th>Profesión</th><th>Recolecta</th><th>Alimenta</th></tr></thead>
+            <tbody>
+              {WOW_PROFESSIONS.gathering.map((p) => (
+                <tr key={p.name}><td>{p.name}</td><td>{p.collects}</td><td>{p.feeds}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <h4>Producción</h4>
+        <div className="dash-table-wrap">
+          <table className="dash-table">
+            <thead><tr><th>Profesión</th><th>Crea</th><th>Especializaciones</th></tr></thead>
+            <tbody>
+              {WOW_PROFESSIONS.production.map((p) => (
+                <tr key={p.name}><td>{p.name}</td><td>{p.creates}</td><td>{p.specs}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <h4>Secundarias</h4>
+        <div className="dash-wow-types small">
+          {WOW_PROFESSIONS.secondary.map((p) => (
+            <div key={p.name} className="dash-wow-type">
+              <strong>{p.name}</strong>
+              <span>{p.effect}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="dash-card">
+        <h3>🏆 Categorías de logros</h3>
+        <div className="dash-wow-types">
+          {WOW_ACHIEVEMENT_CATEGORIES.map((a) => (
+            <div key={a.name} className="dash-wow-type">
+              <strong>{a.name}</strong>
+              <span>{a.examples}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="dash-card">
+        <h3>🏰 Diseño de mazmorras</h3>
+        <h4>Elementos de una instancia</h4>
+        <div className="dash-wow-types">
+          {WOW_DUNGEON_DESIGN.elements.map((e) => (
+            <div key={e.element} className="dash-wow-type">
+              <strong>{e.element}</strong>
+              <span>{e.detail}</span>
+            </div>
+          ))}
+        </div>
+        <h4>Reglas generales</h4>
+        <div className="dash-table-wrap">
+          <table className="dash-table">
+            <thead><tr><th>Aspecto</th><th>Patrón típico</th></tr></thead>
+            <tbody>
+              {WOW_DUNGEON_DESIGN.rules.map((r) => (
+                <tr key={r.aspect}><td>{r.aspect}</td><td>{r.pattern}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div className="dash-card">
+        <h3>📦 Distribución de ítems en WoW (muestra ~1000)</h3>
+        <div className="dash-table-wrap">
+          <table className="dash-table">
+            <thead><tr><th>Categoría</th><th>Ítems</th><th>%</th></tr></thead>
+            <tbody>
+              {WOW_ITEM_DISTRIBUTION.map((i) => (
+                <tr key={i.category}><td>{i.category}</td><td>{i.count}</td><td>{i.pct}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="dash-note">La lista completa de ~1000 ítems muestra está en docs/WOW_ITEMS.md.</p>
       </div>
     </div>
   );

@@ -506,3 +506,81 @@ export const WOW_RACES = {
   ],
 };
 
+export const WOW_CREATURE_DROPS = [
+  { type: 'Bestias', drops: 'Pieles, carne, colmillos, plumas, huesos', professions: 'Desuello, Cocina, Alquimia' },
+  { type: 'Alimañas', drops: 'Nada o cebo menor', professions: '—' },
+  { type: 'Demonios', drops: 'Polvos vil, esencias, grimorios', professions: 'Encantamiento' },
+  { type: 'Dragonantes', drops: 'Escamas, cuero grueso', professions: 'Desuello, Peletería' },
+  { type: 'Elementales', drops: 'Esencias, motas, cristales', professions: 'Encantamiento, Ingeniería, Alquimia' },
+  { type: 'Gigantes', drops: 'Trofeos, materiales épicos, monedas', professions: '—' },
+  { type: 'Humanoides', drops: 'Tela, monedas, objetos de uso, mapas', professions: 'Sastrería, Primeros Auxilios' },
+  { type: 'Mecánicos', drops: 'Piezas de ingeniería, tornillos, polvos', professions: 'Ingeniería' },
+  { type: 'No muertos', drops: 'Tela, huesos, runas, objetos malditos', professions: 'Encantamiento' },
+  { type: 'No categorizados', drops: 'Reliquias, trofeos de jefe únicos', professions: '—' },
+];
+
+export const WOW_PROFESSIONS = {
+  gathering: [
+    { name: 'Herboristería', collects: 'Hierbas del mundo y elementales', feeds: 'Alquimia, Inscripción' },
+    { name: 'Minería', collects: 'Menas, gemas, piedras', feeds: 'Herrería, Ingeniería, Joyería' },
+    { name: 'Desuello', collects: 'Pieles de bestias muertas', feeds: 'Peletería' },
+  ],
+  production: [
+    { name: 'Alquimia', creates: 'Pociones, elíxires, aceites, transmutaciones', specs: 'Pociones, Elíxires, Transmutación' },
+    { name: 'Herrería', creates: 'Armas y armaduras de placas/metal', specs: 'Forjador de armas, Forjador de armaduras' },
+    { name: 'Encantamiento', creates: 'Mejoras para armas/armaduras', specs: '—' },
+    { name: 'Ingeniería', creates: 'Dispositivos, munición, explosivos', specs: 'Goblin, Gnoma' },
+    { name: 'Inscripción', creates: 'Glifos, cartas, pergaminos', specs: '—' },
+    { name: 'Joyería', creates: 'Anillos, collares, gemas', specs: '—' },
+    { name: 'Peletería', creates: 'Armaduras de cuero, parches', specs: 'Dragonscale, Elemental, Tribal' },
+    { name: 'Sastrería', creates: 'Bolsas, armaduras de tela, monturas', specs: 'Primal Mooncloth, Shadowcloth, Spellcloth' },
+  ],
+  secondary: [
+    { name: 'Cocina', effect: 'Comidas con beneficios temporales' },
+    { name: 'Pesca', effect: 'Atrapa peces de lagos, ríos y océanos' },
+    { name: 'Primeros Auxilios', effect: 'Vendajes y remedios de curación' },
+    { name: 'Arqueología', effect: 'Desentierra objetos de valor' },
+  ],
+};
+
+export const WOW_ACHIEVEMENT_CATEGORIES = [
+  { name: 'General', examples: 'Caprichos, coleccionar mascotas/tabardos, caer sin morir' },
+  { name: 'Misiones', examples: 'Completar cadenas por zona' },
+  { name: 'Exploración', examples: 'Descubrir zonas y subzonas' },
+  { name: 'Jugador contra jugador', examples: 'Arenas, campos de batalla, duelos' },
+  { name: 'Mazmorras y bandas', examples: 'Bosses finales, heroico, sin morir, límite de tiempo' },
+  { name: 'Profesiones', examples: 'Alcanzar niveles de profesión' },
+  { name: 'Reputación', examples: 'Niveles de reputación con facciones' },
+  { name: 'Eventos del mundo', examples: 'Eventos de temporada' },
+  { name: 'Cuenta', examples: 'Acciones ligadas a la cuenta' },
+  { name: 'Proezas de Fuerza', examples: 'Logros históricos, muchos ya inaccesibles' },
+];
+
+export const WOW_DUNGEON_DESIGN = {
+  elements: [
+    { element: 'Trash mobs', detail: 'Oleadas entre jefes, dropean monedas y materiales.' },
+    { element: 'Mini-jefes', detail: 'Élites opcionales u obligatorios.' },
+    { element: 'Jefes principales', detail: '1–5 por mazmorra, mecánicas únicas cada uno.' },
+    { element: 'Cofres/secretos', detail: 'Objetos ocultos, llaves, atajos.' },
+    { element: 'Objetivos de misión', detail: 'NPCs o ítems que avanzan quests.' },
+  ],
+  rules: [
+    { aspect: 'Jugadores', pattern: 'Mazmorras 5; raids 10/25/20/40' },
+    { aspect: 'Dificultad', pattern: 'Normal → Heroico → Mítico → Mítico+' },
+    { aspect: 'Cooldown', pattern: 'Mazmorras: ninguno. Raids: semanal por dificultad.' },
+    { aspect: 'Requisitos', pattern: 'Nivel, item level, llave o cadena de quests' },
+    { aspect: 'Loot', pattern: 'Cada jefe tiene tabla propia; jefe final mejores recompensas.' },
+    { aspect: 'Límite M+', pattern: 'Temporizador + afijos semanales rotativos.' },
+  ],
+};
+
+export const WOW_ITEM_DISTRIBUTION = [
+  { category: 'Consumibles', count: 200, pct: '20%' },
+  { category: 'Armadura (cabeza/pecho/piernas/etc)', count: 400, pct: '40%' },
+  { category: 'Armas', count: 150, pct: '15%' },
+  { category: 'Joyería / abalorios', count: 85, pct: '8.5%' },
+  { category: 'Recetas / reactivos / herramientas', count: 100, pct: '10%' },
+  { category: 'Basura / venta NPC', count: 65, pct: '6.5%' },
+];
+
+

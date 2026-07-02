@@ -528,6 +528,13 @@
 .dash-wow-race strong { color: var(--text-bright); font-size: 12px; }
 .dash-wow-race span { font-size: 11px; color: var(--text-dim); }
 .dash-wow-race-idea { color: var(--success); font-style: italic; }
+.dash-wow-types.small {
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+.dash-wow-types.small .dash-wow-type {
+  padding: 8px;
+  gap: 2px;
+}
 
 /* Responsive */
 @media (max-width: 900px) {
