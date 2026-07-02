@@ -15,6 +15,12 @@
 | [WOW_DUNGEONS.md](./WOW_DUNGEONS.md) | Distribución y algoritmo de mazmorras e instancias de WoW. |
 | [WOW_ITEMS.md](./WOW_ITEMS.md) | Muestra de ~1000 ítems de WoW por categoría. |
 
+## Pitches y propuestas de diseño
+
+| Documento | Propósito |
+|-----------|-----------|
+| [DESIGN_PITCH_INITIAL_LINEAGES.md](./DESIGN_PITCH_INITIAL_LINEAGES.md) | Propuesta de 4 Linajes Iniciales: Zolz, Uren, Draen y Vael. |
+
 ## Documentación de referencia
 
 | Documento | Propósito |
@@ -26,16 +32,6 @@
 | [CREATURES.md](./CREATURES.md) | Categorías de criaturas, multiplicadores, spawns, drops, respawn y generación. |
 | [EQUIPMENT.md](./EQUIPMENT.md) | Slots de equipo, plantillas base, rareza, bind, modifiers y generador procedural. |
 | [BAGS.md](./BAGS.md) | Tipos de mochila, capacidad, peso, slots, herramientas y equipamiento. |
-
-| Documento | Propósito |
-|-----------|-----------|
-| [WOW_INSPIRATION.md](./WOW_INSPIRATION.md) | Tipologías de criaturas y razas de World of Warcraft como referencia de diseño. |
-| [WOW_PROFESSIONS.md](./WOW_PROFESSIONS.md) | Sistema de profesiones de WoW (Retail): primarias, secundarias, especializaciones y curva de habilidad. |
-| [WOW_ACHIEVEMENTS.md](./WOW_ACHIEVEMENTS.md) | Sistema de logros de WoW: categorías, progresión y recompensas. |
-| [WOW_CREATURE_DROPS.md](./WOW_CREATURE_DROPS.md) | Cómo WoW asigna drops según el tipo de criatura. |
-| [WOW_DUNGEONS.md](./WOW_DUNGEONS.md) | Distribución y algoritmo de mazmorras e instancias de WoW. |
-| [WOW_ITEMS.md](./WOW_ITEMS.md) | Muestra de ~1000 ítems de WoW por categoría. |
-| [WOW_INSPIRATION.md](./WOW_INSPIRATION.md) | Tipologías de criaturas y razas de World of Warcraft como referencia de diseño. |
 
 ## Flujo de juego y acciones
 

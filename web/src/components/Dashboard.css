@@ -536,6 +536,50 @@
   gap: 2px;
 }
 
+/* Pitches */
+.dash-pitches { display: flex; flex-direction: column; gap: 16px; }
+.dash-pitch-card {
+  background: #111122;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+.dash-pitch-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.dash-pitch-emoji { font-size: 32px; }
+.dash-pitch-header strong {
+  display: block;
+  color: var(--text-bright);
+  font-size: 15px;
+}
+.dash-pitch-header span { font-size: 12px; color: var(--gold); }
+.dash-pitch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.dash-pitch-grid div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.dash-pitch-grid strong { font-size: 11px; color: var(--text-dim); text-transform: uppercase; }
+.dash-pitch-grid span { font-size: 12px; color: var(--text); }
+.dash-pitch-skills { display: flex; flex-wrap: wrap; gap: 6px; }
+.dash-pitch-skill {
+  padding: 4px 10px;
+  background: #1a2a35;
+  border: 1px solid var(--border-glow);
+  border-radius: 3px;
+  font-size: 11px;
+}
+
 /* Responsive */
 @media (max-width: 900px) {
   .dashboard { flex-direction: column; }

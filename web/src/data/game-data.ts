@@ -583,4 +583,51 @@ export const WOW_ITEM_DISTRIBUTION = [
   { category: 'Basura / venta NPC', count: 65, pct: '6.5%' },
 ];
 
+export const PITCH_INITIAL_LINEAGES = [
+  {
+    key: 'zolz',
+    name: 'Zolz',
+    title: 'Alquimistas de Sangre Rota',
+    emoji: '🧪',
+    role: 'Daño táctico, venenos, trampas, alteraciones',
+    energy: 'Reactivos alquímicos, sangre corrupta',
+    personality: 'Astutos, desconfiados, sarcásticos, experimentadores',
+    exploration: '+ ingredientes raros; craftea consumibles en campo',
+    skills: ['Sangre Reactiva', 'Mordida Oculta', 'Polvo de Huida', 'Mutación Fallida'],
+  },
+  {
+    key: 'uren',
+    name: 'Uren',
+    title: 'Druidas Arcanos de Bestias Legendarias',
+    emoji: '🦌',
+    role: 'Híbrido mágico, soporte, control, transformación temporal',
+    energy: 'Esencia arcana bestial',
+    personality: 'Calmados, antiguos, protectores, conectados con el mundo',
+    exploration: 'Detecta bestias/espíritus; bonus en bosque, pantano, río y lago',
+    skills: ['Forma del Ciervo Astral', 'Piel de Bestia Antigua', 'Ojo del Águila Legendaria', 'Garra Lunar'],
+  },
+  {
+    key: 'draen',
+    name: 'Draen',
+    title: 'Guerreros del KO Vital',
+    emoji: '💥',
+    role: 'Tanque, luchador físico, duelista',
+    energy: 'KO vital',
+    personality: 'Orgullosos, intensos, de códigos fuertes',
+    exploration: '- STA en montañas/tierras altas; resiste zonas peligrosas',
+    skills: ['KO: Puño Concentrado', 'KO: Piel de Hierro', 'KO: Sentidos Agudos', 'Respiración de Ruptura'],
+  },
+  {
+    key: 'vael',
+    name: 'Vael',
+    title: 'Nómadas del Eco y la Sombra',
+    emoji: '🌑',
+    role: 'Explorador, asesino, rastreador, descubridor',
+    energy: 'Eco residual',
+    personality: 'Solitarios, curiosos, misteriosos, sobrevivientes',
+    exploration: 'Revela más tiles; encuentra caminos secretos y eventos ocultos',
+    skills: ['Paso de Eco', 'Corte Silencioso', 'Rastro Ancestral', 'Sombra Residual'],
+  },
+];
+
 

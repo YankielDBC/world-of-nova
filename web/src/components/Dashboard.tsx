@@ -8,12 +8,12 @@ import {
   DEATH_CAVE_SUMMARY, DAY_NIGHT_PERIODS, CLIMATE_TYPES,
   WOW_CREATURE_TYPES, WOW_BEASTS, WOW_RACES, WOW_CREATURE_DROPS,
   WOW_PROFESSIONS, WOW_ACHIEVEMENT_CATEGORIES, WOW_DUNGEON_DESIGN,
-  WOW_ITEM_DISTRIBUTION,
+  WOW_ITEM_DISTRIBUTION, PITCH_INITIAL_LINEAGES,
 } from '../data/game-data';
 import './Dashboard.css';
 
 type Section = 'biomes' | 'resources' | 'creatures' | 'equipment' | 'races' | 'formulas' | 'progress'
-  | 'profile' | 'bags' | 'actions' | 'combat' | 'places' | 'economy' | 'death' | 'daynight' | 'wow';
+  | 'profile' | 'bags' | 'actions' | 'combat' | 'places' | 'economy' | 'death' | 'daynight' | 'wow' | 'pitches';
 
 const SECTIONS: { key: Section; label: string; emoji: string }[] = [
   { key: 'biomes', label: 'Biomas', emoji: '🌍' },
@@ -32,6 +32,7 @@ const SECTIONS: { key: Section; label: string; emoji: string }[] = [
   { key: 'daynight', label: 'Día/Clima', emoji: '🌗' },
   { key: 'progress', label: 'Progreso', emoji: '📈' },
   { key: 'wow', label: 'Inspiración WoW', emoji: '🐉' },
+  { key: 'pitches', label: 'Pitches', emoji: '💡' },
 ];
 
 export default function Dashboard({ onEnterGame }: { onEnterGame?: () => void }) {
@@ -651,6 +652,49 @@ export default function Dashboard({ onEnterGame }: { onEnterGame?: () => void })
     </div>
   );
 
+  const renderPitches = () => (
+    <div className="dash-pitches">
+      <div className="dash-card">
+        <h3>💡 Pitch: Linajes Iniciales</h3>
+        <p className="dash-intro">Propuesta de identidades iniciales. Cada una define origen, energía, rol de combate y bonus de exploración.</p>
+        {PITCH_INITIAL_LINEAGES.map((lin) => (
+          <div key={lin.key} className="dash-pitch-card">
+            <div className="dash-pitch-header">
+              <span className="dash-pitch-emoji">{lin.emoji}</span>
+              <div>
+                <strong>{lin.name}</strong>
+                <span>{lin.title}</span>
+              </div>
+            </div>
+            <div className="dash-pitch-grid">
+              <div>
+                <strong>Rol</strong>
+                <span>{lin.role}</span>
+              </div>
+              <div>
+                <strong>Energía</strong>
+                <span>{lin.energy}</span>
+              </div>
+              <div>
+                <strong>Personalidad</strong>
+                <span>{lin.personality}</span>
+              </div>
+              <div>
+                <strong>Exploración</strong>
+                <span>{lin.exploration}</span>
+              </div>
+            </div>
+            <div className="dash-pitch-skills">
+              {lin.skills.map((s) => (
+                <span key={s} className="dash-pitch-skill">{s}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
     <div className="dashboard">
       <aside className="dash-sidebar">
@@ -697,6 +741,7 @@ export default function Dashboard({ onEnterGame }: { onEnterGame?: () => void })
           {section === 'daynight' && renderDayNight()}
           {section === 'progress' && renderProgress()}
           {section === 'wow' && renderWow()}
+          {section === 'pitches' && renderPitches()}
         </div>
       </main>
     </div>
