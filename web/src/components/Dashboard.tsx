@@ -6,11 +6,12 @@ import {
   COMBAT_FORMULAS, PROGRESS_TRACKER, PROFILE_FIELDS, BAG_DEFINITIONS,
   ACTION_LIST, COMBAT_DETAILS, PLACE_SERVICES, ECONOMY_SUMMARY,
   DEATH_CAVE_SUMMARY, DAY_NIGHT_PERIODS, CLIMATE_TYPES,
+  WOW_CREATURE_TYPES, WOW_BEASTS, WOW_RACES,
 } from '../data/game-data';
 import './Dashboard.css';
 
 type Section = 'biomes' | 'resources' | 'creatures' | 'equipment' | 'races' | 'formulas' | 'progress'
-  | 'profile' | 'bags' | 'actions' | 'combat' | 'places' | 'economy' | 'death' | 'daynight';
+  | 'profile' | 'bags' | 'actions' | 'combat' | 'places' | 'economy' | 'death' | 'daynight' | 'wow';
 
 const SECTIONS: { key: Section; label: string; emoji: string }[] = [
   { key: 'biomes', label: 'Biomas', emoji: '🌍' },
@@ -28,6 +29,7 @@ const SECTIONS: { key: Section; label: string; emoji: string }[] = [
   { key: 'death', label: 'Muerte/Cuevas', emoji: '💀' },
   { key: 'daynight', label: 'Día/Clima', emoji: '🌗' },
   { key: 'progress', label: 'Progreso', emoji: '📈' },
+  { key: 'wow', label: 'Inspiración WoW', emoji: '🐉' },
 ];
 
 export default function Dashboard({ onEnterGame }: { onEnterGame?: () => void }) {
@@ -494,6 +496,57 @@ export default function Dashboard({ onEnterGame }: { onEnterGame?: () => void })
     </div>
   );
 
+  const renderWow = () => (
+    <div className="dash-wow">
+      <div className="dash-card">
+        <h3>🐺 Tipos de criatura en WoW</h3>
+        <div className="dash-wow-types">
+          {WOW_CREATURE_TYPES.map((t) => (
+            <div key={t.key} className="dash-wow-type">
+              <span className="dash-wow-emoji">{t.emoji}</span>
+              <strong>{t.label}</strong>
+              <span>{t.summary}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="dash-card">
+        <h3>🐻 Bestias como inspiración</h3>
+        <div className="dash-table-wrap">
+          <table className="dash-table">
+            <thead>
+              <tr><th>Bestia</th><th>Hábitat típico</th><th>Idea para WoN</th></tr>
+            </thead>
+            <tbody>
+              {WOW_BEASTS.map((b) => (
+                <tr key={b.name}><td>{b.name}</td><td>{b.climate}</td><td>{b.idea}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div className="dash-card">
+        <h3>🧬 Razas jugables de WoW</h3>
+        {(['alliance', 'horde', 'neutral'] as const).map((faction) => (
+          <div key={faction} className="dash-wow-faction">
+            <h4>{faction === 'alliance' ? '⚔️ Alianza' : faction === 'horde' ? '🐗 Horda' : '🐼 Neutral'}</h4>
+            <div className="dash-wow-races">
+              {WOW_RACES[faction].map((r) => (
+                <div key={r.name} className="dash-wow-race">
+                  <strong>{r.name}</strong>
+                  <span>{r.concept}</span>
+                  <span className="dash-wow-race-idea">{r.idea}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
     <div className="dashboard">
       <aside className="dash-sidebar">
@@ -539,6 +592,7 @@ export default function Dashboard({ onEnterGame }: { onEnterGame?: () => void })
           {section === 'death' && renderDeath()}
           {section === 'daynight' && renderDayNight()}
           {section === 'progress' && renderProgress()}
+          {section === 'wow' && renderWow()}
         </div>
       </main>
     </div>

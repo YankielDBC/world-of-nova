@@ -462,3 +462,47 @@ export const CLIMATE_TYPES = [
   { type: 'ash', label: 'Ceniza', emoji: '🌋' },
 ];
 
+export const WOW_CREATURE_TYPES = [
+  { key: 'beast', label: 'Bestias', emoji: '🐺', summary: 'Fauna salvaje: osos, lobos, raptores, basiliscos. Domesticables y desollables.' },
+  { key: 'critter', label: 'Alimañas', emoji: '🐰', summary: 'Animales pequeños e inofensivos. Dan ambiente y sirven de cebo.' },
+  { key: 'demon', label: 'Demonios', emoji: '👿', summary: 'Entidades viles de la Legión Ardiente. Algunas invocables o esclavizables.' },
+  { key: 'dragonkin', label: 'Dragonantes', emoji: '🐲', summary: 'Descendientes de dragones. Ataques a distancia y escamas valiosas.' },
+  { key: 'elemental', label: 'Elementales', emoji: '🔥', summary: 'Manifestaciones de tierra, fuego, aire, agua, maná, oscuridad y luz.' },
+  { key: 'giant', label: 'Gigantes', emoji: '🗿', summary: 'Criaturas enormes, a menudo élite. Origen titánico o natural.' },
+  { key: 'humanoid', label: 'Humanoides', emoji: '🧍', summary: 'Razas inteligentes. Atacan en grupo, comparten agro, huyen al morir.' },
+  { key: 'mechanical', label: 'Mecánicos', emoji: '🤖', summary: 'Máquinas creadas por ingeniería y magia. Dejan piezas útiles.' },
+  { key: 'undead', label: 'No muertos', emoji: '💀', summary: 'Criaturas sin funciones vitales. Comparten agro y se agrupan.' },
+  { key: 'uncategorized', label: 'No categorizados', emoji: '❓', summary: 'Entidades únicas: naaru, oozes, dioses antiguos. Inmunes a habilidades por tipo.' },
+];
+
+export const WOW_BEASTS = [
+  { name: 'Osos', climate: 'Bosque / Montaña / Frío', idea: 'Cuerpo robusto, alto agro, piel desollable. Enemigo frontal tank.' },
+  { name: 'Lobos', climate: 'Bosque / Llanura / Tundra', idea: 'Agresivos, atacan en manada, domesticables. Cazadores o jefes secundarios.' },
+  { name: 'Raptores', climate: 'Cálido / Húmedo', idea: 'Rápidos y territoriales. Enemigos de rango medio y emboscadas.' },
+  { name: 'Basiliscos', climate: 'Rocoso / Volcánico', idea: 'Reptiles acorazados. Posible mitigación física o mirada petrificadora.' },
+  { name: 'Aves', climate: 'Varios', idea: 'No desollables. Voladores o recolectores de recursos.' },
+  { name: 'Cangrejos', climate: 'Costa / Río / Cueva húmeda', idea: 'No desollables. Fauna pasiva o enemigos menores acuáticos.' },
+];
+
+export const WOW_RACES = {
+  alliance: [
+    { name: 'Humanos', concept: 'Versátiles y líderes de la Alianza.', idea: 'Raza equilibrada para melee y caster.' },
+    { name: 'Enanos', concept: 'Herreros ancestrales de la montaña.', idea: 'Bonus a minería, forja y resistencia.' },
+    { name: 'Gnomos', concept: 'Inventores pequeños y audaces.', idea: 'Bonus a ingeniería y creación de gadgets.' },
+    { name: 'Elfos nocturnos', concept: 'Nocturnos y ligados a la naturaleza.', idea: 'Sigilo nocturno, bonus a recolección.' },
+    { name: 'Draenei', concept: 'Antiguos portadores de la luz.', idea: 'Resistencia a magia vil y sanación.' },
+    { name: 'Huargen', concept: 'Humanos malditos con forma de lobo.', idea: 'Transformación en combate.' },
+  ],
+  horde: [
+    { name: 'Orcos', concept: 'Guerreros tribales de honor.', idea: 'Melee fuerte con bonus a armas contundentes.' },
+    { name: 'Tauren', concept: 'Espíritu de la tierra, grandes y fuertes.', idea: 'Tank con alta vitalidad y naturaleza.' },
+    { name: 'Trolls', concept: 'Ágiles exploradores.', idea: 'Regeneración, bonus a arrojadizas y recolección.' },
+    { name: 'Renegados', concept: 'No-muertos alquimistas.', idea: 'Inmunes a veneno/enfermedad, bonus a magia oscura.' },
+    { name: 'Elfos de Sangre', concept: 'Magos y encantadores.', idea: 'Bonus a encantamientos y absorción de maná.' },
+    { name: 'Goblins', concept: 'Comerciantes y explosivos.', idea: 'Bonus económico y creación de bombas.' },
+  ],
+  neutral: [
+    { name: 'Pandaren', concept: 'Civilización isleña de monjes y cerveceros.', idea: 'Raza equilibrada con facción flexible.' },
+  ],
+};
+
