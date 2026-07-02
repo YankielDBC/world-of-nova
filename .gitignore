@@ -13,3 +13,5 @@ tmp-run.out.log
 .claude/
 backups/
 dist/
+
+.vercel
