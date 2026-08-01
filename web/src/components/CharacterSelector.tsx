@@ -218,7 +218,7 @@ export default function CharacterSelector({
 
         <section className="lineage-hero" aria-label={`Linaje ${selectedLineage.name}`}>
           <div className="lineage-hero__glow" />
-          <img className="lineage-hero__character" src={selectedLineage.character} alt={selectedLineage.name} />
+          <img className={`lineage-hero__character lineage-hero__character--${selectedLineage.id}`} src={selectedLineage.character} alt={selectedLineage.name} />
           <img className="lineage-hero__altar" src={`${ASSET}altar-arcano.png`} alt="" />
         </section>
 

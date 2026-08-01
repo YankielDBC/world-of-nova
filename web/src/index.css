@@ -648,8 +648,8 @@ body {
   image-rendering: auto;
   color: var(--lineage-text);
   background:
-    linear-gradient(90deg, rgba(3, 5, 12, 0.94), rgba(5, 7, 16, 0.42) 46%, rgba(3, 5, 12, 0.96)),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.68)),
+    radial-gradient(ellipse 130% 85% at 50% 108%, rgba(3, 5, 12, 0.7) 0%, rgba(3, 5, 12, 0.28) 40%, rgba(3, 5, 12, 0.08) 62%, rgba(3, 5, 12, 0) 82%),
+    linear-gradient(180deg, rgba(3, 5, 12, 0) 0%, rgba(3, 5, 12, 0.12) 42%, rgba(3, 5, 12, 0.38) 62%, rgba(3, 5, 12, 0.78) 100%),
     url('/imagenes/bg-selector.png') center / cover no-repeat;
   font-family: var(--font);
 }
@@ -692,11 +692,11 @@ body {
   gap: 20px;
   width: min(1480px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 20px 0 12px;
+  padding: 10px 0 8px;
 }
 
 .lineage-topbar img {
-  width: min(220px, 46vw);
+  width: min(112px, 30vw);
   height: auto;
   object-fit: contain;
 }
@@ -704,7 +704,7 @@ body {
 .lineage-topbar span {
   display: block;
   color: var(--lineage-muted);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -712,11 +712,11 @@ body {
 
 .lineage-topbar strong {
   display: block;
-  margin-top: 3px;
+  margin-top: 2px;
   color: var(--lineage-gold);
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(1.4rem, 3vw, 2.6rem);
-  line-height: 0.95;
+  font-size: clamp(1.15rem, 2.2vw, 1.8rem);
+  line-height: 1;
   text-transform: uppercase;
 }
 
@@ -735,9 +735,7 @@ body {
 
 .lineage-rail,
 .lineage-panel {
-  align-self: stretch;
   min-height: 0;
-  overflow-y: auto;
   border: 1px solid var(--lineage-rule);
   background: linear-gradient(180deg, rgba(9, 10, 20, 0.78), rgba(5, 6, 12, 0.72));
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.06), 0 28px 90px rgba(0, 0, 0, 0.38);
@@ -745,6 +743,7 @@ body {
 }
 
 .lineage-rail {
+  align-self: start;
   display: grid;
   gap: 10px;
   padding: 12px;
@@ -827,7 +826,7 @@ body {
 .lineage-hero__character {
   position: absolute;
   left: 50%;
-  bottom: 47%;
+  bottom: 38%;
   z-index: 3;
   height: 50%;
   width: auto;
@@ -851,6 +850,8 @@ body {
 }
 
 .lineage-panel {
+  align-self: stretch;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -999,10 +1000,6 @@ body {
   text-transform: uppercase;
 }
 
-.lineage-select .lineage-topbar {
-  padding-top: 28px;
-}
-
 .lineage-select .won-select__grid {
   width: min(1180px, calc(100% - 32px));
 }
@@ -1088,16 +1085,16 @@ body {
   .lineage-topbar {
     align-items: flex-start;
     flex-direction: column;
-    gap: 10px;
-    padding: 16px 0 10px;
+    gap: 8px;
+    padding: 10px 0 8px;
   }
 
   .lineage-topbar img {
-    width: min(168px, 44vw);
+    width: min(120px, 40vw);
   }
 
   .lineage-topbar strong {
-    font-size: 1.3rem;
+    font-size: 1.15rem;
   }
 
   .lineage-stage {
@@ -1138,7 +1135,7 @@ body {
 
   .lineage-hero__character {
     height: 50%;
-    bottom: 45%;
+    bottom: 38%;
   }
 
   .lineage-hero__altar {
@@ -1179,4 +1176,8 @@ body {
     width: 96px;
     height: 112px;
   }
+}
+
+.lineage-hero__character--zolk {
+  height: 40%;
 }
