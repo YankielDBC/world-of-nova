@@ -8,7 +8,7 @@ import { coordKey, normalizeMerchantDisplayName, parseForcedMerchantCoords, rand
 import { getDefaultInitialCoords, getForcedCoordsForMerchant, getOccupiedMerchantCoords, } from './mystery-merchant-pathing.js';
 import { parseOffers, serializeOffers, toSnapshot } from './mystery-merchant-serialization.js';
 const MERCHANT_BASE_ID = 1;
-const MERCHANT_SNAPSHOT_CACHE_TTL_MS = 3000;
+const MERCHANT_SNAPSHOT_CACHE_TTL_MS = 3_000;
 let merchantSnapshotCache = null;
 function writeMerchantSnapshotCache(snapshots) {
     merchantSnapshotCache = {

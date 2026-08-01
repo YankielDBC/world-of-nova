@@ -6,7 +6,7 @@ import { clearConversationState, setConversationState } from '../../lib/conversa
 import { getMerchantIntroText, getMerchantSnapshotForPlayer, registerMerchantWitness } from '../../services/mystery-merchant.js';
 import { getMerchantSellEntries } from '../../services/mystery-merchant-actions.js';
 const SCOPE = 'merchant';
-const MERCHANT_REFRESH_COOLDOWN_MS = 10000;
+const MERCHANT_REFRESH_COOLDOWN_MS = 10_000;
 const merchantRefreshLocks = new Map();
 async function setState(playerTgId, state) {
     await setConversationState(SCOPE, playerTgId, state, 30 * 60);

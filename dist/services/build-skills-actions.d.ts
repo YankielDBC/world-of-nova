@@ -61,4 +61,8 @@ export declare function activateBuildSkill(playerId: any, skillKeyRaw: any): Pro
         activeSeconds: number;
     };
 }>;
+export declare function getConditionSnapshot(playerId: any, override: any): Promise<{
+    hpPct: number;
+    staPct: number;
+}>;
 export declare function triggerBuildReactions(params: any): Promise<any[]>;

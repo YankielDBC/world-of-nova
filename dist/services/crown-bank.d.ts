@@ -69,6 +69,10 @@ export declare function moveVaultObject(playerId: any, direction: any, slotUid: 
 export declare function depositToVault(playerId: any, currency: any, amount: any): Promise<{
     success: boolean;
     message: string;
+    summary?: undefined;
+} | {
+    success: boolean;
+    message: string;
     summary: {
         carried: {
             silver: number;
@@ -83,11 +87,13 @@ export declare function depositToVault(playerId: any, currency: any, amount: any
             gold: number;
         };
     };
-} | {
-    success: boolean;
-    message: string;
 }>;
 export declare function depositToVaultWithFee(playerId: any, currency: any, amount: any): Promise<{
+    success: boolean;
+    message: string;
+    summary?: undefined;
+    feeSilver?: undefined;
+} | {
     success: boolean;
     message: string;
     summary: {
@@ -105,11 +111,12 @@ export declare function depositToVaultWithFee(playerId: any, currency: any, amou
         };
     };
     feeSilver: number;
-} | {
-    success: boolean;
-    message: string;
 }>;
 export declare function withdrawFromVault(playerId: any, currency: any, amount: any): Promise<{
+    success: boolean;
+    message: string;
+    summary?: undefined;
+} | {
     success: boolean;
     message: string;
     summary: {
@@ -126,7 +133,4 @@ export declare function withdrawFromVault(playerId: any, currency: any, amount: 
             gold: number;
         };
     };
-} | {
-    success: boolean;
-    message: string;
 }>;

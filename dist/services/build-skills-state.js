@@ -4,8 +4,8 @@ import { cloneEffects, normalizeSkillKey } from './build-skills-utils.js';
 let schemaReadyPromise = null;
 const stateCache = new Map();
 const effectsCache = new Map();
-export const STATE_CACHE_TTL_MS = 30000;
-export const EFFECTS_CACHE_TTL_MS = 12000;
+export const STATE_CACHE_TTL_MS = 30_000;
+export const EFFECTS_CACHE_TTL_MS = 12_000;
 export function clearStateCache(playerId) {
     if (typeof playerId === 'number') {
         stateCache.delete(playerId);

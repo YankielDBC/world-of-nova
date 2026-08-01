@@ -2,10 +2,17 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "vite",
   "installCommand": "npm install",
-  "buildCommand": "npm run web:build",
+  "buildCommand": "DATABASE_URL=file:./prisma/runtime-template.db npx prisma generate && DATABASE_URL=file:./prisma/runtime-template.db npx prisma db push --skip-generate && npm run web:build",
   "outputDirectory": "web/dist",
   "devCommand": "npm run web:dev",
+  "functions": {
+    "api/index.ts": {
+      "includeFiles": "prisma/runtime-template.db"
+    }
+  },
   "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/index" },
+    { "source": "/socket.io/(.*)", "destination": "/api/index" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [

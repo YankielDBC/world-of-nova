@@ -1,4 +1,5 @@
 import { InlineKeyboard } from 'grammy';
+export declare const PATH_CELL = "path";
 export declare function t3(lang: any, es: any, en: any, ru: any): any;
 export declare function coordKey(x: any, y: any): string;
 export declare function parseExploredJson(rawJson: any): Set<unknown>;
@@ -7,7 +8,7 @@ export declare function ensureCaveSchema(): Promise<void>;
 export declare function hashSeed(input: any): number;
 export declare function createRng(seed: any): () => number;
 export declare function shuffleInPlace(items: any, rng: any): any;
-export declare function getCaveCell(layout: any, x: any, y: any): "wall" | "path";
+export declare function getCaveCell(layout: any, x: any, y: any): "path" | "wall";
 export declare function revealAround(layout: any, posX: any, posY: any, explored: any): void;
 export declare function getBandCellSize(placeX: any, placeY: any, rng: any): {
     cellsWide: number;
@@ -40,14 +41,14 @@ export declare function ensureCaveInstanceForPlace(placeId: any): Promise<{
             type: string;
             emoji: string;
             displayName: string;
-            description: string;
+            description: string | null;
             slug: string;
-            coordX: number;
-            coordY: number;
+            coordX: number | null;
+            coordY: number | null;
             pvpAllowed: boolean;
             combatAllowed: boolean;
-            triggerType: string;
-            expiresAt: Date;
+            triggerType: string | null;
+            expiresAt: Date | null;
         };
     } & {
         id: number;

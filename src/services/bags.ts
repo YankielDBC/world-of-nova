@@ -1,15 +1,32 @@
 // @ts-nocheck
 import { prisma } from '../lib/db.js';
 import { EMOJIS } from '../data/emojis.js';
-import { ACTIVE_STATUS, DORMANT_STATUS, STORED_STATUS, } from './bags-types.js';
+import { ACTIVE_STATUS, DORMANT_STATUS, POCKETS_SLUG, STORED_STATUS, } from './bags-types.js';
 import { addResourceToActiveBag, storeGatheredItems, useBagSlot, dropBagSlot, grantBagToPlayer, pickupDroppedEquipment } from './bags-actions.js';
 import { buildBagKeyboard, buildBagUsage, buildCapacityReason, buildEmptyBagTransferPlan, buildSlotView, ensureLegacyToolInstances, ensurePlayerEquipment, getActiveBagRecord, getEquippedToolIdsFromEquipment, getPocketBagRecord, getPocketDefinition, loadSwitchBags, loadEquippedToolIds, persistDroppedLootAtPlayerTile, unequipToolIfEquipped, buildBagText, buildTransferItemsForSwitch, buildToolAliasMap, } from './bags-core.js';
 import { applyDurabilityDamageOnEquippedToolImpl, equipToolByAliasImpl, equipToolFromBagItemImpl, getActiveBagItemInfoByUidImpl, getEquipmentCardImpl, getEquippedToolForActionImpl, grantToolToPlayerImpl, pickupDroppedToolImpl, unequipEquipmentByAliasImpl, unequipToolByAliasImpl, } from './bags-tools.js';
 export { addResourceToActiveBag, storeGatheredItems, useBagSlot, dropBagSlot, grantBagToPlayer, pickupDroppedEquipment };
 export async function ensurePlayerBagSetup(playerId) {
-    const pocketDefinition = await getPocketDefinition();
+    let pocketDefinition = await getPocketDefinition();
     if (!pocketDefinition) {
-        throw new Error('Pocket definition not found. Run bag seeds first.');
+        pocketDefinition = await prisma.bagDefinition.upsert({
+            where: { slug: POCKETS_SLUG },
+            update: {},
+            create: {
+                slug: POCKETS_SLUG,
+                name: 'Pockets',
+                displayName: 'Pockets',
+                emoji: 'pouch',
+                quickCommand: null,
+                description: 'Default starter storage.',
+                slotCapacity: 5,
+                weightCapacityKg: 5.0,
+                itemWeightKg: 0.0,
+                allowResourceStack: true,
+                maxResourceStack: 20,
+                isPocket: true,
+            },
+        });
     }
     await prisma.$transaction(async (tx) => {
         await ensurePlayerEquipment(playerId, tx);

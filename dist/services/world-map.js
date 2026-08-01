@@ -2,7 +2,7 @@
 import { Prisma } from '@prisma/client';
 import { prisma } from '../lib/db.js';
 const DEFAULT_WORLD_MAP_NAME = (process.env.WORLD_MAP_NAME || 'Novaria').trim() || 'Novaria';
-const CANONICAL_CACHE_TTL_MS = 30000;
+const CANONICAL_CACHE_TTL_MS = 30_000;
 let canonicalCache = null;
 function normalizeName(value) {
     return value.trim().toLowerCase();

@@ -11,19 +11,6 @@ export declare function renderInspectForPlayer(playerTgId: any): Promise<{
     keyboard: InlineKeyboard;
     tileId: number;
     nodes: ({
-        listIndex: any;
-        kind: string;
-        groundLootId: any;
-        nodeType: string;
-        emoji: any;
-        displayName: any;
-        available: any;
-        requiredLevel: number;
-        requiredSkill: string;
-        action: string;
-        rarity: string;
-        rarityCode: string;
-    } | {
         listIndex: number;
         kind: string;
         nodeId: any;
@@ -35,25 +22,25 @@ export declare function renderInspectForPlayer(playerTgId: any): Promise<{
         requiredSkill: string;
         action: string;
         rarity: any;
+        rarityCode: string;
+    } | {
+        listIndex: any;
+        kind: string;
+        groundLootId: any;
+        nodeType: string;
+        emoji: any;
+        displayName: any;
+        available: any;
+        requiredLevel: number;
+        requiredSkill: string;
+        action: string;
+        rarity: string;
         rarityCode: string;
     })[];
 }>;
 export declare function getInspectNodesForPlayer(playerTgId: any): Promise<{
     tileId: number;
     nodes: any[] | ({
-        listIndex: any;
-        kind: string;
-        groundLootId: any;
-        nodeType: string;
-        emoji: any;
-        displayName: any;
-        available: any;
-        requiredLevel: number;
-        requiredSkill: string;
-        action: string;
-        rarity: string;
-        rarityCode: string;
-    } | {
         listIndex: number;
         kind: string;
         nodeId: any;
@@ -65,6 +52,19 @@ export declare function getInspectNodesForPlayer(playerTgId: any): Promise<{
         requiredSkill: string;
         action: string;
         rarity: any;
+        rarityCode: string;
+    } | {
+        listIndex: any;
+        kind: string;
+        groundLootId: any;
+        nodeType: string;
+        emoji: any;
+        displayName: any;
+        available: any;
+        requiredLevel: number;
+        requiredSkill: string;
+        action: string;
+        rarity: string;
         rarityCode: string;
     })[];
 }>;

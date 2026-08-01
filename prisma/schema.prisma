@@ -297,12 +297,17 @@ model Player {
   createdAt         DateTime                 @default(now())
   updatedAt         DateTime                 @updatedAt
 
+  // ClickForge unified account link
+  cfUserId          Int?
+  cfUser            ClickForgeUser?          @relation(fields: [cfUserId], references: [id], onDelete: SetNull)
+
   @@index([tgId])
   @@index([nickname])
   @@index([level])
   @@index([mapX, mapY])
   @@index([isActive, lastActiveAt])
   @@index([mapX, mapY, isActive, lastActiveAt])
+  @@index([cfUserId])
 }
 
 model MysteryMerchant {
@@ -1098,4 +1103,46 @@ model PlayerRacialLoadout {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   player      Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+}
+
+// ============================================
+// ClickForge Unified Account System
+// ============================================
+model ClickForgeUser {
+  id           Int           @id @default(autoincrement())
+  cfId         String        @unique
+  firebaseUid  String?       @unique
+  email        String        @unique
+  username     String        @unique
+  passwordHash String
+  avatarUrl    String?
+  premium      Boolean       @default(false)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  gameProfiles GameProfile[]
+  players      Player[]      // authoritative characters per game
+
+  @@index([cfId])
+  @@index([email])
+  @@index([username])
+}
+
+model GameProfile {
+  id           Int            @id @default(autoincrement())
+  cfUserId     Int
+  gameId       String         // canonical game id, e.g. "world-of-nova"
+  gameTitle    String         // display title, e.g. "World of Nova: Nightfall"
+  nickname     String?
+  level        Int            @default(1)
+  race         String?
+  class        String?
+  summary      String?
+  lastPlayedAt DateTime?
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  cfUser       ClickForgeUser @relation(fields: [cfUserId], references: [id], onDelete: Cascade)
+
+  @@unique([cfUserId, gameId])
+  @@index([cfUserId])
+  @@index([gameId])
 }

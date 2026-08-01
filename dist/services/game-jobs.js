@@ -121,7 +121,7 @@ async function markRetryOrFailed(jobId, lockToken, attempts, maxAttempts, error)
         }));
         return;
     }
-    const retryInMs = Math.min(30000, attempts * 2000);
+    const retryInMs = Math.min(30_000, attempts * 2_000);
     await withPrismaRetry('game-jobs.mark-retry', () => prisma.gameJob.updateMany({
         where: { id: jobId, status: 'RUNNING', lockToken },
         data: {

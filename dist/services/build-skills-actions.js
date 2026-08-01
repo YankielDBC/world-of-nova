@@ -405,7 +405,7 @@ export async function activateBuildSkill(playerId, skillKeyRaw) {
         runtime: runtimeAfter,
     };
 }
-async function getConditionSnapshot(playerId, override) {
+export async function getConditionSnapshot(playerId, override) {
     if (override) {
         return {
             hpPct: clamp(override.hpPct, 0, 200),

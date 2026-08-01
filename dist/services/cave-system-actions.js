@@ -6,7 +6,7 @@ import { EMOJIS } from '../data/emojis.js';
 import { getZoneBandAtCoords } from './world-zones.js';
 const CAVE_REVEAL_RADIUS = 3;
 const WALL_CELL = 'wall';
-const PATH_CELL = 'path';
+export const PATH_CELL = 'path';
 let caveSchemaReady = null;
 export function t3(lang, es, en, ru) {
     if (lang === 'en')

@@ -18,15 +18,15 @@ export declare function getPlayerBiomeContext(playerTgId: any): Promise<{
         level: number;
         id: number;
         tgId: string;
-        tgUsername: string;
-        tgFirstName: string;
-        tgLastName: string;
-        tgLanguageCode: string;
+        tgUsername: string | null;
+        tgFirstName: string | null;
+        tgLastName: string | null;
+        tgLanguageCode: string | null;
         nickname: string;
-        title: string;
+        title: string | null;
         language: string;
-        race: string;
-        class: string;
+        race: string | null;
+        class: string | null;
         form: string;
         steps: number;
         soul: number;
@@ -68,9 +68,10 @@ export declare function getPlayerBiomeContext(playerTgId: any): Promise<{
         inventoryJson: string;
         toolsJson: string;
         isActive: boolean;
-        lastActionAt: Date;
+        lastActionAt: Date | null;
         createdAt: Date;
         updatedAt: Date;
+        cfUserId: number | null;
     };
     worldMap: any;
     tile: {
@@ -81,29 +82,29 @@ export declare function getPlayerBiomeContext(playerTgId: any): Promise<{
             name: string;
             emoji: string;
             displayName: string;
-            description: string;
+            description: string | null;
             movementFactor: number;
-            color: string;
+            color: string | null;
         };
     } & {
         id: number;
         createdAt: Date;
         updatedAt: Date;
-        biomeId: number;
+        biomeId: number | null;
         worldMapId: number;
         x: number;
         y: number;
-        loreName: string;
+        loreName: string | null;
         elevation: number;
         isWater: boolean;
         isGenerated: boolean;
-        firstDiscoveredById: string;
-        firstDiscoveredAt: Date;
+        firstDiscoveredById: string | null;
+        firstDiscoveredAt: Date | null;
         hasNpc: boolean;
-        npcId: number;
+        npcId: number | null;
         hasEvent: boolean;
-        eventId: number;
-        resourcesJson: string;
+        eventId: number | null;
+        resourcesJson: string | null;
     };
     place: {
         interactions: {
@@ -114,15 +115,15 @@ export declare function getPlayerBiomeContext(playerTgId: any): Promise<{
             type: string;
             emoji: string;
             displayName: string;
-            description: string;
-            effectType: string;
-            effectValue: number;
+            description: string | null;
+            effectType: string | null;
+            effectValue: number | null;
             slug: string;
-            costType: string;
-            costAmount: number;
-            instantFull: boolean;
             sortOrder: number;
             placeId: number;
+            costType: string | null;
+            costAmount: number | null;
+            instantFull: boolean;
         }[];
     } & {
         id: number;
@@ -133,14 +134,14 @@ export declare function getPlayerBiomeContext(playerTgId: any): Promise<{
         type: string;
         emoji: string;
         displayName: string;
-        description: string;
+        description: string | null;
         slug: string;
-        coordX: number;
-        coordY: number;
+        coordX: number | null;
+        coordY: number | null;
         pvpAllowed: boolean;
         combatAllowed: boolean;
-        triggerType: string;
-        expiresAt: Date;
+        triggerType: string | null;
+        expiresAt: Date | null;
     };
 }>;
 export declare function buildGroundNodeView(entry: any, listIndex: any): {

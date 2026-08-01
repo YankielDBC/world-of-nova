@@ -1,10 +1,10 @@
 // @ts-nocheck
-import { gildedRest } from './buildings/gilded-rest';
-import { mercyEdge } from './buildings/mercy-edge';
-import { crowForge } from './buildings/crow-forge';
-import { crownChamber } from './buildings/crown-chamber';
-import { trainingYard } from './buildings/training-yard';
-import { grandExchange } from './buildings/grand-exchange';
+import { gildedRest } from './buildings/gilded-rest.js';
+import { mercyEdge } from './buildings/mercy-edge.js';
+import { crowForge } from './buildings/crow-forge.js';
+import { crownChamber } from './buildings/crown-chamber.js';
+import { trainingYard } from './buildings/training-yard.js';
+import { grandExchange } from './buildings/grand-exchange.js';
 export const novaCastlePlace = {
     name: {
         es: 'Castillo Nova',

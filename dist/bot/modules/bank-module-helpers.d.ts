@@ -1,7 +1,7 @@
 import { InlineKeyboard } from 'grammy';
 export declare const BANK_SCOPE = "bank";
 export declare function getPlayerLanguage(player: any): any;
-export declare function getVaultProfileByBuildingKey(buildingKey: any): "village" | "crown";
+export declare function getVaultProfileByBuildingKey(buildingKey: any): "crown" | "village";
 export declare function isVillageChest(buildingKey: any): boolean;
 export declare function isPlayerAtPlaceById(player: any, placeId: any): Promise<boolean>;
 export declare function parseBankMoneyInput(text: any): {

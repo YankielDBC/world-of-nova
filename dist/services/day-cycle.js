@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { getAmbientHint, getDayPeriodEffects, getDayPeriodEmoji, getDayPeriodLabel } from '../data/day-cycle.js';
 import { RUNTIME_CONFIG } from '../lib/runtime-config.js';
-const MS_PER_MINUTE = 60000;
+const MS_PER_MINUTE = 60_000;
 const FALLBACK_ANCHOR_MS = Date.parse('2026-01-01T00:00:00Z');
 function resolveAnchorMs() {
     const parsed = Date.parse(RUNTIME_CONFIG.dayCycleAnchorIso);

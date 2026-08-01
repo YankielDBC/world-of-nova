@@ -185,16 +185,16 @@ export function getMovementStaForBiome(biomeName) {
     return WATER_BIOMES.has(biomeName) ? 2 : 1;
 }
 export function shortNum(n) {
-    if (n >= 1000000000)
-        return `${(n / 1000000000).toFixed(1).replace(/\\.0$/, '')}B`;
-    if (n >= 1000000)
-        return `${(n / 1000000).toFixed(1).replace(/\\.0$/, '')}M`;
-    if (n >= 1000)
-        return `${(n / 1000).toFixed(1).replace(/\\.0$/, '')}K`;
+    if (n >= 1_000_000_000)
+        return `${(n / 1_000_000_000).toFixed(1).replace(/\\.0$/, '')}B`;
+    if (n >= 1_000_000)
+        return `${(n / 1_000_000).toFixed(1).replace(/\\.0$/, '')}M`;
+    if (n >= 1_000)
+        return `${(n / 1_000).toFixed(1).replace(/\\.0$/, '')}K`;
     return `${n}`;
 }
 export function formatMs(ms) {
-    if (ms < 1000)
+    if (ms < 1_000)
         return `${ms}ms`;
     const sec = Math.round(ms / 100) / 10;
     if (sec < 60)

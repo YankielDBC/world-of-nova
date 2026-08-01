@@ -6,7 +6,7 @@ export declare const RACIAL_TALENT_CATEGORIES: {
         ru: string;
     };
 }[];
-export declare function normalizeRace(value: any): "zolk" | "uren";
+export declare function normalizeRace(value: any): "uren" | "zolk";
 export declare function getLocalizedText3(text: any, lang: any): any;
 export declare function getAllRacialTalents(): ({
     key: string;

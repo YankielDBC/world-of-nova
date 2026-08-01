@@ -1,10 +1,12 @@
 // @ts-nocheck
 // World of Nova - Database Service
+if (!process.env.DATABASE_URL && process.env.VERCEL) {
+    process.env.DATABASE_URL = 'file:/tmp/world-of-nova-dev.sqlite';
+}
 import { PrismaClient } from '@prisma/client';
 import { getClassAttributesAtLevel, getClassGrowthDebug } from './rpg-attributes.js';
 const poolConfig = {
     log: ['error', 'warn'],
-    connectionTimeout: 10000,
 };
 export const prisma = new PrismaClient(poolConfig);
 export async function connectDB() {

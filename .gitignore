@@ -15,3 +15,7 @@ backups/
 dist/
 
 .vercel
+.env*.local
+src/server/firebase-admin.cred.json
+prisma/runtime-template.db
+prisma/runtime-template.db-journal

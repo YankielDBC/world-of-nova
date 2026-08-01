@@ -31,6 +31,17 @@ httpServer.on('error', (err: any) => {
 app.use(cors());
 app.use(express.json());
 
+import { router as clickforgeRouter } from './routes/clickforge.js';
+import { router as clickforgeCharactersRouter } from './routes/clickforge-characters.js';
+import { router as firebaseAuthRouter } from './routes/firebase-auth.js';
+
+// ============================================
+// CLICKFORGE ACCOUNT ROUTES
+// ============================================
+app.use('/api/clickforge', clickforgeRouter);
+app.use('/api/clickforge/characters', clickforgeCharactersRouter);
+app.use('/api/auth', firebaseAuthRouter);
+
 // ============================================
 // RACE & CLASS DATA (mirrors registration-module)
 // ============================================
@@ -370,7 +381,7 @@ io.on('connection', (socket) => {
 // ============================================
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.resolve('web/dist')));
-  app.get('*', (_req, res) => {
+  app.get(/.*/, (_req, res) => {
     res.sendFile(path.resolve('web/dist/index.html'));
   });
 }

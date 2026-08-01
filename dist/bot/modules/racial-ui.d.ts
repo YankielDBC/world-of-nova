@@ -1,3 +1,13 @@
+export declare function t3(lang: any, es: any, en: any, ru: any): any;
+export declare function formatNumber(value: any, digits?: number): string;
+export declare function formatPctFraction(value: any, digits?: number): string;
+export declare function formatPctPoints(value: any, digits?: number): string;
+export declare function formatFlat(value: any, digits?: number): string;
+export declare function shortLabel(text: any, max?: number): any;
+export declare function formatRaceLabel(race: any): any;
+export declare function formatTalentType(def: any, lang: any): any;
+export declare function categoryIcon(category: any): "💨" | "⚔️" | "🛡️" | "✨" | "🧰" | "👑";
+export declare function activeSlotLabel(state: any, def: any, lang: any): any;
 export declare function getRacialTalentPreview(def: any, lang: any): any;
 export declare function getRacialTalentPowerLines(state: any, def: any, lang: any): any[];
 export declare function getRacialTalentCompatibilityLines(state: any, def: any, lang: any): any[];
