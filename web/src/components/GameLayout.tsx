@@ -16,7 +16,7 @@ export default function GameLayout({ player, onLogout }: Props) {
         <header className="gl-header">
           <span className="gl-title">World of Nova</span>
           <span className="gl-player-name">{player.nickname}</span>
-          <span className="gl-coords">({player.mapX}, {player.mapY})</span>
+          <span className="gl-coords">({player.mapX ?? 0}, {player.mapY ?? 0})</span>
           <button className="gl-logout" onClick={onLogout}>Salir</button>
         </header>
 

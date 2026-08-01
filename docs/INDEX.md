@@ -50,6 +50,10 @@
 |-----------|-----------|
 | [WEBAPP_MIGRATION.md](./WEBAPP_MIGRATION.md) | Qué backend reutilizar, qué cambiar, qué hacer nuevo y arquitectura propuesta para web. |
 | [WEB_API.md](./WEB_API.md) | Endpoints REST y eventos Socket.io actuales/planificados. |
+| [CLICKFORGE_INTEGRATION.md](./CLICKFORGE_INTEGRATION.md) | Integración ClickForge: auth unificado, creación/selección de personajes, arquitectura. |
+| [ENVIRONMENT.md](./ENVIRONMENT.md) | Variables de entorno, secretos y configuración Firebase. |
+| [DEPLOYMENT.md](./DEPLOYMENT.md) | Pasos de deploy para WoN y conexión con ClickForge. |
+| [RELEASE_NIGHTFALL.md](./RELEASE_NIGHTFALL.md) | Checklist del primer lanzamiento Nightfall. |
 
 ## Documentación de proyecto
 
